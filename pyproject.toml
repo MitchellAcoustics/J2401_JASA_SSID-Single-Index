@@ -6,11 +6,19 @@ authors = [
     {name = "Andrew Mitchell", email = "andrew.mitchell.18@ucl.ac.uk"},
 ]
 dependencies = [
-    "soundscapy>=0.5.3",
     "jupyter>=1.0.0",
-    "ipykernel>=6.28.0",
+    "ipykernel>=6.29.0",
+    "soundscapy @ git+https://github.com/MitchellAcoustics/Soundscapy.git",
+    "pandas>=2.2.0",
+    "rpy2>=3.5.15",
+    "circumplex>=0.1.4",
+    "scikit-learn>=1.4.1.post1",
 ]
 requires-python = ">=3.11"
 readme = "README.md"
 license = {text = "MIT"}
 
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0.0",
+]
