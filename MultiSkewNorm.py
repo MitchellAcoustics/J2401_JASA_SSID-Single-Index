@@ -72,6 +72,22 @@ class DirectParams:
 
 
 class CentredParams:
+    """
+    Represents the centered parameters of a distribution.
+
+    Attributes:
+        mean (float): The mean of the distribution.
+        sigma (float): The standard deviation of the distribution.
+        skew (float): The skewness of the distribution.
+
+    Methods:
+        __init__(mean, sigma, skew): Initializes a new instance of the CentredParams class.
+        __repr__(): Returns a string representation of the CentredParams object.
+        __str__(): Returns a formatted string representation of the CentredParams object.
+        from_dp(dp): Converts DirectParams object to CentredParams object.
+
+    """
+
     def __init__(self, mean, sigma, skew):
         self.mean = mean
         self.sigma = sigma
@@ -89,6 +105,19 @@ class CentredParams:
         )
 
     def from_dp(self, dp: DirectParams):
+        """
+        Converts a DirectParams object to a CentredParams object.
+
+        Args:
+            dp (DirectParams): The DirectParams object to convert.
+
+        Returns:
+            CentredParams: A new CentredParams object with the converted parameters.
+
+        Note:
+            This method is not yet implemented.
+
+        """
         # TODO: Implement this method with dp2cp function
         pass
 
