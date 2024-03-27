@@ -163,3 +163,4 @@ cython_debug/
 
 /.quarto/
 .idea/*
+.python-version

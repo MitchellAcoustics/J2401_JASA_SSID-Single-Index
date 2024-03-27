@@ -22,7 +22,7 @@ tmvtnorm = rpackages.importr("tmvtnorm")
 numpy2ri.activate()
 pandas2ri.activate()
 
-# %%   
+# %%
 
 
 def selm(x: str, y: str, data: pd.DataFrame):

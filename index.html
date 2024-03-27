@@ -10,7 +10,7 @@
 <meta name="author" content="Francesco Aletta">
 <meta name="author" content="Tin Oberman">
 <meta name="author" content="Jian Kang">
-<meta name="dcterms.date" content="2024-03-26">
+<meta name="dcterms.date" content="2024-03-27">
 <meta name="keywords" content="keyword1, keyword2">
 
 <title>SPI - Defining bespoke and archetypal context-dependent Soundscape Perception Indices</title>
@@ -3334,7 +3334,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 26, 2024</p>
+      <p class="date">March 27, 2024</p>
     </div>
   </div>
   
@@ -3358,7 +3358,7 @@ window.Quarto = {
 </header>
 
 
-<div id="2cb3ad51" class="cell" data-execution_count="1">
+<div id="ffc33d74" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> soundscapy <span class="im">as</span> sspy</span>
@@ -3375,6 +3375,12 @@ window.Quarto = {
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">&quot;ignore&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/mitch/Library/CloudStorage/OneDrive-UniversityCollegeLondon/_Fellowship/Papers - Drafts/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/rpy2/robjects/numpy2ri.py:252: DeprecationWarning: The global conversion available with activate() is deprecated and will be removed in the next major release. Use a local converter.
+  warnings.warn(&#39;The global conversion available with activate() &#39;
+/Users/mitch/Library/CloudStorage/OneDrive-UniversityCollegeLondon/_Fellowship/Papers - Drafts/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/rpy2/robjects/pandas2ri.py:368: DeprecationWarning: The global conversion available with activate() is deprecated and will be removed in the next major release. Use a local converter.
+  warnings.warn(&#39;The global conversion available with activate() &#39;</code></pre>
+</div>
 </div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
@@ -3462,38 +3468,38 @@ Table 1: Language-specific angles for projection into the ISO 12913-3:2018 circ
 <div aria-describedby="tbl-lang-angles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tab <span class="op">=</span> pd.DataFrame.from_dict(LANGUAGE_ANGLES, orient<span class="op">=</span><span class="st">&#39;index&#39;</span>, columns<span class="op">=</span>PAQ_IDS)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tab</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tab <span class="op">=</span> pd.DataFrame.from_dict(LANGUAGE_ANGLES, orient<span class="op">=</span><span class="st">&#39;index&#39;</span>, columns<span class="op">=</span>PAQ_IDS)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tab</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </figure>
 </div>
 <p>By projecting specific soundscape perception responses into this circumplex, it becomes possible to quantify their perceptual characteristics.</p>
-<div id="38a345f7" class="cell" data-execution_count="3">
+<div id="61aca5d0" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load latest ISD dataset</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data = sspy.isd.load_zenodo()</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load latest ISD dataset</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>isd_file <span class="op">=</span> Path(<span class="st">&quot;ISD v1.0 Data.csv&quot;</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(isd_file, low_memory<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>data, excl_data <span class="op">=</span> sspy.isd.validate(data)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.query(<span class="st">&quot;Language != &#39;cmn&#39;&quot;</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Exclude RegentsParkJapan outliers</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># excl_id = list(data.query(&quot;LocationID == &#39;RegentsParkJapan&#39;&quot;).query(&quot;ISOEventful &gt; 0.72 | ISOEventful &lt; -0.5&quot;).index)</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Excluded RegentsParkFields outliers</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># excl_id = excl_id + list(data.query(&quot;LocationID == &#39;RegentsParkFields&#39; and ISOPleasant &lt; 0&quot;).index) # Helicopters</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>excl_id <span class="op">=</span> [<span class="dv">652</span>, <span class="dv">706</span>, <span class="dv">548</span>, <span class="dv">550</span>, <span class="dv">551</span>, <span class="dv">553</span>, <span class="dv">569</span>, <span class="dv">580</span>, <span class="dv">609</span>, <span class="dv">618</span>, <span class="dv">623</span>, <span class="dv">636</span>, <span class="dv">643</span>]</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>data.drop(excl_id, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, row <span class="kw">in</span> data.iterrows():</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    lang <span class="op">=</span> row[<span class="st">&#39;Language&#39;</span>]</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    angles <span class="op">=</span> LANGUAGE_ANGLES[lang]</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    iso_pl, iso_ev <span class="op">=</span> sspy.surveys.adj_iso_pl(row[PAQ_IDS], angles, scale<span class="op">=</span><span class="dv">4</span>), sspy.surveys.adj_iso_ev(row[PAQ_IDS], angles, scale<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    data.loc[i, <span class="st">&#39;ISOPleasant&#39;</span>] <span class="op">=</span> iso_pl</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    data.loc[i, <span class="st">&#39;ISOEventful&#39;</span>] <span class="op">=</span> iso_ev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load latest ISD dataset</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data = sspy.isd.load_zenodo()</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load latest ISD dataset</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>isd_file <span class="op">=</span> Path(<span class="st">&quot;ISD v1.0 Data.csv&quot;</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(isd_file, low_memory<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>data, excl_data <span class="op">=</span> sspy.isd.validate(data)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.query(<span class="st">&quot;Language != &#39;cmn&#39;&quot;</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Exclude RegentsParkJapan outliers</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># excl_id = list(data.query(&quot;LocationID == &#39;RegentsParkJapan&#39;&quot;).query(&quot;ISOEventful &gt; 0.72 | ISOEventful &lt; -0.5&quot;).index)</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Excluded RegentsParkFields outliers</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># excl_id = excl_id + list(data.query(&quot;LocationID == &#39;RegentsParkFields&#39; and ISOPleasant &lt; 0&quot;).index) # Helicopters</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>excl_id <span class="op">=</span> [<span class="dv">652</span>, <span class="dv">706</span>, <span class="dv">548</span>, <span class="dv">550</span>, <span class="dv">551</span>, <span class="dv">553</span>, <span class="dv">569</span>, <span class="dv">580</span>, <span class="dv">609</span>, <span class="dv">618</span>, <span class="dv">623</span>, <span class="dv">636</span>, <span class="dv">643</span>]</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>data.drop(excl_id, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, row <span class="kw">in</span> data.iterrows():</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    lang <span class="op">=</span> row[<span class="st">&#39;Language&#39;</span>]</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    angles <span class="op">=</span> LANGUAGE_ANGLES[lang]</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    iso_pl, iso_ev <span class="op">=</span> sspy.surveys.adj_iso_pl(row[PAQ_IDS], angles, scale<span class="op">=</span><span class="dv">4</span>), sspy.surveys.adj_iso_ev(row[PAQ_IDS], angles, scale<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    data.loc[i, <span class="st">&#39;ISOPleasant&#39;</span>] <span class="op">=</span> iso_pl</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    data.loc[i, <span class="st">&#39;ISOEventful&#39;</span>] <span class="op">=</span> iso_ev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Renaming PAQ columns.
@@ -3502,10 +3508,10 @@ Identified 109 samples to remove.
 [6, 9, 13, 30, 32, 46, 190, 213, 229, 244, 296, 412, 413, 428, 464, 485, 655, 734, 739, 762, 766, 780, 1067, 1274, 1290, 1316, 1320, 1338, 1346, 1347, 1397, 1425, 1431, 1446, 1447, 1470, 1485, 1491, 1504, 1505, 1510, 1512, 1517, 1522, 1523, 1527, 1599, 1698, 1734, 1817, 1911, 1948, 2069, 2107, 2109, 2111, 2150, 2199, 2277, 2293, 2384, 2386, 2490, 2523, 2584, 2592, 2695, 2762, 2767, 2783, 2789, 2825, 2826, 2832, 2840, 2856, 2859, 2879, 2883, 2889, 2910, 2932, 2956, 2969, 3031, 3058, 3077, 3124, 3149, 3163, 3185, 3202, 3210, 3211, 3212, 3213, 3214, 3215, 3216, 3272, 3302, 3365, 3414, 3491, 3502, 3510, 3517, 3533, 3583]</code></pre>
 </div>
 </div>
-<div id="e531f722" class="cell" data-execution_count="4">
+<div id="e112f4b5" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sspy.isd.soundscapy_describe(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sspy.isd.soundscapy_describe(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
@@ -3792,23 +3798,23 @@ Y \sim SN (\xi, \Omega, \alpha)
 <div aria-describedby="fig-targets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>target_1 <span class="op">=</span> (</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  np.array([<span class="fl">0.5</span>, <span class="fl">0.7</span>]),</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  np.array(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    [[<span class="fl">0.1</span>, <span class="fl">0.05</span>],</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.05</span>, <span class="fl">0.1</span>]]</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  np.array([<span class="dv">0</span>, <span class="op">-</span><span class="dv">5</span>])</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>y_1 <span class="op">=</span> snpy.sample_msn(</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  n <span class="op">=</span> <span class="dv">1000</span>,</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  xi <span class="op">=</span> target_1[<span class="dv">0</span>],</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  omega<span class="op">=</span>target_1[<span class="dv">1</span>],</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  alpha<span class="op">=</span>target_1[<span class="dv">2</span>]</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>y_1 <span class="op">=</span> pd.DataFrame(y_1, columns<span class="op">=</span>[<span class="st">&#39;ISOPleasant&#39;</span>, <span class="st">&#39;ISOEventful&#39;</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>target_1 <span class="op">=</span> (</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  np.array([<span class="fl">0.5</span>, <span class="fl">0.7</span>]),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  np.array(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    [[<span class="fl">0.1</span>, <span class="fl">0.05</span>],</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.05</span>, <span class="fl">0.1</span>]]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  np.array([<span class="dv">0</span>, <span class="op">-</span><span class="dv">5</span>])</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>y_1 <span class="op">=</span> snpy.sample_msn(</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  n <span class="op">=</span> <span class="dv">1000</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  xi <span class="op">=</span> target_1[<span class="dv">0</span>],</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  omega<span class="op">=</span>target_1[<span class="dv">1</span>],</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  alpha<span class="op">=</span>target_1[<span class="dv">2</span>]</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>y_1 <span class="op">=</span> pd.DataFrame(y_1, columns<span class="op">=</span>[<span class="st">&#39;ISOPleasant&#39;</span>, <span class="st">&#39;ISOEventful&#39;</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-targets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -3841,10 +3847,10 @@ Figure 1
 <section id="data-source" class="level2">
 <h2 class="anchored" data-anchor-id="data-source">Data Source</h2>
 <p>The SPI framework is designed to accommodate a wide range of data sources, including both objective measurements and subjective evaluations. This flexibility enables the framework to be applied to diverse contexts and applications, ranging from urban soundscapes to natural environments, public spaces, and indoor settings.</p>
-<div id="84338141" class="cell" data-execution_count="6">
+<div id="3d2f0599" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sspy.isd.soundscapy_describe(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sspy.isd.soundscapy_describe(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>

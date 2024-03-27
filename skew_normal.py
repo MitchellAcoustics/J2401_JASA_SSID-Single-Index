@@ -25,6 +25,7 @@ This code is distributed under the GNU LGPL license.
 -   T_owen returns: values for Owens T as used by cdf_skewnormal
 -   skew_max: returns the maximum skewness of a sn distribution
 """
+
 from math import sqrt, copysign, pi
 import numpy.random as random
 from numpy import where, zeros, ones, float64, array
