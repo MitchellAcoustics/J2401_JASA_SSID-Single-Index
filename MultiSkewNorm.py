@@ -123,6 +123,29 @@ class CentredParams:
 
 
 class MultiSkewNorm:
+    """
+    A class representing a multi-dimensional skewed normal distribution.
+
+    Attributes:
+        selm_model: The fitted SELM model.
+        cp: The centred parameters of the fitted model.
+        dp: The direct parameters of the fitted model.
+        sample_data: The generated sample data from the fitted model.
+        data: The input data used for fitting the model.
+
+    Methods:
+        __init__: Initializes an instance of the MultiSkewNorm class.
+        __repr__: Returns a string representation of the MultiSkewNorm instance.
+        summary: Prints a summary of the fitted model.
+        fit: Fits the model to the provided data.
+        define_dp: Defines the direct parameters of the model.
+        sample: Generates a sample from the fitted model.
+        sspy_plot: Plots the joint distribution of the generated sample.
+        ks2ds: Computes the two-sample Kolmogorov-Smirnov statistic.
+        spi: Computes the similarity percentage index.
+
+    """
+
     def __init__(self):
         self.selm_model = None
         self.cp = None
@@ -153,6 +176,19 @@ class MultiSkewNorm:
         x: np.ndarray | pd.Series = None,
         y: np.ndarray | pd.Series = None,
     ):
+        """
+        Fits the multi-dimensional skewed normal model to the provided data.
+
+        Args:
+            data: The input data as a pandas DataFrame or numpy array.
+            x: The x-values of the input data as a numpy array or pandas Series.
+            y: The y-values of the input data as a numpy array or pandas Series.
+
+        Raises:
+            ValueError: If either data or x and y are not provided.
+
+        """
+
         if data is None and (x is None or y is None):
             # Either data or x and y must be provided
             raise ValueError("Either data or x and y must be provided")
@@ -194,10 +230,35 @@ class MultiSkewNorm:
         return None
 
     def define_dp(self, xi: np.ndarray, omega: np.ndarray, alpha: np.ndarray):
+        """
+        Initiate a distribution from the direct parameters.
+
+        Args:
+            xi: The xi values of the direct parameters as a numpy array.
+            omega: The omega values of the direct parameters as a numpy array.
+            alpha: The alpha values of the direct parameters as a numpy array.
+
+        """
+
         self.dp = DirectParams(xi, omega, alpha)
         return None
 
     def sample(self, n: int = 1000, return_sample: bool = False) -> None | np.ndarray:
+        """
+        Generates a sample from the fitted model.
+
+        Args:
+            n: The number of samples to generate.
+            return_sample: Whether to return the generated sample as an np.ndarray.
+
+        Returns:
+            None or numpy array: The generated sample if return_sample is True.
+
+        Raises:
+            ValueError: If either selm_model or xi, omega, and alpha are not provided.
+
+        """
+
         if self.selm_model is not None:
             sample = rsn.sample_msn(selm_model=self.selm_model, n=n)
         elif self.dp is not None:
@@ -215,6 +276,11 @@ class MultiSkewNorm:
             return sample
 
     def sspy_plot(self):
+        """
+        Plots the joint distribution of the generated sample.
+
+        """
+
         if self.sample_data is None:
             self.sample()
 
@@ -226,6 +292,19 @@ class MultiSkewNorm:
     def ks2ds(
         self, test: pd.DataFrame | np.ndarray, nboot: int = None, extra: bool = True
     ):
+        """
+        Computes the two-sample, two-dimensional Kolmogorov-Smirnov statistic.
+
+        Args:
+            test: The test data as a pandas DataFrame or numpy array.
+            nboot: The number of bootstrap samples to use for computing the p-value.
+            extra: Whether to compute the extra statistics.
+
+        Returns:
+            tuple: The KS2D statistic, p-value, and extra statistics (if extra=True).
+
+        """
+
         if self.sample_data is None:
             self.sample()
 
@@ -235,6 +314,17 @@ class MultiSkewNorm:
         return KS2D.ks2d2s(self.sample_data, test)
 
     def spi(self, test: pd.DataFrame | np.ndarray):
+        """
+        Computes the Soundscape Perception Index (SPI) for the test data against the target distribution.
+
+        Args:
+            test: The test data as a pandas DataFrame or numpy array.
+
+        Returns:
+            int: The Soundscape Perception Index
+
+        """
+
         return int((1 - self.ks2ds(test)[0]) * 100)
 
 
