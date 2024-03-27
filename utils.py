@@ -107,8 +107,8 @@ __all__ = ["ks2d2s", "estat", "estat2d"]
 
 
 def ks2d2s(
-    test_data: pd.DataFrame = None,
-    target_data: pd.DataFrame = None,
+    test_data: pd.DataFrame | np.ndarray = None,
+    target_data: pd.DataFrame | np.ndarray = None,
     x1: np.array = None,
     y1: np.array = None,
     x2: np.array = None,
@@ -172,10 +172,17 @@ def ks2d2s(
 
     if test_data is not None and target_data is not None:
         assert test_data.shape[1] == 2 and target_data.shape[1] == 2
-        x1 = test_data.iloc[:, 0].values
-        y1 = test_data.iloc[:, 1].values
-        x2 = target_data.iloc[:, 0].values
-        y2 = target_data.iloc[:, 1].values
+        if isinstance(test_data, pd.DataFrame):
+            x1 = test_data.iloc[:, 0].values
+            y1 = test_data.iloc[:, 1].values
+        else:
+            x1, y1 = test_data[:, 0], test_data[:, 1]
+
+        if isinstance(target_data, pd.DataFrame):
+            x2 = target_data.iloc[:, 0].values
+            y2 = target_data.iloc[:, 1].values
+        else:
+            x2, y2 = target_data[:, 0], target_data[:, 1]
 
     assert (len(x1) == len(y1)) and (len(x2) == len(y2))
     n1, n2 = len(x1), len(x2)
@@ -299,42 +306,9 @@ def spi(test_data, target_data):
     return int((1 - D) * 100)
 
 
-def spi_type(test_data, target_data, archi_type):
-    x1 = test_data["ISOPleasant"].values
-    y1 = test_data["ISOEventful"].values
-
-    x2 = target_data.query("ArchiType == @archi_type", engine="python")[
-        "ISOPleasant"
-    ].values
-    y2 = target_data.query("ArchiType == @archi_type", engine="python")[
-        "ISOEventful"
-    ].values
-
-    P, D = ks2d2s(x1, y1, x2, y2, extra=True)
-    return int((1 - D) * 100)
-
-
-def spi_plot(test_data, target_data, archi_type, location, ax=None):
-    test_data = test_data.query("LocationID == @location")[
-        ["ISOPleasant", "ISOEventful"]
-    ].copy()
-    ssid = spi_type(test_data, target_data, archi_type)
-
-    type_target = target_data.query("ArchiType == @archi_type")[
-        ["ISOPleasant", "ISOEventful"]
-    ]
-    type_target["SSID"] = f"{archi_type} Target"
-    test_data["SSID"] = location
-    df = pd.concat((type_target, test_data))
-
-    sspy.plotting.density(
-        df,
-        hue="SSID",
-        density_type="simple",
-        title=f"{location}\nSPI_{archi_type}: {ssid}",
-        ax=ax,
-        incl_scatter=False,
-    )
+def spi_plot(test_data, target, n=1000, ax=None):
+    # TODO: Add a plot of the two distributions
+    return None
 
 
 def adj_angle_iso_coords(data: pd.DataFrame, angles, scale=100):

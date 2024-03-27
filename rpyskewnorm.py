@@ -22,29 +22,6 @@ tmvtnorm = rpackages.importr("tmvtnorm")
 numpy2ri.activate()
 pandas2ri.activate()
 
-
-# %%
-
-# mu = [0.5, 0.5]
-# sigma = np.array([[1, 0.8], [0.8, 2]])
-# a = [-1.0, -1.0]
-# b = [1.0, 1.0]
-
-# mu = robjects.FloatVector(mu)
-# sigma = robjects.r.matrix(
-#     robjects.FloatVector(sigma.flatten()),
-#     nrow=sigma.shape[0],
-#     ncol=sigma.shape[1]
-# )
-# a = robjects.FloatVector(a)
-# b = robjects.FloatVector(b)
-
-# # tmvtnorm.rtmvnorm(n=1000, mean=mu, sigma=sigma, lower=a, upper=b, algorithm="gibbs")
-# moments = tmvtnorm.mtmvnorm(
-#     mean=mu, sigma=sigma, lower=a, upper=b
-# )
-
-
 # %%   
 
 
