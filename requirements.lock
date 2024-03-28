@@ -8,8 +8,12 @@
 #   with-sources: false
 
 -e file:.
+about-time==4.2.1
+    # via alive-progress
 acoustics==0.2.6
     # via soundscapy
+alive-progress==3.1.5
+    # via pymoo
 anyio==4.3.0
     # via httpx
     # via jupyter-server
@@ -28,6 +32,8 @@ async-lru==2.0.4
 attrs==23.2.0
     # via jsonschema
     # via referencing
+autograd==1.6.2
+    # via pymoo
 babel==2.14.0
     # via jupyterlab-server
 beautifulsoup4==4.12.3
@@ -47,6 +53,8 @@ charset-normalizer==3.3.2
     # via requests
 circumplex==0.1.4
     # via single-index
+cma==3.2.2
+    # via pymoo
 comm==0.2.2
     # via ipykernel
     # via ipywidgets
@@ -61,9 +69,12 @@ decorator==5.1.1
 defusedxml==0.7.1
     # via nbconvert
     # via odfpy
+deprecated==1.2.14
+    # via pymoo
 dill==0.3.8
     # via multiprocess
     # via pathos
+    # via pymoo
 et-xmlfile==1.1.0
     # via openpyxl
 executing==2.0.1
@@ -74,6 +85,10 @@ fonttools==4.50.0
     # via matplotlib
 fqdn==1.5.1
     # via jsonschema
+future==1.0.0
+    # via autograd
+grapheme==0.6.0
+    # via alive-progress
 h11==0.14.0
     # via httpcore
 httpcore==1.0.4
@@ -86,6 +101,7 @@ idna==3.6
     # via jsonschema
     # via requests
 imageio==2.34.0
+    # via pyrecorder
     # via scikit-image
 ipykernel==6.29.3
     # via jupyter
@@ -174,6 +190,8 @@ markupsafe==2.1.5
 matplotlib==3.8.3
     # via acoustics
     # via circumplex
+    # via pymoo
+    # via pyrecorder
     # via scikit-maad
     # via seaborn
     # via soundscapy
@@ -211,14 +229,19 @@ numexpr==2.9.0
     # via pandas
 numpy==1.26.4
     # via acoustics
+    # via autograd
     # via bottleneck
     # via circumplex
+    # via cma
     # via contourpy
     # via imageio
     # via matplotlib
     # via mosqito
     # via numba
     # via numexpr
+    # via opencv-python
+    # via pymoo
+    # via pyrecorder
     # via pyuff
     # via resampy
     # via scikit-image
@@ -229,6 +252,8 @@ numpy==1.26.4
     # via tifffile
 odfpy==1.4.1
     # via pandas
+opencv-python==4.9.0.80
+    # via pyrecorder
 openpyxl==3.1.2
     # via pandas
 overrides==7.7.0
@@ -288,8 +313,12 @@ pygments==2.17.2
     # via jupyter-console
     # via nbconvert
     # via qtconsole
+pymoo==0.6.1.1
+    # via single-index
 pyparsing==3.1.2
     # via matplotlib
+pyrecorder==0.2.1
+    # via single-index
 python-calamine==0.2.0
     # via pandas
 python-dateutil==2.9.0.post0
@@ -347,6 +376,7 @@ scipy==1.12.0
     # via acoustics
     # via circumplex
     # via mosqito
+    # via pymoo
     # via scikit-image
     # via scikit-learn
     # via scikit-maad
@@ -431,6 +461,8 @@ websocket-client==1.7.0
     # via jupyter-server
 widgetsnbextension==4.0.10
     # via ipywidgets
+wrapt==1.16.0
+    # via deprecated
 xlrd==2.0.1
     # via pandas
 xlsxwriter==3.2.0

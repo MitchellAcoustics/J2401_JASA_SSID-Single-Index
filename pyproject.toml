@@ -15,6 +15,8 @@ dependencies = [
     "soundscapy @ git+https://github.com/MitchellAcoustics/Soundscapy.git",
     "pathos>=0.3.2",
     "tqdm-pathos>=0.4",
+    "pymoo>=0.6.1.1",
+    "pyrecorder>=0.2.1",
 ]
 readme = "README.md"
 requires-python = ">= 3.11"
