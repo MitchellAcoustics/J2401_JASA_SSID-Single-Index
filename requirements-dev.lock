@@ -259,6 +259,7 @@ parso==0.8.3
     # via jedi
 pathos==0.3.2
     # via single-index
+    # via tqdm-pathos
 pexpect==4.9.0
     # via ipython
 pillow==10.2.0
@@ -396,6 +397,9 @@ tornado==6.4
     # via terminado
 tqdm==4.66.2
     # via soundscapy
+    # via tqdm-pathos
+tqdm-pathos==0.4
+    # via single-index
 traitlets==5.14.2
     # via comm
     # via ipykernel

@@ -1,4 +1,5 @@
 # Code créé par Gabriel Taillon le 7 Mai 2018
+# From https://github.com/Gabinou/2DKS
 #  Kolmogorov-Smyrnov Test extended to two dimensions.
 # References:s
 #  [1] Peacock, J. A. (1983). Two-dimensional goodness-of-fit testing
@@ -10,8 +11,8 @@
 #  [3] Flannery, B. P., Press, W. H., Teukolsky, S. A., & Vetterling, W.
 #  (1992). Numerical recipes in C. Press Syndicate of the University
 #  of Cambridge, New York, 24, 78.
-import sys
 import inspect
+
 import numpy as np
 import scipy.stats
 
