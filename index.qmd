@@ -29,17 +29,18 @@ keywords:
 date: last-modified
 bibliography: FellowshipRefs-biblatex.bib
 format:
-  html: 
-   code-fold: true
-   toc: true
-   embed-resources: true
+  # html: 
+  #  code-fold: true
+  #  toc: true
+  #  embed-resources: true
   elsevier-pdf:
     echo: false
     keep-tex: true
+    keep-ipynb: true
     journal:
       name: Journal of the Acoustical Society of America
       formatting: preprint
-      model: 5p
+      model: 3p
       cite-style: authoryear
 ---
 
