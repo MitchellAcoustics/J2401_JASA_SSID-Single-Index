@@ -1,0 +1,35 @@
+project:
+  type: manuscript
+
+execute:
+  freeze: auto
+
+format:
+  # agu-html:
+  #   toc: true
+  #   code-fold: true
+  #   comments:
+  #     hypothesis: true
+  # docx: default
+  # jats: default
+  # agu-pdf: default
+  elsevier-pdf:
+    echo: false
+    keep-tex: true
+    keep-ipynb: true
+    journal:
+      name: Journal of the Acoustical Society of America
+      formatting: preprint
+      model: 3p
+      cite-style: authoryear
+    # include-in-header: 
+      # text: |
+      #   \usepackage{lineno}
+      #   \linenumbers
+  qtypst-arkheion-typst: 
+    keep-typ: true
+    suppress-bibliography: true
+    bib-file: "FellowshipRefs-biblatex.bib"
+bibliography: FellowshipRefs-biblatex.bib
+
+

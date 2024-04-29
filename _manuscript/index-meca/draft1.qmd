@@ -1,0 +1,379 @@
+---
+title: SPI - Defining bespoke and archetypal context-dependent Soundscape Perception Indices
+author:
+  - name: Andrew Mitchell
+    email: andrew.mitchell.18@ucl.ac.uk
+    affiliations: 
+        - id: ucl-iede
+          name: University College London
+          department: Institute for Environmental Design & Engineering
+    attributes:
+        corresponding: true
+  - name: Francesco Aletta
+    email: f.aletta@ucl.ac.uk
+    affiliations:
+        - ref: ucl-iede
+  - name: Tin Oberman
+    email: t.oberman@ucl.ac.uk
+    affiliations:
+        - ref: ucl-iede
+  - name: Jian Kang
+    email: j.kang@ucl.ac.uk
+    affilations:
+        - ref: ucl-iede
+abstract: |
+    The soundscape approach provides a basis for considering the holistic perception of sound environments, in context. While steady advancements have been made in methods for assessment and analysis, a gap exists for comparing soundscapes and quantifying improvements in the multi-dimensional perception of a soundscape. To this end, there is a need for the creation of single value indices to compare soundscape quality which incorporate context, aural diversity, and specific design goals for a given application. Just as a variety of decibel-based indices have been developed for various purposes (e.g. LAeq, LCeq, L90, Lden, etc.), the soundscape approach requires the ability to create novel indices for different uses, but which share a common language and understanding. We therefore propose a unified framework for creating both bespoke and standardised single index measures of soundscape perception based on the soundscape circumplex model, allowing for new metrics to be defined in the future. The implementation of this framework is demonstrated through the creation of a public spaced typology-based index using data collected under the SSID Protocol, which was designed specifically for the purpose of defining soundscape indices. Indices developed under this framework can enable a broader and more efficient application of the soundscape approach.
+keywords: 
+  - keyword1
+  - keyword2
+date: last-modified
+bibliography: FellowshipRefs-biblatex.bib
+format:
+  # html: 
+  #  code-fold: true
+  #  toc: true
+  #  embed-resources: true
+  elsevier-pdf:
+    echo: false
+    keep-tex: true
+    keep-ipynb: true
+    journal:
+      name: Journal of the Acoustical Society of America
+      formatting: preprint
+      model: 3p
+      cite-style: authoryear
+    # include-in-header: 
+    #   text: |
+    #     \usepackage{lineno}
+    #     \linenumbers
+---
+
+```{python}
+import soundscapy as sspy
+import matplotlib.pyplot as plt
+import pandas as pd
+from pathlib import Path
+import seaborn as sns
+import utils
+import rpyskewnorm as snpy
+import numpy as np
+import circumplex as cx
+from soundscapy.utils.parameters import LANGUAGE_ANGLES, PAQ_NAMES, PAQ_IDS
+
+import warnings
+warnings.filterwarnings("ignore")
+
+```
+
+# Introduction
+
+The EU Green Paper on Future Noise Policy indicates that 80 million EU citizens are suffering from unacceptable environmental noise levels , according to the WHO recommendation [@Berglund1999Guidelines] and the social cost of transport noise is 0.2-2% of total GDP. The publication of the EU Directive Relating to the Assessment and Management of Environmental Noise (END) [@EuropeanUnion2002Directive] in 2002 has led to major actions across Europe, with reducing noise levels as the focus, for which billions of Euros are being spent. However, it is widely recognised that only reducing sound level is not always feasible or cost-effective, and more importantly, with only ~30% of environmental noise annoyance depending on facets of parameters such as acoustic energy [@Guski1997Psychological], sound level reduction will not necessarily lead to improved quality of life.
+
+Soundscape creation, separate from noise control engineering, is about the relationships between human physiology, perception, the sound environment, and its social/cultural context [@Kang2006Urban]. Soundscape research represents a paradigm shift in that it combines physical, social, and psychological approaches and considers environmental sounds as a 'resource' rather than 'waste' [@Kang2016Soundscape] relating to perceptual constructs rather than just physical phenomena. However, the current research is still at the stage of describing and identifying the problems and tends to be fragmented and focussed on only special cases e.g. subjective evaluations of soundscapes for residential areas [@SchulteFortkamp2013Introduction]. In the movement from noise control to soundscape creation [@Aletta2015Soundscape], a vital step is the standardisation of methods to assess soundscape quality.
+
+<!-- TODO: Should rephrase the following paragraphs -->
+
+The Decibel (dB) is the earliest and most commonly used scientific index measuring sound level. To represent the overall level of sound with a single value on one scale, as the Decibel index does, is often desirable. For this purpose, a number of different values representing sounds at various frequencies must be combined. Several frequency weighting networks have been developed since the 1930s, considering typical human responses to sound based on equal-loudness-level contours [@viii] and, among them, the A-weighting network, with resultant decibel values called dBA, has been commonly used in almost all the national/international regulations [@ix]. However, there have been numerous criticisms on its effectiveness [@x] as the correlations between dBA and perceived sound quality (e.g. noise annoyance) are often low [@xi].
+
+Another set of indices is psychoacoustic magnitudes, including loudness, fluctuation strength or roughness, sharpness, and pitch strength, development with sound quality studies of industrial products since the 1980's [@xii]. These emerged when it was conceived that acoustic emissions had further characteristics than just level [@ciii]. But while psychoacoustic magnitudes have been proved to be successful for the assessment of product sound quality [@xiv], in the field of environmental acoustics, their applicability has been limited [@xv], since a significant feature of environmental acoustics is that there are multiple/dynamic sound sources.
+
+Attendant with the transition from a noise reduction to soundscape paradigm is an urgent need for developing appropriate indices for soundscape, rather than continuously using dBA [@xvi]. 
+
+## The need for Soundscape Indices
+
+<!-- From Thesis -->
+
+Soundscape studies strive to understand the perception of a sound environment, in context, including acoustic, (non-acoustic) environmental, contextual, and personal factors. These factors combine together to form a person's soundscape perception in complex interacting ways [@Berglund2006Soundscape]. Humans and soundscapes have a dynamic bidirectional relationship - while humans and their behaviour directly influence their soundscape, humans and their behaviour are in turn influenced by their soundscape [@Erfanian2019Psychophysiological]. 
+
+When applied to urban sound and specifically to noise pollution, the soundscape approach introduces three key considerations beyond traditional noise control methods:
+
+1. considering all aspects of the environment which may influence perception, not just the sound level and spectral content;
+2. an increased and integrated consideration of the varying impacts which different sound sources and sonic characteristics have on perception; and
+3. a consideration of both the positive and negative dimensions of soundscape perception.
+
+This approach can enable better outcomes by identifying positive soundscapes (in line with the END's mandate to `preserve environmental noise quality where it is good' [@EuropeanUnion2002Directive]), better identify specific sources of noise which impact soundscape quality and pinpoint the characteristics which may need to be decreased, and illuminate alternative methods which could be introduced to improve a soundscape where a reduction of noise is impractical [@Fiebig2018Does; @Kang2018Impact]. These can all lead to more opportunities to truly improve a space by identifying the causes of positive soundscapes, while also potentially decreasing the costs of noise mitigation by offering more targeted techniques and alternative approaches.
+
+The traditional focus on noise levels alone fails to capture the complexity of soundscape perception, which encompasses a multitude of factors beyond mere sound pressure levels. Factors such as the presence of natural or human-made sounds, their temporal patterns, and the overall contextual meaning ascribed to these sounds all contribute to the holistic perception of a soundscape. Consequently, there is a pressing need for the development of robust indices that can encapsulate this multi-dimensional nature of soundscape perception, enabling comparative evaluations and informing targeted interventions to enhance the overall quality of acoustic environments [@Chen2024Interventions]. 
+
+<!-- End Thesis -->
+
+Across both the visual and the auditory domain, research has suggested that a disconnect exists between the physical metrics used to describe urban environments and how they are perceived [@Kruize2019Exploring; @Yang2005Acoustic]. In addition, this disconnect can be extended further into how these environments influence the health and well-being of their users. To gain a better understanding of these spaces and their immpacts on people who work and live in cities, we must create assessment methods and metrics which go beyond merely characterising the physical environment and instead translate through the user's perception [@Mitchell2022Predictive].
+
+## Note on Terminology
+
+Before delving into the core discussion, it is crucial to establish a clear understanding of the terminology employed in the realm of soundscape evaluation. 
+
+<!-- From Thesis -->
+
+The soundscape community is undergoing a period of increased methodological standardization in order to better coordinate and communicate the findings of the field. This process has resulted in many operational tools designed to assess and understand how sound environments are perceived and apply this to shape modern noise control engineering approaches. Important topics which have been identified throughout this process are soundscape 'descriptors', 'indicators', and 'indices'. @Aletta2016Soundscape defined soundscape descriptors as 'measures of how people perceive the acoustic environment' and soundscape indicators as 'measures used to predict the value of a soundscape descriptor'. Soundscape indices can then be defined as 'single value scales derived from either descriptors or indicators that allow for comparison across soundscapes' [@Kang2019Towards].
+
+<!-- End Thesis -->
+
+Soundscape indicators refer to measurable aspects or attributes of a soundscape, such as loudness, tonal characteristics, or spectral content, which can be quantified through objective measurements or signal processing techniques. In contrast, soundscape descriptors are qualitative representations of the perceived characteristics of a soundscape, often derived from listener evaluations, subjective assessments, or semantic differential scales [@ISO12913Part2]. 
+
+Indices, the primary focus of this article, are single numerical values that combine multiple indicators or descriptors to provide a comprehensive representation of the overall soundscape perception. These indices serve as powerful tools for quantifying and comparing soundscapes, enabling decision-makers and stakeholders to assess the impact of interventions, monitor changes over time, and prioritize areas for improvement.
+
+[@Grinfeder2022What]
+
+## Existing 'Soundscape Indices'
+
+While the field of soundscape research has witnessed substantial progress, the development of standardized indices for evaluating and comparing soundscapes across diverse contexts has been relatively limited. Existing indices can be broadly seen as arising from two domains: soundscape ecology and soundscape perception. It is worth reviewing these indices to highlight how the framework proposed here is fundamentally different in both concept and aim.
+
+### Soundscape Ecology
+
+Within the realm of soundscape ecology, indices such as the Acoustic Diversity Index (ADI) and Frequency-dependenty Acoustic Diversity Index (FADI) [@Xu2023frequency] have been developed to quantify the diversity and complexity of acoustic signals within a given soundscape. These indices are particularly useful in ecological studies, providing insights into the richness and diversity of biophonic (natural) and anthrophonic (human-made) sound sources.
+
+<mark>***Add additional information on ADI, FADI, NDSI, etc.***</mark>
+
+However, while these indices contribute valuable insights into the ecological aspects of soundscapes, they do not directly address the perceptual dimensions that are central to the soundscape approach [@SchulteFortkamp2023Soundscapes]. The multi-dimensional nature of soundscape perception, encompassing factors such as pleasantness, eventfulness, and familiarity, necessitates a more comprehensive and context-sensitive approach.
+
+### Soundscape Perception
+
+In the domain of soundscape perception, the Green Soundscape Index (GSI) [@Kogan2018Green] has emerged as a notable attempt to quantify the perceived quality of soundscapes, particularly in urban environments. This index incorporates factors such as the presence and levels of natural sounds, human-made sounds, and their respective contributions to the overall soundscape perception.
+
+The GSI is the ratio of the perceived extent of natural sounds (PNS) to the perceived extent of traffic noise (PTN):
+
+$$
+GSI = \frac{<PNS>}{<PTN>}
+$$
+
+The GSI is noted to range between 1/5 and 5, with several ranges of values given which correspond to general categories of the perceived dominance of traffic noise.
+
+While GSI represents a commendable effort to bridge the gap between objective measurements and subjective perceptions, it remains limited in its ability to capture the full complexity of soundscape perception across diverse contexts. The intricate interplay between various sound sources, their temporal patterns, and the specific context in which they are experienced necessitates a more flexible and adaptable approach to index development.
+
+## Motivations & Goals
+
+The primary motivation behind the development of the Soundscape Perception Indices (SPIs) framework stems from the need to address the existing gap in quantifying and comparing soundscape quality across diverse contexts and applications. By creating a unified framework for defining these indices, the aim is to facilitate a broader and more efficient application of the soundscape approach in various domains, such as urban planning, environmental management, acoustic design, and policy development. 
+
+The overarching aim of this framework is to empower stakeholders, decision-makers, and researchers with the ability to create tailored indices that align with their specific objectives and design goals, while simultaneously enabling cross-comparisons and benchmarking against empirically-defined soundscape archetypes. This dual approach not only acknowledges the context-dependent nature of soundscape perception but also fosters a common language and understanding, facilitating knowledge sharing and collaborative efforts within the field. 
+
+*Ranking* - The ability to rank soundscapes based on their quality is a key goal of the SPI framework. This ranking can be used to compare soundscapes across different contexts, identify areas for improvement, and prioritize interventions accordingly.
+
+*Standardisation* - The SPI framework aims to provide a standardized approach for defining and calculating soundscape indices, ensuring consistency and comparability across different applications and domains. This standardization enables the development of best practices and facilitates knowledge exchange within the field.
+
+# Theoretical Background (of quantitative soundscape perception measurements)
+
+## Soundscape Circumplex & Projection
+
+SPI is grounded in the soundscape circumplex model [@Axelsson2010principal; @Axelsson2012Swedish], a robust theoretical foundation for understanding and representing the multi-dimensional nature of soundscape perception. The reason for grounding the SPI into the soundscape circumplex is that we have observed this model (and its corresponding PAQs) to become the most prevalent one in soundscape literature [@Aletta2023Adoption]. For the sake of supporting standardization, we feel that we need the SPI to align to this model.
+
+<!-- From Thesis -->
+
+Method A is built on a series of descriptors referred to as the Perceived Affective Quality (PAQ), proposed by [@Axelsson2010principal]. These PAQs are based on the pleasantness-activity paradigm present in research on emotions and environmental psychology, in particular Russell's circumplex model of affect [@Russell1980circumplex]. As summarised by Axelsson: "Russell's model identifies two dimensions related to the perceived pleasantness of environments and how activating or arousing the environment is."
+
+To move the 8-item PAQ responses into the 2-dimensional circumplex space, we use the projection method first presented in ISO 12913-3:2018. This projection method and its associated formulae were recently updated further in @Aletta2024 to include a correction for the language in which the survey was conducted. The formulae are as follows:
+
+$$
+% \begin{align*}
+P_{ISO} = \frac{1}{\lambda_{pl}} \sum_{i=1}^{8} \cos \theta_i \cdot \sigma_i \\
+E_{ISO} = \frac{1}{\lambda_{pl}} \sum_{i=1}^{8} \sin \theta_i \cdot \sigma_i 
+% \end{align*}
+$$
+
+where $\text{PAQ}_i\$ is the response to the \(i\)th item of the PAQ. The resulting \(x\) and \(y\) values are then used to calculate the polar angle \(\theta\) and the radial distance \(r\) as follows:
+
+<mark>***Add formulae for $\theta$ and r***</mark>
+
+Using the angles derived in @Aletta2024, the following table is used to convert the angles into the ISO 12913-3:2018 circumplex space:
+
+```{python}
+#| label: tbl-lang-angles
+#| tbl-cap: Language-specific angles for projection into the ISO 12913-3:2018 circumplex space.
+tab = pd.DataFrame.from_dict(LANGUAGE_ANGLES, orient='index', columns=PAQ_IDS)
+# tab
+```
+
+
+By projecting specific soundscape perception responses into this circumplex, it becomes possible to quantify their perceptual characteristics. 
+
+
+```{python}
+# Load latest ISD dataset
+# data = sspy.isd.load_zenodo()
+# Load latest ISD dataset
+isd_file = Path("ISD v1.0 Data.csv")
+
+data = pd.read_csv(isd_file, low_memory=False)
+data, excl_data = sspy.isd.validate(data)
+data = data.query("Language != 'cmn'")
+
+# Exclude RegentsParkJapan outliers
+# excl_id = list(data.query("LocationID == 'RegentsParkJapan'").query("ISOEventful > 0.72 | ISOEventful < -0.5").index)
+# Excluded RegentsParkFields outliers
+# excl_id = excl_id + list(data.query("LocationID == 'RegentsParkFields' and ISOPleasant < 0").index) # Helicopters
+excl_id = [652, 706, 548, 550, 551, 553, 569, 580, 609, 618, 623, 636, 643]
+data.drop(excl_id, inplace=True)
+
+for i, row in data.iterrows():
+    lang = row['Language']
+    angles = LANGUAGE_ANGLES[lang]
+    iso_pl, iso_ev = sspy.surveys.adj_iso_pl(row[PAQ_IDS], angles, scale=4), sspy.surveys.adj_iso_ev(row[PAQ_IDS], angles, scale=4)
+    data.loc[i, 'ISOPleasant'] = iso_pl
+    data.loc[i, 'ISOEventful'] = iso_ev
+```
+
+```{python}
+
+sspy.isd.soundscapy_describe(data)
+```
+
+
+### Circumplex Distribution {#sec-circumplex-distribution}
+
+The circumplex is defined by two axes: $P_{ISO}$ and $E_{ISO}$, which are limited to the range $[-1, +1]$. Typically, data in the soundscape circumplex is treated as a combination of two independent normal distributions, one for each axis. In some applications, this approach is sufficient for capturing the distribution of soundscape perception, however the method for calculating the SPI requires a more precise approach. The independent normal distribution approach relies on three key assumptions:
+
+1. The two axes are normally distributed.
+2. The two axes are independent of each other.
+3. The two axes are symmetrically distributed.
+
+While the first assumption is generally valid, the second and third assumptions are not always met in practice. In particular, the distribution of soundscape perception responses in the circumplex is often characterised by a high degree of skewness, which can lead to inaccuracies in the calculation of the SPI. Soundscape circumplex distributions are most appropriately described as a bivariate skew-normal distribution @Azzalini2005 which accurately reflects the relationship between the two dimensions of the circumplex and the fact that real-world perceptual distributions have been consistently observed to not be strictly symmetric. 
+
+The skew-normal distribution is defined by three parameters: location ($\mu$), scale ($\sigma$), and shape ($\alpha$). The location parameter defines the centre of the distribution, the scale parameter defines the spread of the distribution and the shape parameter defines the skew of the distribution. The one-dimensional skew-normal distribution is defined as @Azzalini1996Multivariate:
+
+$$
+\phi(z; \alpha) = 2 \phi(z) \Phi(\alpha z) \quad \text{for} \quad z \in \mathbb{R}
+$$
+
+where $\phi$ and $\Phi$ are the standard normal probability density function and distribution function, respectively, and $\alpha$ is a shape variable which regulates the skewness. The distribution reduces to a standard normal density when $\alpha = 0$. The bivariate skew-normal distribution extends this concept to two dimensions, allowing for the modelling of asymmetric and skewed distributions in a two-dimensional space such as the soundscape circumplex. The multivariate skew-normal distribution including scale and location parameters is given by combining the normal density and distribution functions [@Azzalini1999Statistical]:
+
+$$
+Y = 2 \phi_k (y-\xi; \Omega) \Phi\{\alpha^T\omega^{-1}(y-\xi)\} 
+$$
+
+where $\phi_k$ is the *k*-dimensional normal density with location $\xi$, shape $\alpha$, and covariance matrix $\Omega$. $\Phi \{ \dot \}$ is the normal distribution function and $\alpha$ is a *k*-dimensional shape vector. When $\alpha = 0$, $Y$ reduces to the standard multivariate normal $N_k(\xi, \Omega)$ density. A circumplex distribution can therefore be parameterised with a 2x2 covariance matrix $\Omega$, a 2x1 location vector $\xi$, and a 2x1 shape vector $\alpha$, written as:
+
+$$
+Y \sim SN (\xi, \Omega, \alpha)
+$$
+
+By fitting a skew-normal distribution to the soundscape perception responses, it becomes possible to accurately capture the asymmetry and skewness of the distribution, enabling a more precise calculation of the SPI. A bivariate skew-normal distribution can be summarised as a set of these three parameters. Once parameterised, the distribution can then be sampled from to generate a synthetic distribution of soundscape perception responses. 
+
+#### Direct and Centred parameters
+
+# Defining the SPI Framework
+
+The Soundscape Perception Indices (SPI) framework is centred around the concept of quantifying the distance between a test distribution of interest and the desired target distribution. Its goal is to determine whether a soundscape - whether it be a real-world location, a proposed design, or a hypothetical scenario - aligns with the desired perception of that soundscape. This is achieved by first defining the target distribution, which could represent what is considered to be the 'ideal' soundscape perception for a given context or application. The test distribution is then compared to the target distribution using a distance metric, which quantifies the deviation between the two distributions. The resulting distance value serves as the basis for calculating the SPI, with smaller distances indicating a closer alignment between the perceived soundscape and the target soundscape perception.
+
+Although it is expected that the target distribution would usually represent the ideal or goal soundscape perception, it is also possible to define target distributions that represent undesirable or suboptimal soundscape perceptions. For instance, in a soundscape mapping context, it may be beneficial to map and identify chaotic soundscapes across a city in order to better target areas for soundscape interventions. In this case, the target distribution would be set in the chaotic quadrant and a higher SPI would indicate a closer alignment with the target distribution. This flexibility allows the SPI to be applied to a wide range of contexts and applications, enabling the quantification and comparison of soundscape quality across diverse scenarios.
+
+An SPI value therefore does not represent a 'good' or 'bad' soundscape, but rather a measure of how closely the perceived soundscape aligns with the desired target soundscape perception. This approach allows for the development of bespoke indices tailored to specific design goals and objectives, while also enabling cross-comparisons and benchmarking against empirically-defined soundscape archetypes.
+
+## Defining a Target
+
+As introduced in @sec-circumplex-distribution, circumplex data follows a bivariate skew-normal distribution which can be parameterised with a set of direct parameters (dp). We therefore define a target distribution as a set of these parameters, which can then be used to generate a synthetic distribution of soundscape perception responses. Three example targets are given below along with their $dp_{target}$:
+
+```{python}
+#| label: fig-targets
+#| 
+
+target_1 = (
+  np.array([0.5, 0.7]),
+  np.array(
+    [[0.1, 0.05],
+    [0.05, 0.1]]
+  ),
+  np.array([0, -5])
+)
+
+y_1 = snpy.sample_msn(
+  n = 1000,
+  xi = target_1[0],
+  omega=target_1[1],
+  alpha=target_1[2]
+)
+
+y_1 = pd.DataFrame(y_1, columns=['ISOPleasant', 'ISOEventful'])
+
+
+
+```
+
+## Distance Metric
+
+Central to the SPI framework is the concept of a distance metric, which quantifies the deviation of a given soundscape from a desired target soundscape. This distance metric serves as the basis for calculating the SPI value, with smaller distances indicating a closer alignment between the perceived soundscape and the target soundscape perception. 
+
+Various distance metrics could be employed, ranging from a simple Euclidean distance
+
+It would be possible to define a single target point, rather than an entire target distribution and assess the test distribution's distance from that point using an $R^2$ based on a euclidian distance. However, as noted in Mitchell 2022, it is important to also consider the spread of the distribution. As a key aspect of the sounds, the collective perception. Of a soundscape.
+
+*Discuss different options of distance metrics and approaches*
+
+Essentially, we approaching this as a problem of (dis)similarity between soundscapes. The distance metric is then proposed to assess how similar two any given soundscapes distributions are within the circumplex. Taken to the extreme, two perfectly matching distributions in the soundscape circumplex would return a 100% SPI value, while two completely dissimilar distributions would return a 0% SPI value. In practical terms, for the former, this will never be achieved in real world scenarios; for the latter, it is also difficult to estimate how low the SPI value could actually go, and it should be considered that the distance may happen in different directions within the circumplex space. For instance, if a distribution for a vibrant soundscape was taken as a reference, a compared soundscape distribution may exhibit low SPI values for being located in the calm, OR monotonous, OR chaotic regions of the model.
+
+## Targets
+
+The SPI framework introduces two distinct types of targets: bespoke targets and archetypal targets, each serving a unique purpose in the index development process.
+
+### Bespoke Targets
+
+Bespoke targets are tailor-made for specific projects, reflecting the desired soundscape perception for a particular application. These targets can be defined by stakeholders, designers, policymakers, or decision-makers based on their unique requirements, objectives, and constraints. This flexibility allows the SPI for a specific project to be tailored to the desire of the stakeholders for how that specific soundscape should function. It can also provide a consistent and quantifiable baseline for scenarios like a soundscape design contest wherein a target is specified and provided to all participants in the contest and the winning proposal is the design with the highest SPI score when assessed against that target.
+
+### Archetypal Targets
+
+In contrast to bespoke targets, archetypal targets represent generalized, widely recognized soundscape archetypes which transcend specific applications or projects. These archetypes serve as reference points and enable comparisons across different domains and use cases. ***By providing a framework for these archetypes to be defined, they can be...***
+
+Additionally, archetypal SPIs can be composed of multiple targets. 
+
+## Data Source
+
+The SPI framework is designed to accommodate a wide range of data sources, including both objective measurements and subjective evaluations. This flexibility enables the framework to be applied to diverse contexts and applications, ranging from urban soundscapes to natural environments, public spaces, and indoor settings.
+
+
+
+```{python}
+sspy.isd.soundscapy_describe(data)
+```
+
+# Applying a Bespoke SPI
+
+# Case Study - Defining an Archetypal SPI for space typologies
+
+To demonstrate the practical implementation of the SPI framework and provide an example of empirically-defined targets, a case study focused on defining a typology-based SPI for public spaces is presented. This case study utilizes data from the International Soundscape Database (ISD) [@Mitchell2021International], a comprehensive collection of soundscape recordings and associated listener evaluations gathered under the SSID Protocol [@Mitchell2020Soundscape]. The SSI Protocol was specifically designed to capture the multi-dimensional nature of soundscape perception, employed a rigorous methodology for collecting and analysing data from diverse public spaces according to the standardized methods in ISO 12913-2 [@ISO12913Part2]. 
+
+## Space Typologies
+
+The case study focuses on defining an archetypal SPI for public spaces, with a particular emphasis on space typologies. The concept of space typologies is rooted in the idea that different types of public spaces, such as parks, squares, streets, and plazas, exhibit distinct acoustic characteristics and elicit unique perceptions from their users. By defining archetypal SPIs for these space typologies, it becomes possible to establish a standardized framework for evaluating and comparing public spaces based on their soundscape quality.
+
+The ISD encompasses a diverse range of public space typologies, including urban parks, city squares, public walkways, and busy streets. These typologies serve as the basis for defining archetypal targets and calculating the corresponding SPIs.  
+
+## Defining $SPI_{type}$
+
+Using the soundscape circumplex model and the perceptual data from the ISD, the process of defining the $SPI_{type}$ for each space typology involves the following steps:
+
+1. Identifying Archetypal Targets: Based on the available data ... target soundscapes are defined for each space typology, representing the 'ideal' soundscape perception for that particular type of public space. 
+2. Calculated $SPI_{type}$ for each test location: Using the procedure given above, the circumplex distribution of each test location is compared against the target distribution for its respective space typology.
+
+The resulting $SPI_{type}$ values provide a quantitative measure of soundscape quality for each space typology, enabling comparisons and benchmarking across different public spaces. By comparing each test soundscape against the appropriate target for its typology, the SPI is able to account for the different contexts and purposes of the typologies. By using a consistent scoring methodology, SPI then allows these scores to be combined and considered together, as a single $SPI_{type}$ score. 
+
+# Discussion
+
+The development of bespoke and archetypal context-dependent Soundscape Perception Indices (SPIs) represents a significant step towards enabling more comprehensive and effective applications of the soundscape approach. By providing a unified framework for defining these indices, the potential for quantifying and comparing soundscape quality across diverse contexts and applications is unlocked, while still ensuring that the multi-dimensional and context-driven aspects of soundscape quality are considered.
+
+The proposed framework offers several key advantages. First, it acknowledges the inherent context-dependent nature of soundscape perception, allowing for the creation of indices tailored to specific use cases or design goals through the use of bespoke targets. This flexibility ensures that the resulting SPIs accurately capture the desired soundscape perception for the given application, enabling targeted interventions and optimisations.
+
+Second, the inclusion of archetypal targets facilitates cross-comparisons and benchmarking, enabling a common language and understanding of soundscape quality across different domains. By calculating the distance between a given soundscape and these widely recognized archetypes, stakeholders can identify areas for improvement and prioritize interventions accordingly, aligning their efforts with collectively recognized standards of desirable or undesirable soundscapes.
+
+The case study presented in this article, focusing on the development of a typology-based SPI for public spaces, demonstrates the practical applicability of the framework. By leveraging data from the International Soundscape Database (ISD) and the SSID Protocol, archetypal targets for various space typologies were defined, and the corresponding $SPI_{type}$ values were calculated. These indices provide a quantitative measure of soundscape quality for each typology, enabling comparisons and informing decision-making processes related to the management and improvement of public spaces.
+
+As stated in #sec-intro ... 
+
+[@Kogan2018Green, Fig.6], in fact displays a startlingly similar concept, showing the locations of the three categories of traffic noise dominance ('traffic noise', 'balanced', and 'natural') plotted in the circumplex perceptual model. It can be clearly seen in this plot that the GSI categories create their own clusters within the circumplex.
+
+# Conclusion
+
+The introduction of bespoke and archetypal context-dependent Soundscape Perception Indices (SPIs) represents a significant advancement in the field of soundscape research and application. By providing a unified framework for defining these indices, a more comprehensive and efficient approach to quantifying and comparing soundscape quality across diverse contexts is enabled.
+
+The proposed framework addresses the existing gap in quantifying multi-dimensional soundscape perception, facilitating a broader application of the soundscape approach in areas such as urban planning, environmental management, acoustic design, and policy development. Through the creation of bespoke indices tailored to specific design goals and the utilization of archetypal targets for benchmarking, this framework empowers stakeholders and decision-makers to make informed choices and prioritize soundscape improvements aligned with their unique objectives and constraints.
+
+Furthermore, the grounding of the SPI framework in the soundscape circumplex model ensures a robust theoretical foundation, capturing the multi-dimensional nature of soundscape perception. The use of a distance metric enables quantitative assessments and comparisons, fostering a common language and understanding of soundscape quality across different domains. This shared understanding facilitates knowledge exchange, collaborative efforts, and the development of best practices within the field.
+
+The case study presented in this article, focused on defining a typology-based SPI for public spaces, demonstrates the practical applicability of the framework and highlights its potential for enabling more effective and context-sensitive soundscape management strategies. By leveraging data from the International Soundscape Database (ISD) and the SSID Protocol, archetypal targets for various public space typologies were defined, and the corresponding $SPI_{type}$ values were calculated, providing a quantitative measure of soundscape quality that can inform decision-making processes and guide interventions.
+
+As the SPI framework continues to be explored and refined, future research should focus on validating and expanding the range of archetypal targets, as well as investigating the potential for incorporating additional dimensions and factors that influence soundscape perception. The integration of emerging technologies, such as virtual and augmented reality, may also provide new avenues for immersive soundscape evaluation and index development.
+
+Additionally, the application of the framework in diverse real-world scenarios, ranging from urban planning and environmental management to acoustic design and policy development, will provide valuable insights and contribute to the ongoing refinement and adaptation of the SPI framework. Collaboration with stakeholders, end-users, and experts from various domains will be crucial in ensuring the framework's relevance and applicability across a wide range of contexts.
+
+Furthermore, the development of standardized data collection protocols and the establishment of comprehensive soundscape databases will be essential for the widespread adoption and effective implementation of the SPI framework. Initiatives focused on promoting data sharing, interoperability, and open access to soundscape data can significantly facilitate the creation and validation of new indices, fostering a more collaborative and data-driven approach to soundscape research and management.
+
+Ultimately, the introduction of bespoke and archetypal context-dependent Soundscape Perception Indices represents a significant stride towards a more holistic and nuanced understanding of our acoustic environments, paving the way for more informed decision-making and enhancing the overall quality of life in our built and natural environments. By empowering stakeholders with the ability to quantify and compare soundscape quality, new avenues are unlocked for targeted interventions, strategic planning, and the creation of soundscapes that are not only acoustically optimal but also deeply resonant with the diverse needs and perceptions of individuals and communities.
+
