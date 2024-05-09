@@ -25,7 +25,9 @@ format:
     #   text: |
     #     \usepackage{lineno}
     #     \linenumbers
-  docx: default
+  docx: 
+    reference-doc: apaquarto.docx
+    number-sections: true
   # qtypst-arkheion-typst: 
   #   keep-typ: true
   #   suppress-bibliography: true

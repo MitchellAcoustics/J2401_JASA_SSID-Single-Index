@@ -192,71 +192,36 @@ The three SPIs can now be calculated for all of the locations in the ISD, shown 
 
 {{< embed notebooks/SingleIndex-Code.ipynb#tbl-ex-spis >}}
 
-***--- Complete to here ---***
+## Deriving a target based on soundscape ranking {#sec-targets}
 
-# Expanding the SPI framework
+*DRAFT SECTION*
 
-@sec-method has defined and demonstrated the foundational methodology for calculating an SPI score. This included how to: define and sample a target distribution; prepare the test and target distributions for comparison using the KS distance metric; and convert this into an SPI score. Based on this foundation, we develop several formal aspects of the SPI framework: multi-target SPIs, bespoke and archetypal targets, and methods for empirically deriving targets.
+Absent from the above methodology has been an exploration of how to actually arrive at a target based on empirical evidence. While arbitrary targets make the SPI framework incredibly flexible, able to score against an effectively infinite set of design goals, often targets should have some sort of systematic foundation. To enable this approach, we therefore present one method of systematically deriving a target distribution based on a given ranking of soundscape quality. Just as one primary goal of the SPI framework is to enable soundscape rankings to be produced from SPI scores, this method allows for rankings which were arrived at separately to produce an optimized SPI target. 
 
-|  SPI class   | Target class |            |
-| :----------: | :----------: | :--------: |
-|              |   Bespoke    | Archetypal |
-|    Single    |              |            |
-| Multi-target |              |            |
+In this case study, we will examine a ranking derived from the ISD locations (shown in @tbl-isd-ranking). The goal is then to derive an SPI target distribution which, when applied to the SCM data from each of these locations, (1) results in the same ranking order and (2) results in high SPI scores for the top ranked locations and lower scores for the bottom ranked locations.
 
-## Multi-target SPIs (mSPI) {#sec-mSPI}
+| Rank |      Location      |
+| :--: | :----------------: |
+|  1   |  RegentsParkJapan  |
+|  2   | RegentsParkFields  |
+|  3   |   CampoPrincipe    |
+|  4   | MonumentoGaribaldi |
+|  5   |     RussellSq      |
+|  6   | MiradorSanNicolas  |
+|  7   |    StPaulsCross    |
+|  8   |  Noorderplantsoen  |
 
-Multi-target SPIs (mSPI) are categories of soundscape types made up of sets of these targets. 
-
-As an example, imagine trying to define a soundscape perception index that could be applied across an entire city. A single index is insufficient, because each type of place within the city (e.g. parks, plazas, residential areas) has different requirements for its soundscape. Therefore, each place type would need its own soundscape target. 
-
-An mSPI is made up of sets of targets; in the example given above, these sets of targets would correspond to different types of places within the city (e.g. a single target for parks, a target for plazas etc.). When applying this "urban typology" SPI, the soundscape of each location being assessed would be scored against its relevant target (i.e how well does a specific park perform in comparison to an archetypal park target). This results in a single score for each location that can be compared against all other locations, regardless of whether or not they are the same type of place, allowing for different soundscapes to be compared on a common scale. This system ensures that context (in this case, the typology of a space) is brought into the assessment, allowing soundscapes to be scored against the most appropriate target. Enabling these context dependent assessments to be expressed on a common scale can facilitate additional use cases such as soundscape mapping, which requires a single scale to be applied across an entire city. 
-
-This $\text{mSPI}_{type}$ made up of e.g. parks, plazas etc. is just one example of an application of multi-target archetypal SPI. Other examples could include a demographics SPI, where different targets are set for respondents from different demographic groups, or a "use case" SPI with different targets set for different intended purposes of spaces (e.g. recreation, restoration, socialising). We encourage users of the SPI to define both their own single archetype targets that can be added these suites of targets for use by others, and their own new sets of archetypes. 
+: A pre-defined ranking of soundscape quality of the park locations included in the International Soundscape Database (ISD). An SPI target will be derived which aims to reproduce this same ranking when applied to circumplex data from these locations. {#tbl-isd-ranking}
 
 <!-- Draft -->
-To demonstrate the practical implementation of the SPI framework and provide an example of empirically-defined targets, a case study focused on defining a typology-based SPI for public spaces is presented. This case study utilizes data from the International Soundscape Database (ISD) [@Mitchell2021International], a comprehensive collection of soundscape recordings and associated listener evaluations gathered under the SSID Protocol [@Mitchell2020Soundscape]. The SSI Protocol was specifically designed to capture the multi-dimensional nature of soundscape perception, employed a rigorous methodology for collecting and analysing data from diverse public spaces according to the standardized methods in ISO 12913-2 [@ISO12913Part2]. 
 
-### Space Typologies
+Effectively, this is an optimization task to determine the MSN parameters which best achieve the above goals. Goal (1) is assessed by calculating the Spearman rank correlation between the provided ranking and the SPI ranking. Goal (2) is scored by calculating a weighted sum of the produced SPIs:
 
-The case study focuses on defining an archetypal SPI for public spaces, with a particular emphasis on space typologies. The concept of space typologies is rooted in the idea that different types of public spaces, such as parks, squares, streets, and plazas, exhibit distinct acoustic characteristics and elicit unique perceptions from their users. By defining archetypal SPIs for these space typologies, it becomes possible to establish a standardized framework for evaluating and comparing public spaces based on their soundscape quality.
+$$
+score_w = \sum_{i=1}^m \frac{1}{\text{rank}_i} \cdot SPI_i
+$$
 
-The ISD encompasses a diverse range of public space typologies, including urban parks, city squares, public walkways, and busy streets. These typologies serve as the basis for defining archetypal targets and calculating the corresponding SPIs.  
-
-
-### Defining $SPI_{type}$
-
-Using the soundscape circumplex model and the perceptual data from the ISD, the process of defining the $SPI_{type}$ for each space typology involves the following steps:
-
-1. Identifying Archetypal Targets: Based on the available data ... target soundscapes are defined for each space typology, representing the 'ideal' soundscape perception for that particular type of public space. 
-2. Calculated $SPI_{type}$ for each test location: Using the procedure given above, the circumplex distribution of each test location is compared against the target distribution for its respective space typology.
-
-The resulting $SPI_{type}$ values provide a quantitative measure of soundscape quality for each space typology, enabling comparisons and benchmarking across different public spaces. By comparing each test soundscape against the appropriate target for its typology, the SPI is able to account for the different contexts and purposes of the typologies. By using a consistent scoring methodology, SPI then allows these scores to be combined and considered together, as a single $SPI_{type}$ score. 
-
-<!-- End draft -->
-
-## Types of Targets {#sec-targets}
-
-The SPI framework introduces two distinct types of targets: bespoke targets and archetypal targets, each serving a unique purpose in the index development process.
-
-### Bespoke Targets
-
-Bespoke targets are essentially a direct application of the foundational method described above. Bespoke targets are tailor-made for specific projects, reflecting the desired soundscape perception for a particular application. These targets can be defined by stakeholders, designers, policymakers, or decision-makers based on their unique requirements, objectives, and constraints. This flexibility allows the SPI for a specific project to be tailored to the desire of the stakeholders for how that specific soundscape should function. It can also provide a consistent and quantifiable baseline for scenarios like a soundscape design contest wherein a target is specified and provided to all participants in the contest and the winning proposal is the design with the highest SPI score when assessed against that target. Stakeholders could use various methods to decide on a target, subject to the requirements of their project or use case. For example, it could be co-created with other stakeholders or space users, based on trying to match the soundscape of a previous project, or entirely arbitrary. 
-
-### Archetypal Targets
-
-In contrast to bespoke targets, archetypal targets represent generalized, widely recognized soundscape archetypes which transcend specific applications or projects. These archetypes serve as reference points and enable comparisons across different domains and use cases. Essentially an archetypal target is a target that has been empirically defined to encapsulate the ideal of a particular type of soundscape. 
-
-
-## Empirically defining a target based on soundscape ranking
-
-Absent from the above methodology has been an exploration of how to actually arrive at a target based on empirical evidence. While bespoke targets make the SPI framework incredibly flexible, able to score against an effectively infinite set of design goals, archetypal targets intended to be used as a reference standard should have some empirical foundation. One method for doing this is to arrive at a ranking of soundscape quality through some other method (which would typically be much more involved than a simple SCM survey) then derive a target which, when scored against the soundscapes, produces the same rank order.
-
-Effectively this is an optimization task. We consider the Spearman rank correlation coefficient between the provided ranking and the SPI ranking to be an error term, then learn the MSN parameters to which optimize this error term. 
-
-Need to consider both the Spearman rank coefficient and the SPI score itself. Through our testing, only optimizing on the rank correlation regularly produced targets which, while they did result in the desired ranking, were in no way representative of the soundscapes in question. We therefore aim to optimize for both a consistent soundscape ranking and for a high SPI score for the top-ranked soundscapes.
-
-
+Through our testing, only optimizing on the rank correlation regularly produced targets which, while they did result in the desired ranking, were in no way representative of the soundscapes in question. We therefore aim to optimize for both a consistent soundscape ranking and for a high SPI score for the top-ranked soundscapes.
 
 We apply an evolutionary multiobjective optimization named NSGA-II [@Deb2014Evolutionary].
 
@@ -269,8 +234,38 @@ where $r$ is the rank correlation coefficient, $ranks_{quality}$ and $ranks_{tar
 
 $ranks_{quality}$ is pre-defined. $ranks_{target}$ is calculated by sorting the target values and assigning ranks to them. $SPI_{target}$ is calculated for each location and target.
 
+<!-- End Draft -->
 
-# Discussion
+{{< embed notebooks/TargetOptimization.ipynb#fig-pymoo-parks >}}
+
+
+<!-- {{< embed notebooks/TargetOptimization.ipynb#fig-pymoo-park-pareto >}} -->
+
+<!-- {{< embed notebooks/TargetOptimization.ipynb#fig-pymoo-park-target >}} -->
+
+
+# Expanding the SPI framework
+
+@sec-method has defined and demonstrated the foundational methodology for calculating an SPI score. This included how to: define and sample a target distribution; prepare the test and target distributions for comparison using the KS distance metric; and convert this into an SPI score. 
+To expand this methodology into an applicable framework, we define two distinct types of targets: bespoke targets and archetypal targets, each serving a unique purpose in the index development process.
+
+### Bespoke Targets
+
+Bespoke targets are essentially a direct application of the foundational method described above. Bespoke targets are tailor-made for specific projects, reflecting the desired soundscape perception for a particular application. These targets can be defined by stakeholders, designers, policymakers, or decision-makers based on their unique requirements, objectives, and constraints. This flexibility allows the SPI for a specific project to be tailored to the desire of the stakeholders for how that specific soundscape should function. It can also provide a consistent and quantifiable baseline for scenarios like a soundscape design contest wherein a target is specified and provided to all participants in the contest and the winning proposal is the design with the highest SPI score when assessed against that target. Stakeholders could use various methods to decide on a target, subject to the requirements of their project or use case. For example, it could be co-created with other stakeholders or space users, based on trying to match the soundscape of a previous project, or entirely arbitrary. 
+
+### Archetypal Targets
+
+*DRAFT SECTION*
+
+In contrast to bespoke targets, archetypal targets represent generalized, widely recognized soundscape archetypes which transcend specific applications or projects. These archetypes serve as reference points and enable comparisons across different domains and use cases. Essentially an archetypal target is a target that has been empirically defined to encapsulate the ideal of a particular type of soundscape. 
+
+The best methods for empirically determining the ideal soundscape distribution for a given context will no doubt remain a topic of debate and development in the coming years.
+
+**Add more here**
+
+# Discussion and Conclusion
+
+*Probably need to expand and rework subheaders*
 
 The development of bespoke and archetypal context-dependent Soundscape Perception Indices (SPIs) represents a significant step towards enabling more comprehensive and effective applications of the soundscape approach. By providing a unified framework for defining these indices, the potential for quantifying and comparing soundscape quality across diverse contexts and applications is unlocked, while still ensuring that the multi-dimensional and context-driven aspects of soundscape quality are considered.
 
@@ -278,9 +273,11 @@ The proposed framework offers several key advantages. First, it acknowledges the
 
 Second, the inclusion of archetypal targets facilitates cross-comparisons and benchmarking, enabling a common language and understanding of soundscape quality across different domains. By calculating the distance between a given soundscape and these widely recognized archetypes, stakeholders can identify areas for improvement and prioritize interventions accordingly, aligning their efforts with collectively recognized standards of desirable or undesirable soundscapes.
 
-The case study presented in this article, focusing on the development of a typology-based SPI for public spaces, demonstrates the practical applicability of the framework. By leveraging data from the International Soundscape Database (ISD) and the SSID Protocol, archetypal targets for various space typologies were defined, and the corresponding $SPI_{type}$ values were calculated. These indices provide a quantitative measure of soundscape quality for each typology, enabling comparisons and informing decision-making processes related to the management and improvement of public spaces.
+We expect that this would then expand into collections of SPI targets. As an example, imagine trying to define a soundscape perception index that could be applied across an entire city. A single index is insufficient, because each type of place within the city (e.g. parks, plazas, residential areas) has different requirements for its soundscape. Therefore, each place type would need its own soundscape target. 
 
-As stated in #sec-intro ... 
+In this example, these sets of targets would correspond to different types of places within the city (e.g. a single target for parks, a target for plazas etc.). When applying this "urban typology" set of targets, the soundscape of each location being assessed would be scored against its relevant target (i.e how well does a specific park perform in comparison to an archetypal park target). This results in a single score for each location that can be compared against all other locations, regardless of whether or not they are the same type of place, allowing for different soundscapes to be compared on a common scale. This system ensures that context (in this case, the typology of a space) is brought into the assessment, allowing soundscapes to be scored against the most appropriate target. Enabling these context dependent assessments to be expressed on a common scale can facilitate additional use cases such as soundscape mapping, which requires a single scale to be applied across an entire city. 
+
+This set of targets made up of e.g. parks, plazas etc. is just one example of an application of archetypal SPIs. Other examples could include a demographics SPI, where different targets are set for respondents from different demographic groups, or a "use case" SPI with different targets set for different intended purposes of spaces (e.g. recreation, restoration, socialising). We encourage users of the SPI to define both their own single archetype targets that can be added these suites of targets for use by others, and their own new sets of archetypes. 
 
 [@Kogan2018Green, Fig.6], in fact displays a startlingly similar concept, showing the locations of the three categories of traffic noise dominance ('traffic noise', 'balanced', and 'natural') plotted in the circumplex perceptual model. It can be clearly seen in this plot that the GSI categories create their own clusters within the circumplex.
 
@@ -290,26 +287,14 @@ Although it is expected that the target distribution would usually represent the
 
 The SPI framework is designed to accommodate a wide range of data sources, including both objective measurements and subjective evaluations. This flexibility enables the framework to be applied to diverse contexts and applications, ranging from urban soundscapes to natural environments, public spaces, and indoor settings.
 
-## Applying a Bespoke SPI
-
-
-
-# Conclusion
-
-The introduction of bespoke and archetypal context-dependent Soundscape Perception Indices (SPIs) represents a significant advancement in the field of soundscape research and application. By providing a unified framework for defining these indices, a more comprehensive and efficient approach to quantifying and comparing soundscape quality across diverse contexts is enabled.
+## Conclusion
 
 The proposed framework addresses the existing gap in quantifying multi-dimensional soundscape perception, facilitating a broader application of the soundscape approach in areas such as urban planning, environmental management, acoustic design, and policy development. Through the creation of bespoke indices tailored to specific design goals and the utilization of archetypal targets for benchmarking, this framework empowers stakeholders and decision-makers to make informed choices and prioritize soundscape improvements aligned with their unique objectives and constraints.
 
 Furthermore, the grounding of the SPI framework in the soundscape circumplex model ensures a robust theoretical foundation, capturing the multi-dimensional nature of soundscape perception. The use of a distance metric enables quantitative assessments and comparisons, fostering a common language and understanding of soundscape quality across different domains. This shared understanding facilitates knowledge exchange, collaborative efforts, and the development of best practices within the field.
 
-The case study presented in this article, focused on defining a typology-based SPI for public spaces, demonstrates the practical applicability of the framework and highlights its potential for enabling more effective and context-sensitive soundscape management strategies. By leveraging data from the International Soundscape Database (ISD) and the SSID Protocol, archetypal targets for various public space typologies were defined, and the corresponding $SPI_{type}$ values were calculated, providing a quantitative measure of soundscape quality that can inform decision-making processes and guide interventions.
-
 As the SPI framework continues to be explored and refined, future research should focus on validating and expanding the range of archetypal targets, as well as investigating the potential for incorporating additional dimensions and factors that influence soundscape perception. The integration of emerging technologies, such as virtual and augmented reality, may also provide new avenues for immersive soundscape evaluation and index development.
 
 Additionally, the application of the framework in diverse real-world scenarios, ranging from urban planning and environmental management to acoustic design and policy development, will provide valuable insights and contribute to the ongoing refinement and adaptation of the SPI framework. Collaboration with stakeholders, end-users, and experts from various domains will be crucial in ensuring the framework's relevance and applicability across a wide range of contexts.
-
-Furthermore, the development of standardized data collection protocols and the establishment of comprehensive soundscape databases will be essential for the widespread adoption and effective implementation of the SPI framework. Initiatives focused on promoting data sharing, interoperability, and open access to soundscape data can significantly facilitate the creation and validation of new indices, fostering a more collaborative and data-driven approach to soundscape research and management.
-
-Ultimately, the introduction of bespoke and archetypal context-dependent Soundscape Perception Indices represents a significant stride towards a more holistic and nuanced understanding of our acoustic environments, paving the way for more informed decision-making and enhancing the overall quality of life in our built and natural environments. By empowering stakeholders with the ability to quantify and compare soundscape quality, new avenues are unlocked for targeted interventions, strategic planning, and the creation of soundscapes that are not only acoustically optimal but also deeply resonant with the diverse needs and perceptions of individuals and communities.
 
 # References
