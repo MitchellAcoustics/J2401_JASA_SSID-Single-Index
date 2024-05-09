@@ -10,7 +10,6 @@ format:
   #   code-fold: true
   #   comments:
   #     hypothesis: true
-  # docx: default
   # jats: default
   # agu-pdf: default
   elsevier-pdf:
@@ -23,13 +22,14 @@ format:
       model: 3p
       cite-style: authoryear
     # include-in-header: 
-      # text: |
-      #   \usepackage{lineno}
-      #   \linenumbers
-  qtypst-arkheion-typst: 
-    keep-typ: true
-    suppress-bibliography: true
-    bib-file: "FellowshipRefs-biblatex.bib"
+    #   text: |
+    #     \usepackage{lineno}
+    #     \linenumbers
+  docx: default
+  # qtypst-arkheion-typst: 
+  #   keep-typ: true
+  #   suppress-bibliography: true
+  #   bib-file: "FellowshipRefs-biblatex.bib"
 bibliography: FellowshipRefs-biblatex.bib
 
 

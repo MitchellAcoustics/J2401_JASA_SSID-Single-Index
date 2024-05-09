@@ -342,7 +342,7 @@
         abstract: [The soundscape approach provides a basis for considering the holistic perception of sound environments, in context. While steady advancements have been made in methods for assessment and analysis, a gap exists for comparing soundscapes and quantifying improvements in the multi-dimensional perception of a soundscape. To this end, there is a need for the creation of single value indices to compare soundscape quality which incorporate context, aural diversity, and specific design goals for a given application. Just as a variety of decibel-based indices have been developed for various purposes \(e.g.~$L_(A e q)$, $L_(C e q)$, $L_90$, $L d e n$, etc.), the soundscape approach requires the ability to create novel indices for different uses, but which share a common language and understanding. We therefore propose a unified framework for creating both bespoke and standardised single index measures of soundscape perception based on the soundscape circumplex model, allowing for new metrics to be defined in the future. The implementation of this framework is demonstrated through the creation of a public spaced typology-based index using data collected under the SSID Protocol, which was designed specifically for the purpose of defining soundscape indices. Indices developed under this framework can enable a broader and more efficient application of the soundscape approach.
 
 ],
-        date: "2024-04-29",
+        date: "2024-05-08",
         keywords: ("keyword1", "keyword2"),
         bib: "FellowshipRefs-biblatex.bib",
     
@@ -414,11 +414,17 @@ The index framework, 'the Soundscape Perception Indices \(SPI)' introduced in th
 
 We refer to this as an index framework rather than a single index, as the SPI can be tailored to specific contexts and applications by defining a range of target distributions. A single index is thus created for each target distribution. An SPI value therefore does not represent a 'good' or 'bad' soundscape, but rather a measure of how closely the perceived soundscape aligns with the desired target soundscape perception. This approach allows for the development of bespoke indices tailored to specific design goals and objectives, while also enabling cross-comparisons and benchmarking against empirically-defined soundscape archetypes.
 
+SPI is grounded in the soundscape circumplex model \(SCM) #cite(<Axelsson2010principal>);#cite(<Axelsson2012Swedish>);, a robust theoretical foundation for understanding and representing the multi-dimensional nature of soundscape perception. The reason for grounding the SPI in the soundscape circumplex is that we have observed this model \(and its corresponding PAQs) to become the most prevalent assessment model in soundscape literature #cite(<Aletta2023Adoption>);.
+
+The SCM is built on a series of descriptors referred to as the Perceived Affective Quality \(PAQ), proposed by #cite(<Axelsson2010principal>);. These PAQs are based on the pleasantness-activity paradigm present in research on emotions and environmental psychology, in particular Russell’s circumplex model of affect #cite(<Russell1980circumplex>);. As summarised by Axelsson: "Russell’s model identifies two dimensions related to the perceived pleasantness of environments and how activating or arousing the environment is."
+
+One benefit of the circumplex model is that, as a whole, it encapsulates several of the other proposed soundscape descriptors - in particular, annoyance, pleasantness, tranquility, and possibly restorativeness #cite(<Aletta2016Soundscape>);. According to #cite(<Axelsson2015How>);, the two-dimensional circumplex model of perceived affective quality provides the most comprehensive information for soundscape assessment. It is also possible that the overall soundscape quality could itself be derived from the pleasant-eventful scores derived for a soundscape. The circumplex also lends itself well to questionnaire-based methods of data collection, as proposed in #cite(<ISO12913Part2>);. In contrast to methods such as soundwalks, interviews, and lab experiments, in-situ questionnaires are able to provide the quality and amount of data which is necessary for statistical modelling. Combined, these factors make the circumplex most appropriate for a single index as it provides a comprehensive summary of soundscape perception.
+
 There are four steps involved in calculating the SPI, as shown in @fig-bespoke-spi:
 
-+ Define and parameterise the target distribution;
-+ Sample the target distribution and prepare test distribution;
-+ Compare test and target distribution using the KS distance;
++ Define and parameterise the target circumplex distribution;
++ Sample the target distribution and prepare the test distribution;
++ Compare test and target distributions using the distance metric \(2-dimensional Kolmogorov-Smirnov distance);
 + Calculate $S P I = 100 \* (1 - K S)$.
 
 #figure([
@@ -435,19 +441,17 @@ numbering: "1",
 <fig-bespoke-spi>
 
 
-Throughout this paper, we use the data contained in the International Soundscape Database \(ISD) \(Mitchell et al., 2021a), which includes 1300+ individual responses collected across 13 locations in London and Venice, according to the SSID Protocol #cite(<Mitchell2020Soundscape>);.
+These steps and their required background are discussed in detail in the following sections. @sec-targets will then present strategies for defining targets and their applications.
 
-== Soundscape Circumplex Distribution
+Throughout this paper, we use the data contained in the International Soundscape Database \(ISD) #cite(<Mitchell2024International>);, which includes 1300+ individual responses on the PAQ scales collected across 13 locations in London and Venice, according to the SSID Protocol #cite(<Mitchell2020Soundscape>);.
+
+== Define and Parameterise a Soundscape Circumplex Distribution
 <sec-circumplex-distribution>
-SPI is grounded in the soundscape circumplex model #cite(<Axelsson2010principal>);#cite(<Axelsson2012Swedish>);, a robust theoretical foundation for understanding and representing the multi-dimensional nature of soundscape perception. The reason for grounding the SPI in the soundscape circumplex is that we have observed this model \(and its corresponding PAQs) to become the most prevalent assessment model in soundscape literature #cite(<Aletta2023Adoption>);.
-
-Method A is built on a series of descriptors referred to as the Perceived Affective Quality \(PAQ), proposed by #cite(<Axelsson2010principal>);. These PAQs are based on the pleasantness-activity paradigm present in research on emotions and environmental psychology, in particular Russell’s circumplex model of affect #cite(<Russell1980circumplex>);. As summarised by Axelsson: "Russell’s model identifies two dimensions related to the perceived pleasantness of environments and how activating or arousing the environment is."
-
-One benefit of the circumplex model is that, as a whole, it encapsulates several of the other proposed soundscape descriptors - in particular, annoyance, pleasantness, tranquility, and possibly restorativeness #cite(<Aletta2016Soundscape>);. According to #cite(<Axelsson2015How>);, the two-dimensional circumplex model of perceived affective quality provides the most comprehensive information for soundscape assessment. It is also possible that the overall soundscape quality could itself be derived from the pleasant-eventful scores derived for a soundscape. The circumplex also lends itself well to questionnaire-based methods of data collection, as proposed in #cite(<ISO12913Part2>);. In contrast to methods such as soundwalks, interviews, and lab experiments, in-situ questionnaires are able to provide the quality and amount of data which is necessary for statistical modelling. Combined, these factors make the circumplex most appropriate for a single index as it provides a comprehensive summary of soundscape perception.
-
 To move the 8-item PAQ responses into the 2-dimensional circumplex space, we use the projection method first presented in ISO 12913-3:2018. This projection method and its associated formulae were recently updated further in #cite(<Mitchell2023Testing>) to include a correction for the language in which the survey was conducted. #cite(<Mitchell2023Testing>) also provides adjusted angles for translations of the circumplex attributes to be used in calculating the $P_(I S O)$ and $E_(I S O)$ coordinates.
 
-Once the individual perceptual responses are projected into the circumplex space, the resulting data for each location is treated as a circumplex distribution. The circumplex is defined by two axes: $P_(I S O)$ and $E_(I S O)$, which are limited to the range $[- 1 , + 1]$. Typically, data in the soundscape circumplex is treated as a combination of two independent normal distributions, one for each axis #cite(<Mitchell2022How>);#cite(<Ooi2022Probably>);. In some applications, this approach is sufficient for capturing the distribution of soundscape perception, however the method for calculating the SPI requires a more precise approach. The independent normal distribution approach relies on three key assumptions:
+Once the individual perceptual responses are projected into the circumplex space, the resulting data for each location is treated as a circumplex distribution. There are several advancements in considering circumplex distributions compared to the discussions originally given in #cite(<Mitchell2022How>);, which are necessary for SPI. Before exploring the SPI method and target setting more specifically, we will first address these developments.
+
+The circumplex is defined by two axes: $P_(I S O)$ and $E_(I S O)$, which are limited to the range $[- 1 , + 1]$. Typically, data in the soundscape circumplex is treated as a combination of two independent normal distributions, one for each axis #cite(<Mitchell2022How>);#cite(<Ooi2022Probably>);. In some applications this approach is sufficient for capturing the distribution of soundscape perception, however defining a target distribution for SPI requires a more precise approach. The independent normal distribution approach relies on three key assumptions:
 
 + The two axes are normally distributed.
 + The two axes are independent of each other.
@@ -463,69 +467,332 @@ where $phi.alt$ and $Phi$ are the standard normal probability density function a
 
 $ Y = 2 phi.alt_k (y - xi ; Omega) Phi { alpha^T omega^(- 1) (y - xi) } $
 
-where $phi.alt_k$ is the #emph[k];-dimensional normal density with location $xi$, shape $alpha$, and covariance matrix $Omega$. $Phi { dot(})$ is the normal distribution function and $alpha$ is a #emph[k];-dimensional shape vector. When $alpha = 0$, $Y$ reduces to the standard multivariate normal $N_k (xi , Omega)$ density. A circumplex distribution can therefore be parameterised with a 2x2 covariance matrix $Omega$, a 2x1 location vector $xi$, and a 2x1 shape vector $alpha$, written as:
+where $phi.alt_k$ is the #emph[k];-dimensional normal density with location $xi$, shape $alpha$, and covariance matrix $Omega$. $Phi { dot(})$ is the normal distribution function and $alpha$ is a #emph[k];-dimensional shape vector. When $alpha = 0$, $Y$ reduces to the standard multivariate normal $N_k (xi , Omega)$ density. A circumplex distribution can therefore be parameterised#footnote[It is important to note that the parameters which appear in the density expression \($xi , Omega , alpha$) are what are called 'direct parameters' \(DP). They directly parameterise an MSN density and are typically only estimated by fitting an MSN to a sample. The more familiar and interpretable components \(mean, standard deviation, and skewness) are termed the centred parameters \(CP). It is possible to move from one parameterization to another, however "while any choice of the DP components is admissible, the same is not true for CP"; i.e.~we can always move DP $arrow.r$ CP but not always CP $arrow.r$ DP. In this context, it is most important for readers not to confuse the location parameter $xi$ with the sample mean $mu$. A more complete explanation of these parameterizations can be found in #cite(<Azzalini2016How>);] with a 2x2 covariance matrix $Omega$, a 2x1 location vector $xi$, and a 2x1 shape vector $alpha$, written as:
 
 $ Y tilde.op M S N (xi , Omega , alpha) $
 
-By fitting an MSN distribution to the soundscape perception responses, it becomes possible to accurately capture the asymmetry and skewness of the distribution. A bivariate skew-normal distribution can be summarised as a set of these three parameters. Once parameterised, the distribution can then be sampled from to generate a synthetic distribution of soundscape perception responses. A demonstration of the results of this process is shown in @fig-dist-example using data from a single location included in the International Soundscape Database \(see #strong[?\@sec-dataset];).
+By fitting an MSN distribution to empirical soundscape perception responses, it becomes possible to accurately capture the asymmetry and skewness of the distribution. A bivariate skew-normal distribution can be summarised as a set of these three parameters. Once parameterised, the distribution can then be sampled from to generate a synthetic distribution of soundscape perception responses.
+
+Soundscape targets can thus be set by defining the desired MSN distribution. To demonstrate this, we will construct three arbitrary targets which will be used later to score three SPIs. The parameters chosen for the example targets are given in @tbl-target-params.
+
+#figure([
+#figure(
+align(center)[#table(
+  columns: 4,
+  align: (col, row) => (center,center,center,center,).at(col),
+  inset: 6pt,
+  [Target], [Location $xi$], [Covariance Matrix $Omega$], [Shape $alpha$],
+  [$upright("tgt")_1$],
+  [$[0.5 , 0.0]$],
+  [$mat(delim: "[", 0.2, 0.0; 0.0, 0.2)$],
+  [$[1 , 0]$],
+  [$upright("tgt")_2$],
+  [$[1.0 , - 0.4]$],
+  [$mat(delim: "[", 0.18, - 0.04; - 0.04, 0.09)$],
+  [$[- 8 , 1]$],
+  [$upright("tgt")_3$],
+  [$[0.5 , 0.7]$],
+  [$mat(delim: "[", 0.1, 0.05; 0.05, 0.1)$],
+  [$[0 , - 5]$],
+)]
+)
+
+], caption: figure.caption(
+position: top, 
+[
+The MSN direct parameterizations for three arbitrary example target distributions. $upright("tgt")_1$ is located in the pleasant half, with a wide variance, and a positive skew along the pleasantness axis.
+]), 
+kind: "quarto-float-tbl", 
+supplement: "Table", 
+numbering: "1", 
+)
+<tbl-target-params>
+
+
+== Sample a Target Distribution
+<sample-a-target-distribution>
+Once the parameters for an MSN are defined \(i.e.~the target), the MSN is then sampled using the `sn` package #cite(<Azzalini2021R>) in `R` #cite(<RCT2018R>);. This is to prepare the target distribution to be compared with the empirical test distribution. Several restrictions to the possible parameter values apply, most importantly the covariance matrix $Omega$ must be a positive-definite matrix. In depth discussions of how these parameterizations should be defined and their restrictions can be found in #cite(<Azzalini2016How>);. @fig-targets shows the result of sampling \(n\=1000) the three example distributions given in @tbl-target-params and plotting them as soundscape distributions.
 
 #block[
 #block[
 #block[
 #figure([
-#box(width: 864.7272727272727pt, image("index_files/figure-typst/notebooks-SingleIndex-Code-fig-dist-example-output-1.png"))
+#box(width: 1088.7272727272727pt, image("index_files/figure-typst/notebooks-SingleIndex-Code-fig-targets-output-1.png"))
 ], caption: figure.caption(
 position: bottom, 
 [
-Example of fitting and sampling from a multivariate skew-normal distribution for data from the Piazza San Marco location.
+Example of defining and sampling from three arbitrary bespoke targets.
 ]), 
 kind: "quarto-float-fig", 
 supplement: "Figure", 
 numbering: "1", 
 )
-<fig-dist-example>
+<fig-targets>
 
 
 ]
 ]
 ]
-The parameters for the distribution shown in @fig-dist-example are given by:
+== Compare the target and test distributions
+<compare-the-target-and-test-distributions>
+Central to the SPI framework is the concept of a distance metric, which quantifies the deviation of a given soundscape from a desired target soundscape. This distance metric serves as the basis for calculating the SPI value, with smaller distances indicating a closer alignment between the perceived soundscape and the target soundscape perception. The distance between the test and target soundscape distributions is calculated using a two-dimensional Kolmogorov-Smirnov test #cite(<Fasano1987multidimensional>);. The KS test is a non-parametric test of the equality of continuous distributions which is sensitive to both the location and shape of the distributions #cite(<Chakravati1967Handbook>);.
 
-$ M S N ([0.065 , 0.679] , mat(delim: "[", 0.149, - 0.064; - 0.064, 0.101) , [0.791 , - 0.767]) $
+Various other distance metrics were considered when developing the SPI method. The simplest method is to define a single point target, rather than a target distribution, and calculate a normalized mean Euclidean distance between points in the test distribution and the target point. While this is conceptually simple and requires defining only a single coordinate point as a target, rather than the MSN parameters described in @sec-circumplex-distribution, the shape and spread of a soundscape distribution is itself an important factor in describing the collective perception of a soundscape and would not be captured by this method #cite(<Mitchell2022How>);.
 
-=== Defining a Target
-<defining-a-target>
-As introduced in @sec-circumplex-distribution, circumplex data follows a bivariate skew-normal distribution which can be parameterised with a set of direct parameters \(dp). We therefore define a target distribution as a set of these parameters, which can then be used to generate a synthetic distribution of soundscape perception responses.
+Essentially, we approach this as a problem of \(dis)similarity between soundscapes. The distance metric is then proposed to assess how similar any two given soundscapes distributions are within the circumplex. Taken to the extreme, two perfectly matching distributions in the soundscape circumplex would return a 100% SPI value, while two completely dissimilar distributions would return a 0% SPI value. In practical terms, for the former, this will never be achieved in real world scenarios; for the latter, it is also difficult to estimate how low the SPI value could actually go, and it should be considered that the distance may happen in different directions within the circumplex space. For instance, if a distribution for a vibrant soundscape was taken as a reference, a compared soundscape distribution may exhibit low SPI values for being located in the calm, OR monotonous, OR chaotic regions of the model.
 
-=== Distance Metric
-<distance-metric>
-Central to the SPI framework is the concept of a distance metric, which quantifies the deviation of a given soundscape from a desired target soundscape. This distance metric serves as the basis for calculating the SPI value, with smaller distances indicating a closer alignment between the perceived soundscape and the target soundscape perception. The distance between the test and target soundscape distributions is calculated using a two-dimensional Kolmogorov-Smirnov test #cite(<Fasano1987multidimensional>);.
+Using the data from one location in the ISD \(Piazza San Marco) as the test distribution, the KS statistic and p-value is calculated for each of the target distributions defined above, shown in @tbl-ks-test.
 
-Essentially, we approach this as a problem of \(dis)similarity between soundscapes. The distance metric is then proposed to assess how similar two any given soundscapes distributions are within the circumplex. Taken to the extreme, two perfectly matching distributions in the soundscape circumplex would return a 100% SPI value, while two completely dissimilar distributions would return a 0% SPI value. In practical terms, for the former, this will never be achieved in real world scenarios; for the latter, it is also difficult to estimate how low the SPI value could actually go, and it should be considered that the distance may happen in different directions within the circumplex space. For instance, if a distribution for a vibrant soundscape was taken as a reference, a compared soundscape distribution may exhibit low SPI values for being located in the calm, OR monotonous, OR chaotic regions of the model.
+#block[
+#block[
+#figure([
+#block[
+#figure(
+align(center)[#table(
+  columns: 3,
+  align: (col, row) => (auto,auto,auto,).at(col),
+  inset: 6pt,
+  [Target], [D], [```
+        p
+  ```
 
-=== Targets
-<targets>
+  ],
+  [tgt\_1],
+  [0.68],
+  [2.20837e-26],
+  [tgt\_2],
+  [0.85],
+  [2.39841e-40],
+  [tgt\_3],
+  [0.26],
+  [2.39841e-40],
+)]
+)
+
+]
+], caption: figure.caption(
+position: top, 
+[
+Kolmogorov-Smirnov test comparing the empirical test distribution \(Piazza San Marco) against three soundscape target distributions.
+]), 
+kind: "quarto-float-tbl", 
+supplement: "Table", 
+numbering: "1", 
+)
+<tbl-ks-test>
+
+
+]
+]
+For the 2D KS test, a p-value less than 0.05 indicates that the empirical distributions are not drawn from the same distribution function. In this use case, where we never expect the distributions to be identical and instead only wish to characterize their degree of \(dis)similarity, we discard the p-value and focus only on the test statistic.
+
+== Calculate the SPI score
+<calculate-the-spi-score>
+The final step is to convert the KS test statistic into a more interpretable form to use as a comparison across soundscapes. Since the KS test statistic is a measure of dissimilarity, we first subtract it from one to give a measure of similarity between the test distribution and the target distribution. This is then scaled to produce a score which ranges from 0 to 100, giving the final SPI formula:
+
+$ upright("SPI") = 100 \* (1 - K S { upright("MSN")_(t e s t) , upright("MSN")_(t g t) }) $
+
+The three SPIs can now be calculated for all of the locations in the ISD, shown in @tbl-ex-spis. This produces three separate rankings of soundscape quality for these locations, depending on which target is considered the goal.
+
+#block[
+#block[
+#figure([
+#block[
+#figure(
+align(center)[#table(
+  columns: 4,
+  align: (col, row) => (right,left,left,left,).at(col),
+  inset: 6pt,
+  [Ranking], [Target 1], [Target 2], [Target 3],
+  [1],
+  [70 RegentsParkFields],
+  [59 CampoPrincipe],
+  [74 SanMarco],
+  [2],
+  [67 CarloV],
+  [52 CarloV],
+  [62 TateModern],
+  [3],
+  [64 RegentsParkJapan],
+  [49 RegentsParkFields],
+  [61 StPaulsCross],
+  [4],
+  [63 CampoPrincipe],
+  [47 PlazaBibRambla],
+  [58 Noorderplantsoen],
+  [5],
+  [61 PlazaBibRambla],
+  [44 MarchmontGarden],
+  [55 PancrasLock],
+  [6],
+  [60 MarchmontGarden],
+  [42 MonumentoGaribaldi],
+  [54 TorringtonSq],
+  [7],
+  [59 MonumentoGaribaldi],
+  [39 RussellSq],
+  [48 StPaulsRow],
+  [8],
+  [58 RussellSq],
+  [38 RegentsParkJapan],
+  [47 RussellSq],
+  [9],
+  [57 PancrasLock],
+  [35 PancrasLock],
+  [47 MiradorSanNicolas],
+  [10],
+  [50 StPaulsCross],
+  [31 MiradorSanNicolas],
+  [43 CamdenTown],
+  [11],
+  [45 TateModern],
+  [30 StPaulsCross],
+  [39 CarloV],
+  [12],
+  [45 StPaulsRow],
+  [27 TateModern],
+  [37 MonumentoGaribaldi],
+  [13],
+  [41 MiradorSanNicolas],
+  [27 StPaulsRow],
+  [34 MarchmontGarden],
+  [14],
+  [36 Noorderplantsoen],
+  [26 TorringtonSq],
+  [32 PlazaBibRambla],
+  [15],
+  [35 TorringtonSq],
+  [15 SanMarco],
+  [32 CampoPrincipe],
+  [16],
+  [31 SanMarco],
+  [13 Noorderplantsoen],
+  [30 EustonTap],
+  [17],
+  [21 CamdenTown],
+  [12 CamdenTown],
+  [27 RegentsParkFields],
+  [18],
+  [15 EustonTap],
+  [11 EustonTap],
+  [27 RegentsParkJapan],
+)]
+)
+
+]
+], caption: figure.caption(
+position: top, 
+[
+SPI scores and rankings for the soundscapes of locations included in the International Soundscape Database \(ISD).
+]), 
+kind: "quarto-float-tbl", 
+supplement: "Table", 
+numbering: "1", 
+)
+<tbl-ex-spis>
+
+
+]
+]
+== Multi-target SPIs
+<multi-target-spis>
+The steps above describe the foundational methodology for calculating the SPI.
+
+= Types of Targets
+<sec-targets>
 The SPI framework introduces two distinct types of targets: bespoke targets and archetypal targets, each serving a unique purpose in the index development process.
 
-==== Bespoke Targets
+== Bespoke Targets
 <bespoke-targets>
 Bespoke targets are tailor-made for specific projects, reflecting the desired soundscape perception for a particular application. These targets can be defined by stakeholders, designers, policymakers, or decision-makers based on their unique requirements, objectives, and constraints. This flexibility allows the SPI for a specific project to be tailored to the desire of the stakeholders for how that specific soundscape should function. It can also provide a consistent and quantifiable baseline for scenarios like a soundscape design contest wherein a target is specified and provided to all participants in the contest and the winning proposal is the design with the highest SPI score when assessed against that target.
 
-==== Archetypal Targets
+== Archetypal Targets
 <archetypal-targets>
 In contrast to bespoke targets, archetypal targets represent generalized, widely recognized soundscape archetypes which transcend specific applications or projects. These archetypes serve as reference points and enable comparisons across different domains and use cases. #strong[#emph[By providing a framework for these archetypes to be defined, they can be…];]
 
+=== Multiple targets
+<multiple-targets>
 Additionally, archetypal SPIs can be composed of multiple targets.
+
+== Empirically defining a target based on soundscape ranking
+<empirically-defining-a-target-based-on-soundscape-ranking>
+Absent from the above methodology has been an exploration of how to actually arrive at a target based on empirical evidence. While bespoke targets make the SPI framework incredibly flexible, able to score against an effectively infinite set of design goals, archetypal targets intended to be used as a reference standard should have some empirical foundation. One method for doing this is to arrive at a ranking of soundscape quality through some other method \(which would typically be much more involved than a simple SCM survey) then derive a target which, when scored against the soundscapes, produces the same rank order.
+
+Effectively this is an optimization task. We consider the Spearman rank correlation coefficient between the provided ranking and the SPI ranking to be an error term, then learn the MSN parameters to which optimize this error term.
+
+Need to consider both the Spearman rank coefficient and the SPI score itself. Through our testing, only optimizing on the rank correlation regularly produced targets which, while they did result in the desired ranking, were in no way representative of the soundscapes in question. We therefore aim to optimize for both a consistent soundscape ranking and for a high SPI score for the top-ranked soundscapes.
+
+We apply an evolutionary multiobjective optimization named NSGA-II #cite(<Deb2014Evolutionary>);.
+
+Defining the optimization problem:
+
+- max $r (r a n k s_(q u a l i t y) , r a n k s_(t a r g e t))$
+- max $m e a n (S P I_(t a r g e t) (X_i))$
+
+where $r$ is the rank correlation coefficient, $r a n k s_(q u a l i t y)$ and $r a n k s_(t a r g e t)$ are the ranks of the quality and target values, and $S P I_(t a r g e t) (X_i)$ is the SPI for a given target on the data for the $i$-th location. Therefore we are trying to achieve the best correlation between the desired ranking and the ranking produced by $S P I_(t a r g e t)$ #emph[and] to achieve the highest mean $S P I_(t a r g e t)$.
+
+$r a n k s_(q u a l i t y)$ is pre-defined. $r a n k s_(t a r g e t)$ is calculated by sorting the target values and assigning ranks to them. $S P I_(t a r g e t)$ is calculated for each location and target.
+
+= Discussion
+<discussion>
+Although it is expected that the target distribution would usually represent the ideal or goal soundscape perception, it is also possible to define target distributions that represent undesirable or suboptimal soundscape perceptions. For instance, in a soundscape mapping context, it may be beneficial to map and identify chaotic soundscapes across a city in order to better target areas for soundscape interventions. In this case, the target distribution would be set in the chaotic quadrant and a higher SPI would indicate a closer alignment with the target distribution. This flexibility allows the SPI to be applied to a wide range of contexts and applications, enabling the quantification and comparison of soundscape quality across diverse scenarios.
 
 === Data Source
 <data-source>
 The SPI framework is designed to accommodate a wide range of data sources, including both objective measurements and subjective evaluations. This flexibility enables the framework to be applied to diverse contexts and applications, ranging from urban soundscapes to natural environments, public spaces, and indoor settings.
 
-== Deriving a target
-<deriving-a-target>
+= Applying a Bespoke SPI
+<applying-a-bespoke-spi>
+= Case Study - Defining an Archetypal SPI for space typologies
+<case-study---defining-an-archetypal-spi-for-space-typologies>
+To demonstrate the practical implementation of the SPI framework and provide an example of empirically-defined targets, a case study focused on defining a typology-based SPI for public spaces is presented. This case study utilizes data from the International Soundscape Database \(ISD) #cite(<Mitchell2021International>);, a comprehensive collection of soundscape recordings and associated listener evaluations gathered under the SSID Protocol #cite(<Mitchell2020Soundscape>);. The SSI Protocol was specifically designed to capture the multi-dimensional nature of soundscape perception, employed a rigorous methodology for collecting and analysing data from diverse public spaces according to the standardized methods in ISO 12913-2 #cite(<ISO12913Part2>);.
+
+== Space Typologies
+<space-typologies>
+The case study focuses on defining an archetypal SPI for public spaces, with a particular emphasis on space typologies. The concept of space typologies is rooted in the idea that different types of public spaces, such as parks, squares, streets, and plazas, exhibit distinct acoustic characteristics and elicit unique perceptions from their users. By defining archetypal SPIs for these space typologies, it becomes possible to establish a standardized framework for evaluating and comparing public spaces based on their soundscape quality.
+
+The ISD encompasses a diverse range of public space typologies, including urban parks, city squares, public walkways, and busy streets. These typologies serve as the basis for defining archetypal targets and calculating the corresponding SPIs.
+
+== Defining $S P I_(t y p e)$
+<defining-spi_type>
+Using the soundscape circumplex model and the perceptual data from the ISD, the process of defining the $S P I_(t y p e)$ for each space typology involves the following steps:
+
++ Identifying Archetypal Targets: Based on the available data … target soundscapes are defined for each space typology, representing the 'ideal' soundscape perception for that particular type of public space.
++ Calculated $S P I_(t y p e)$ for each test location: Using the procedure given above, the circumplex distribution of each test location is compared against the target distribution for its respective space typology.
+
+The resulting $S P I_(t y p e)$ values provide a quantitative measure of soundscape quality for each space typology, enabling comparisons and benchmarking across different public spaces. By comparing each test soundscape against the appropriate target for its typology, the SPI is able to account for the different contexts and purposes of the typologies. By using a consistent scoring methodology, SPI then allows these scores to be combined and considered together, as a single $S P I_(t y p e)$ score.
+
 = Discussion
-<discussion>
-Although it is expected that the target distribution would usually represent the ideal or goal soundscape perception, it is also possible to define target distributions that represent undesirable or suboptimal soundscape perceptions. For instance, in a soundscape mapping context, it may be beneficial to map and identify chaotic soundscapes across a city in order to better target areas for soundscape interventions. In this case, the target distribution would be set in the chaotic quadrant and a higher SPI would indicate a closer alignment with the target distribution. This flexibility allows the SPI to be applied to a wide range of contexts and applications, enabling the quantification and comparison of soundscape quality across diverse scenarios.
+<discussion-1>
+The development of bespoke and archetypal context-dependent Soundscape Perception Indices \(SPIs) represents a significant step towards enabling more comprehensive and effective applications of the soundscape approach. By providing a unified framework for defining these indices, the potential for quantifying and comparing soundscape quality across diverse contexts and applications is unlocked, while still ensuring that the multi-dimensional and context-driven aspects of soundscape quality are considered.
+
+The proposed framework offers several key advantages. First, it acknowledges the inherent context-dependent nature of soundscape perception, allowing for the creation of indices tailored to specific use cases or design goals through the use of bespoke targets. This flexibility ensures that the resulting SPIs accurately capture the desired soundscape perception for the given application, enabling targeted interventions and optimisations.
+
+Second, the inclusion of archetypal targets facilitates cross-comparisons and benchmarking, enabling a common language and understanding of soundscape quality across different domains. By calculating the distance between a given soundscape and these widely recognized archetypes, stakeholders can identify areas for improvement and prioritize interventions accordingly, aligning their efforts with collectively recognized standards of desirable or undesirable soundscapes.
+
+The case study presented in this article, focusing on the development of a typology-based SPI for public spaces, demonstrates the practical applicability of the framework. By leveraging data from the International Soundscape Database \(ISD) and the SSID Protocol, archetypal targets for various space typologies were defined, and the corresponding $S P I_(t y p e)$ values were calculated. These indices provide a quantitative measure of soundscape quality for each typology, enabling comparisons and informing decision-making processes related to the management and improvement of public spaces.
+
+As stated in \#sec-intro …
+
+#cite(<Kogan2018Green>)[, Fig.6];, in fact displays a startlingly similar concept, showing the locations of the three categories of traffic noise dominance \('traffic noise', 'balanced', and 'natural') plotted in the circumplex perceptual model. It can be clearly seen in this plot that the GSI categories create their own clusters within the circumplex.
+
+= Conclusion
+<conclusion>
+The introduction of bespoke and archetypal context-dependent Soundscape Perception Indices \(SPIs) represents a significant advancement in the field of soundscape research and application. By providing a unified framework for defining these indices, a more comprehensive and efficient approach to quantifying and comparing soundscape quality across diverse contexts is enabled.
+
+The proposed framework addresses the existing gap in quantifying multi-dimensional soundscape perception, facilitating a broader application of the soundscape approach in areas such as urban planning, environmental management, acoustic design, and policy development. Through the creation of bespoke indices tailored to specific design goals and the utilization of archetypal targets for benchmarking, this framework empowers stakeholders and decision-makers to make informed choices and prioritize soundscape improvements aligned with their unique objectives and constraints.
+
+Furthermore, the grounding of the SPI framework in the soundscape circumplex model ensures a robust theoretical foundation, capturing the multi-dimensional nature of soundscape perception. The use of a distance metric enables quantitative assessments and comparisons, fostering a common language and understanding of soundscape quality across different domains. This shared understanding facilitates knowledge exchange, collaborative efforts, and the development of best practices within the field.
+
+The case study presented in this article, focused on defining a typology-based SPI for public spaces, demonstrates the practical applicability of the framework and highlights its potential for enabling more effective and context-sensitive soundscape management strategies. By leveraging data from the International Soundscape Database \(ISD) and the SSID Protocol, archetypal targets for various public space typologies were defined, and the corresponding $S P I_(t y p e)$ values were calculated, providing a quantitative measure of soundscape quality that can inform decision-making processes and guide interventions.
+
+As the SPI framework continues to be explored and refined, future research should focus on validating and expanding the range of archetypal targets, as well as investigating the potential for incorporating additional dimensions and factors that influence soundscape perception. The integration of emerging technologies, such as virtual and augmented reality, may also provide new avenues for immersive soundscape evaluation and index development.
+
+Additionally, the application of the framework in diverse real-world scenarios, ranging from urban planning and environmental management to acoustic design and policy development, will provide valuable insights and contribute to the ongoing refinement and adaptation of the SPI framework. Collaboration with stakeholders, end-users, and experts from various domains will be crucial in ensuring the framework’s relevance and applicability across a wide range of contexts.
+
+Furthermore, the development of standardized data collection protocols and the establishment of comprehensive soundscape databases will be essential for the widespread adoption and effective implementation of the SPI framework. Initiatives focused on promoting data sharing, interoperability, and open access to soundscape data can significantly facilitate the creation and validation of new indices, fostering a more collaborative and data-driven approach to soundscape research and management.
+
+Ultimately, the introduction of bespoke and archetypal context-dependent Soundscape Perception Indices represents a significant stride towards a more holistic and nuanced understanding of our acoustic environments, paving the way for more informed decision-making and enhancing the overall quality of life in our built and natural environments. By empowering stakeholders with the ability to quantify and compare soundscape quality, new avenues are unlocked for targeted interventions, strategic planning, and the creation of soundscapes that are not only acoustically optimal but also deeply resonant with the diverse needs and perceptions of individuals and communities.
 
 #bibliography("FellowshipRefs-biblatex.bib")
 
