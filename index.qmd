@@ -1,5 +1,15 @@
 ---
-title: SPI - Defining bespoke and reference context-dependent Soundscape Perception Indices
+title: |
+  Soundscape Perception Indices (SPI): Developing context-dependent single value scores of multidimensional soundscape perceptual quality
+# Alt titles:
+# Defining soundscape perception indices: A practical framework and application
+# Defining soundscape perception indices: Practical application for context-dependent single value indices
+# Defining soundscape perception indices: A protocol for context-dependent applications
+# A framework for defining context-dependent soundscape perception indices (SPI)
+# Scoring soundscape designs via a framework for context-dependent soundscape perception indices
+# Defining soundscape perception indices (SPI): A protocol for context-dependent scoring and ranking
+# Soundscape Perception Indices (SPI): A protocol for defining context-dependent single value scores of multidimensional soundscape quality
+# Defining soundscape perception indices for context-dependent single value scores
 author:
   - name: Andrew Mitchell
     email: andrew.mitchell.18@ucl.ac.uk
@@ -26,7 +36,7 @@ abstract: |
 keywords: 
   - Soundscape
   - Sound perception
-  - indices
+  - index
   - urban design
 date: last-modified
 ---
@@ -47,7 +57,7 @@ In many cases, the ultimate aim is to be able to rank soundscapes based on their
 
 The overarching aim of this framework is to empower stakeholders, decision-makers, and researchers with the ability to create tailored indices that align with their specific objectives and design goals, while simultaneously enabling cross-comparisons and benchmarking against empirically-defined reference soundscapes. This dual approach not only acknowledges the context-dependent nature of soundscape perception but also fosters a common language and understanding, facilitating knowledge sharing and collaborative efforts within the field. This paper will demonstrate the SPI framework and test whether it is capable of both scoring soundscape quality and generating consistent rankings of soundscapes across different contexts.
 
-# Background
+# Theoretical Background
 
 In @Aletta2016Soundscape, the authors defined a framework for categorising the components of a soundscape assessment. They define three aspects: soundscape descriptors, soundscape indicators, and soundscape indices. Soundscape descriptors are defined as 'measures of how people perceive the acoustic environment' and soundscape indicators as 'measures used to predict the value of a soundscape descriptor'. The relationship between soundscape indicator(s) and a soundscape descriptor effectively defines what has been previously referred to as a "predictive soundscape model" [@Aletta2016Soundscape; @Mitchell2022Predictive]. There are primarily two rationales for modeling the relationship between the physical attributes and the perceived (i.e., soundscape) qualities of the acoustic environment. Firstly, a predictive model can forecast how individuals would perceive the acoustic environment, eliminating the need for labour-intensive surveys [@Mitchell2023conceptual]. Secondly, a precise predictive model may unveil the root causes of these perceived qualities, thereby serving as a valuable tool for design. Lionello and colleagues [@Lionello2020systematic] provided a review of such models and concluded contextual features play an important role in increasing the quality of the model.
 
