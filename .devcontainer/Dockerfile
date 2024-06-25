@@ -17,7 +17,11 @@ RUN apt-get update && \
         libffi-dev \
         libxml2-dev \
         libopenblas-dev \
-        perl-base
+        libblas-dev \
+        liblapack-dev \
+        perl-base \
+        libgl1
+
 
 SHELL [ "/bin/bash", "-o", "pipefail", "-c" ]
 
@@ -35,6 +39,14 @@ COPY ./.python-version ./pyproject.toml ./requirements* ./README.md ./
 
 FROM mcr.microsoft.com/vscode/devcontainers/base:bookworm
 COPY --from=builder /opt/rye /opt/rye
+
+# hadolint ignore=DL3008
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        gfortran \
+        libblas-dev \
+        liblapack-dev \
+        libgl1
 
 ENV RYE_HOME="/opt/rye"
 ENV PATH="$RYE_HOME/shims:$PATH"

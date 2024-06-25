@@ -36,7 +36,8 @@
                 "shardulm94.trailing-spaces",
                 "usernamehw.errorlens",
                 "yzhang.markdown-all-in-one",
-                "James-Yu.latex-workshop"
+                "James-Yu.latex-workshop",
+                "ms-toolsai.jupyter"
             ],
             "settings": {
                 "python.defaultInterpreterPath": "/opt/rye/shims/python",
@@ -59,6 +60,6 @@
             }
         }
     },
-    "postStartCommand": "rye sync -f && R -e 'install.packages(\"tinytex\")' && R -e 'if (!tinytex::is_tinytex()) {tinytex::install_tinytex()}'",
+    "postStartCommand": "rye sync -f && R -e 'install.packages(c(\"tinytex\", \"sn\"))' && R -e 'if (!tinytex::is_tinytex()) {tinytex::install_tinytex()}'",
     "remoteUser": "vscode"
 }

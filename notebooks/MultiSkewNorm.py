@@ -56,8 +56,8 @@ class DirectParams:
         """
         Validate the direct parameters.
 
-        In a skew normal distribution, the covariance matrix, often denoted as Ω (Omega), represents the 
-        measure of the relationship between different variables. It provides information about how changes 
+        In a skew normal distribution, the covariance matrix, often denoted as Ω (Omega), represents the
+        measure of the relationship between different variables. It provides information about how changes
         in one variable are associated with changes in other variables. The covariance matrix must be positive
         definite and symmetric.
 
@@ -275,7 +275,7 @@ class MultiSkewNorm:
         if return_sample:
             return sample
 
-    def sspy_plot(self):
+    def sspy_plot(self, color: str = "blue", title: str = None):
         """
         Plots the joint distribution of the generated sample.
 
@@ -286,7 +286,7 @@ class MultiSkewNorm:
 
         df = pd.DataFrame(self.sample_data, columns=["ISOPleasant", "ISOEventful"])
         sspy.plotting.jointplot(
-            df,
+            df, color=color, title=title
         )
 
     def ks2ds(
