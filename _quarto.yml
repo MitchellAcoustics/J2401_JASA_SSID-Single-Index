@@ -5,13 +5,6 @@ execute:
   freeze: auto
 
 format:
-  # agu-html:
-  #   toc: true
-  #   code-fold: true
-  #   comments:
-  #     hypothesis: true
-  # jats: default
-  # agu-pdf: default
   elsevier-pdf:
     echo: false
     keep-tex: true
@@ -21,14 +14,14 @@ format:
       formatting: preprint
       model: 3p
       cite-style: authoryear
-    # include-in-header: 
+    # include-in-header:
     #   text: |
     #     \usepackage{lineno}
     #     \linenumbers
-  docx: 
-    reference-doc: apaquarto.docx
-    number-sections: true
-  # qtypst-arkheion-typst: 
+  # docx:
+  #   reference-doc: apaquarto.docx
+  #   number-sections: true
+  # qtypst-arkheion-typst:
   #   keep-typ: true
   #   suppress-bibliography: true
   #   bib-file: "FellowshipRefs-biblatex.bib"

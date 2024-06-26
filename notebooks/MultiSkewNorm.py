@@ -285,9 +285,7 @@ class MultiSkewNorm:
             self.sample()
 
         df = pd.DataFrame(self.sample_data, columns=["ISOPleasant", "ISOEventful"])
-        sspy.plotting.jointplot(
-            df, color=color, title=title
-        )
+        sspy.plotting.jointplot(df, color=color, title=title)
 
     def ks2ds(
         self, test: pd.DataFrame | np.ndarray, nboot: int = None, extra: bool = True

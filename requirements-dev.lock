@@ -375,6 +375,7 @@ rpds-py==0.18.0
     # via referencing
 rpy2==3.5.12
     # via single-index
+ruff==0.4.10
 scikit-image==0.22.0
     # via scikit-maad
 scikit-learn==1.4.1.post1

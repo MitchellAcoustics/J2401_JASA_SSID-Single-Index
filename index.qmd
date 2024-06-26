@@ -1,15 +1,6 @@
 ---
 title: |
   Soundscape Perception Indices (SPI): Developing context-dependent single value scores of multidimensional soundscape perceptual quality
-# Alt titles:
-# Defining soundscape perception indices: A practical framework and application
-# Defining soundscape perception indices: Practical application for context-dependent single value indices
-# Defining soundscape perception indices: A protocol for context-dependent applications
-# A framework for defining context-dependent soundscape perception indices (SPI)
-# Scoring soundscape designs via a framework for context-dependent soundscape perception indices
-# Defining soundscape perception indices (SPI): A protocol for context-dependent scoring and ranking
-# Soundscape Perception Indices (SPI): A protocol for defining context-dependent single value scores of multidimensional soundscape quality
-# Defining soundscape perception indices for context-dependent single value scores
 author:
   - name: Andrew Mitchell
     email: andrew.mitchell.18@ucl.ac.uk
@@ -32,7 +23,7 @@ author:
     affilations:
         - ref: ucl-iede
 abstract: |
-    The soundscape approach provides a basis for considering the holistic perception of sound environments, in context. While steady advancements have been made in methods for assessment and analysis, a gap exists for comparing soundscapes and quantifying improvements in the multi-dimensional perception of a soundscape. To this end, there is a need for the creation of single value indices to compare soundscape quality which incorporate context, aural diversity, and specific design goals for a given application. Just as a variety of decibel-based indices have been developed for various purposes (e.g. $L_{Aeq}$, $L_{Ceq}$, $L_{90}$, $L{den}$, etc.), the soundscape approach requires the ability to create novel indices for different uses, but which share a common language and understanding. We therefore propose a unified framework for creating bespoke and reference single index measures of soundscape perception, allowing for new metrics to be defined in the future. This framework is based on a four-step test-target paradigm wherein a desired soundscape perception is defined as a target distribution within the soundscape circumplex model and a distance metric is used to test an assessed soundscape against this target. Applications and implications of this framework are discussed and a method for empirically defining perception indices is proposed.
+    The soundscape approach provides a basis for considering the holistic perception of sound environments, in context. While steady advancements have been made in methods for assessment and analysis, a gap exists for comparing soundscapes and quantifying improvements in the multi-dimensional perception of a soundscape. To this end, there is a need for the creation of single value indices to compare soundscape quality which incorporate context, aural diversity, and specific design goals for a given application. Just as a variety of decibel-based indices have been developed for various purposes (e.g. $L_{Aeq}$, $L_{Ceq}$, $L_{90}$, $L_{den}$, etc.), the soundscape approach requires the ability to create novel indices for different uses, which share a common language and understanding. We therefore propose a unified framework for creating bespoke and reference single index measures of soundscape perception, allowing for new metrics to be defined in the future. This framework is based on a four-step test-target paradigm wherein a desired soundscape perception is defined as a target distribution within the soundscape circumplex model and a distance metric is used to test an assessed soundscape against this target. Applications and implications of this framework are discussed and a method for empirically defining perception indices is proposed.
 keywords:
   - Soundscape
   - Sound perception
@@ -71,7 +62,7 @@ When applied to urban sound and specifically to noise pollution, the soundscape 
 
 This approach can enable better outcomes by identifying positive soundscapes (in line with the END's mandate to "preserve environmental noise quality where it is good" [@EuropeanUnion2002Directive]), better identifying specific sources of noise which impact soundscape quality and pinpointing the characteristics which may need to be decreased, and illuminating alternative methods which could be introduced to improve a soundscape where a reduction of noise is impractical [@Fiebig2018Does; @Kang2018Impact]. Factors such as the presence of natural or human-made sounds, their temporal patterns, and the overall contextual meaning ascribed to these sounds all contribute to the holistic perception of a soundscape.
 
-## Existing 'Soundscape Indices'
+## Existing 'Soundscape Indices' {#sec-existing-soundscape-indices}
 
 While the field of soundscape research has witnessed substantial progress, the development of standardized indices for evaluating and comparing soundscapes across diverse contexts has been relatively limited. Existing indices can be broadly seen as arising from two domains: soundscape ecology and soundscape perception.
 
@@ -202,7 +193,7 @@ It is these reference targets with an empirical backing which would ideally form
 
 ## Deriving a target based on a priori rankings {#sec-targets}
 
-Absent from the above methodology has been an exploration of how to actually arrive at a target based on empirical evidence; i.e., not a target specified *ad hoc*, but rather an "absolute" target, based on type of space, use case, or similar. While arbitrary targets make the SPI framework incredibly flexible, able to score against an effectively infinite set of design goals, often targets should have some sort of systematic foundation, especially when defining a Reference Target. To enable this approach, we therefore present one method of systematically deriving a target distribution based on a given ranking of soundscape quality. Just as one primary goal of the SPI framework is to enable soundscape rankings to be produced from SPI scores, this method allows for rankings which were arrived at separately to produce an optimized SPI target.
+Absent from the above methodology has been an exploration of how to actually arrive at a target based on empirical evidence; i.e., not a target specified *ad hoc*, but rather an "absolute" target, based on type of space, use case, or similar. While arbitrary targets make the SPI framework incredibly flexible, able to score against an effectively infinite set of design goals, often targets should have some sort of systematic foundation, especially when defining a Reference Target. To enable this approach, we therefore present one method of systematically deriving a target distribution based on a given ranking of soundscape quality. Just as one primary goal of the SPI framework is to enable soundscape rankings to be produced from SPI scores, this method allows for rankings which were arrived at separately to produce an optimised SPI target.
 
 In this case study, we will examine a ranking derived from the ISD locations (shown in @tbl-isd-ranking). The goal is then to derive an SPI target distribution which, when applied to the SCM data from each of these locations, (1) results in the same ranking order and (2) results in high SPI scores for the top ranked locations and lower scores for the bottom ranked locations.
 
@@ -219,7 +210,7 @@ In this case study, we will examine a ranking derived from the ISD locations (sh
 
 : A pre-defined ranking of soundscape quality of the park locations included in the International Soundscape Database (ISD). An SPI target will be derived which aims to reproduce this same ranking when applied to circumplex data from these locations. {#tbl-isd-ranking}
 
-Effectively, this is an optimization task to determine the MSN parameters which best achieve the above goals. Parameter optimization refers to the process of adjusting the parameters of a system, model, or algorithm to achieve the best possible performance according to one or more objectives. To set up the optimization task, we first need to express the parameter space and any constraints. Since our goal is to identify an optimized soundscape target distribution, the parameters we will search over are:
+Effectively, this is an optimisation task to determine the MSN parameters which best achieve the above goals. Parameter optimisation refers to the process of adjusting the parameters of a system, model, or algorithm to achieve the best possible performance according to one or more objectives. To set up the optimisation task, we first need to express the parameter space and any constraints. Since our goal is to identify an optimised soundscape target distribution, the parameters we will search over are:
 
 -   $\xi = (\xi_x, \xi_y)$, $-1 \leq \xi \leq 1$
 -   $\Omega = \begin{pmatrix} var(x) & cov(x, y) \\ cov(y, x) & var(y) \end{pmatrix}$
@@ -227,7 +218,6 @@ Effectively, this is an optimization task to determine the MSN parameters which 
     -   $-1 \leq cov() \leq 1$
     -   $\Omega$ must be symmetric and positive definite
 -   $\alpha = (\alpha_x, \alpha_y)$, $-5 \leq \alpha \leq 5$
--   $-1 \leq x, y \leq 1$
 
 We then define the objective functions based on the two goals given above. For each step in the algorithm with a given trial set of parameters, a target distribution will be produced, the SPI for each test location assessed according to the protocol described in @sec-method, and the resulting set of SPI scores and ranking will be scored using the objective functions. Goal (1) is assessed by calculating the Spearman rank correlation between the *a priori* ranking and the SPI ranking:
 
@@ -243,21 +233,52 @@ $$
 
 where $m$ is the number of included locations, $SPI_i$ is the calculated SPI score for the $i$-th location assessed against a trial target, and $\text{rank}_i$ is the calculated rank value of the $i$-th location.
 
-Through our testing, optimizing only on the rank correlation regularly produced targets which, while they did result in the desired ranking, were in no way representative of the soundscapes in question. We therefore aim to optimize for both a consistent soundscape ranking and for a high SPI score for the top-ranked soundscapes. Optimizing these parameters with respect to multiple objectives ensures a more holistic approach to system improvement, acknowledging the trade-offs and interactions between different goals.
+Through our testing, optimising only on the rank correlation regularly produced targets which, while they did result in the desired ranking, were in no way representative of the soundscapes in question. We therefore aim to optimise for both a consistent soundscape ranking and for a high SPI score for the top-ranked soundscapes. Optimising these parameters with respect to multiple objectives ensures a more holistic approach to system improvement, acknowledging the trade-offs and interactions between different goals.
 
-We apply the nondominated sorting genetic algorithm (NSGA-II) [@Deb2002fast].
+We apply the nondominated sorting genetic algorithm (NSGA-II) [@Deb2002fast] to optimise our target distribution parameters. NSGA-II is a popular and efficient multi-objective evolutionary algorithm that is well-suited for problems with multiple, potentially conflicting objectives.
 
-<!-- End Draft -->
+The algorithm works as follows:
+
+1. Initialize a population of candidate solutions, each representing a set of target distribution parameters $(\xi, \Omega, \alpha)$.
+2. Evaluate each candidate solution using the two objective functions defined above.
+3. Perform non-dominated sorting to rank the solutions based on Pareto dominance.
+4. Calculate crowding distance for each solution to maintain diversity in the population.
+5. Select parent solutions using tournament selection based on non-domination rank and crowding distance.
+6. Create offspring solutions using crossover and mutation operators, ensuring that the constraints on the parameters are maintained.
+7. Combine parent and offspring populations and select the best solutions to form the next generation.
+8. Repeat steps 2-7 for a specified number of generations or until a termination criterion is met.
+
+We implement the NSGA-II algorithm using the Python library  `pymoo v0.6.1.1` [@pymoo]. The population size is set to 150, and the algorithm runs for 100 generations. In `pymoo`, each objective function is supposed to be minimised, so when implementing the algorithm and in the results, we are actually using $-f_1$ and $-f_2$. After running the NSGA-II algorithm, we obtain a set of non-dominated solutions representing the Pareto front, shown in @fig-pymoo-parks. Each solution on the Pareto front represents a trade-off between the two objectives: maximising the rank correlation ($f_1$) and maximising the weighted sum of SPI scores ($f_2$). The Pareto front allows us to visualise and analyse the range of possible solutions, from those that prioritise ranking consistency to those that emphasise high-SPI scores for top-ranked soundscapes.
 
 {{< embed notebooks/TargetOptimization.ipynb#fig-pymoo-parks >}}
 
-<!-- {{< embed notebooks/TargetOptimization.ipynb#fig-pymoo-park-pareto >}} -->
+The Pareto front provides insights into the trade-offs between our objectives. Solutions at one end of the front may have excellent rank correlation but lower overall SPI scores, while solutions at the other end may have higher SPI scores for top-ranked soundscapes but less consistent overall ranking. The choice of the final target distribution parameters depends on the specific priorities of the soundscape assessment task at hand.
 
-<!-- {{< embed notebooks/TargetOptimization.ipynb#fig-pymoo-park-target >}} -->
+To select a single solution from the Pareto front, we can use various methods such as:
+
+1. Choosing the solution with the highest $f_1$ value that meets a minimum threshold for $f_2$.
+2. Selecting the solution that minimises the Euclidean distance from the ideal point (min $-f_1$ and min $-f_2$).
+3. Using an additional preference function to weight the relative importance of $f_1$ and $f_2$.
+
+For this demonstration, we opt for the second method, selecting the solution closest to the ideal point in the normalised objective space. This approach provides a balance between ranking consistency and high SPI scores for top-ranked soundscapes. Once the optimal solution is selected, we can sample from the MSN distribution and plot the derived target distribution, shown in @fig-pymoo-parks.
+
+$$
+  \text{tgt}_{\text{park}} \sim  \left\{\begin{matrix}
+    \xi&=&[0.867, 0.428] \\
+    \Omega&=&\begin{bmatrix}
+        0.286 & 0.133 \\
+        0.133 & 0.312
+    \end{bmatrix} \\
+    \alpha&=&[-5.596, -34.887]
+\end{matrix}\right.
+$$
+
+The resulting $\text{tgt}_{\text{park}}$, with the MSN parameters given above, exhibits some expected characteristics: it is almost entirely pleasant, with a long uneventful tail into the calm quadrant, but somewhat unexpectedly the mode is slightly vibrant. What should be made clear about this demonstration is that we are not presenting this as a reference target to be used in the future - this section is meant as a demonstration of a method which can be used to derive a target from an *a priori* ranking. In this case, the *a priori* ranking was created by the authors from their experience of the locations in the ISD. To truly be called an empirical reference target, the ranking would need to be arrived at empirically, via some other metric (e.g. health or productivity ratings of the areas) or through an experiment such as paired-choice comparisons.
+
 
 # Discussion
 
-The development of bespoke and reference context-dependent Soundscape Perception Indices (SPIs) represents a significant step towards enabling more comprehensive and effective applications of the soundscape approach. By providing a unified framework for defining these indices, the potential for quantifying and comparing soundscape quality across diverse contexts and applications is unlocked, while still ensuring that the multi-dimensional and context-driven aspects of soundscape quality are considered.
+The development of bespoke and reference context-dependent SPIs represents a significant step towards enabling more comprehensive and effective applications of the soundscape approach. By providing a unified framework for defining these indices, the potential for quantifying and comparing soundscape quality across diverse contexts and applications is unlocked, while still ensuring that the multi-dimensional and context-driven aspects of soundscape quality are considered.
 
 The proposed framework offers several key advantages. First, it acknowledges the inherent context-dependent nature of soundscape perception, allowing for the creation of indices tailored to specific use cases or design goals through the use of bespoke targets. This flexibility ensures that the resulting SPIs accurately capture the desired soundscape perception for the given application, enabling targeted interventions and optimisations.
 
@@ -273,23 +294,29 @@ This set of targets made up of e.g. parks, plazas etc. is just one example of an
 
 Although it is expected that the target distribution would usually represent the ideal or goal soundscape perception, it is also possible to define target distributions that represent undesirable or suboptimal soundscape perceptions. For instance, in a soundscape mapping context, it may be beneficial to map and identify chaotic soundscapes across a city in order to better target areas for soundscape interventions. In this case, the target distribution would be set in the chaotic quadrant and a higher SPI would indicate a closer alignment with the target distribution. This flexibility allows the SPI to be applied to a wide range of contexts and applications, enabling the quantification and comparison of soundscape quality across diverse scenarios.
 
-## Limitations
+## Connecting with soundscape data
 
-*Need to add more limitations discussion*
+Unlike previous soundscape indices (see @sec-existing-soundscape-indices), SPI does not include any direct connection to soundscape indicators such as the sound level, spectral content, etc. Its basis in perceptual descriptor data effective allows the analysis and quantification of soundscape information to be modularised, separating the task of calculating a single index from the complex task of predicting soundscape perception from objective data. The modularisation of soundscape data analysis allows the entire pipeline from environmental data collection through to soundscape index scoring to remain flexible. Following the soundscape engineering paradigm laid out in @Mitchell2023conceptual, the connection between soundscape indicators, through descriptors, to indices can be made by predictive soundscape models. These models are trained on increasingly large scale datasets and generally designed to predict soundscape descriptors, including the SCM attributes [@Ooi2022Probably,@Hou2024Soundscape]. With the complex and multidimensional nature of soundscape perception and with the rapid progression in machine learning techniques and applications, an index framework should be able to integrate new and improved models. By separating the prediction of perceptual descriptors based on objective metrics from the calculation of the single value index itself, the SPI framework allows for these predictive models and for the creation of new indices to advance independently.
+
+
+## Considerations and future work {#limitations}
 
 Various other distance metrics were considered when developing the SPI method. The simplest method is to define a single point target, rather than a target distribution, and calculate a normalized mean Euclidean distance between points in the test distribution and the target point. While this is conceptually simple and requires defining only a single coordinate point as a target, rather than the MSN parameters described in @sec-circumplex-distribution, the shape and spread of a soundscape distribution is itself an important factor in describing the collective perception of a soundscape and would not be captured by this method [@Mitchell2022How].
 
-An additional method which was considered, was to consider a target as an ellipse (or, indeed any other shape) drawn in the circumplex space (similar to the simplified median decile curves proposed in @Mitchell2022How). An SPI score would then be calculated based on the percentage of responses which fall within the space defined by the ellipse. Again, this is conceptually quite simple and defining the ellipse targets is straightforward. However, this method has an important flaw - it is easy to artificially inflate or deflate the scores merely by changing the area of the ellipse. The larger the ellipse, the higher all SPI scores will be, regardless of whether the sample distribution is wide or narrow. This would also limit cross-comparability between targets. By defining the SPI as a true target-test distribution comparison we ensure that the SPI always accurately reflects the similarity between the perception of a soundscape and its target.
+An additional method which was considered, was to consider a target as an ellipse (or, indeed any other shape) drawn in the circumplex space (similar to the simplified median decile curves proposed in @Mitchell2022How). An SPI score would then be calculated based on the percentage of responses which fall within the space defined by the ellipse. Again, this is conceptually quite simple and defining the ellipse targets is straightforward. However, this method has an important flaw - it is easy to artificially inflate or deflate the scores merely by changing the area of the ellipse. The larger the ellipse, the higher all SPI scores will be, regardless of whether the sample distribution is wide or narrow. This would also limit cross-comparability between targets. As can be seen in @tbl-ex-spis, defining a target distribution with a larger spread (i.e. $\text{tgt}_1$) does not automatically result in higher SPI scores across the board as it would with the ellipse target method. By defining the SPI as a true target-test distribution comparison we ensure that the SPI always accurately reflects the similarity between the perception of a soundscape and its target, both in terms of its location in the circumplex and the shape of the data.
+
+As noted in @sec-targets, although a methodology for deriving targets is presented, the *a priori* ranking we use for the demonstration was not itself arrived at empirically. Hence the park target cannot be considered a true reference target. A key piece of future work is to use experimental methods such as paired-choice comparisons to arrive at a well-defined ranking which can then produce a true reference target.
+
 
 # Conclusion
 
-The ERC-funded Soundscape Indices (SSID) project was started mostly with the ambition to derive soundscape indices that could serve as numerical/quantifiable tools [@Kang2019Towards], to better inform urban sound planning and design decisions. Any soundscape researcher having ever made an attempt at defining "the" soundscape quality index will know what a challenging, even impossible, task this is. Some may even argue that trying to reduce soundscape quality to a single-value quantity, and deriving any soundscape index, could be what philosophers would call a *reductio in adjecto*, as the soundscape approach intrinsically advocates for a multi-dimensional characterization of the acoustic environments that we experience in our lives. For these reasons, we felt that it was necessary to take a step back and create instead a framework tailored for the field specifically that could easily be adapted to different contexts and capture the multi-faceted aspects of the soundscape of a place.
+The ERC-funded Soundscape Indices (SSID) project was started mostly with the ambition to derive soundscape indices that could serve as numerical/quantifiable tools [@Kang2019Towards], to better inform urban sound planning and design decisions. Any soundscape researcher having ever made an attempt at defining "the" soundscape quality index will know what a challenging, even impossible, task this is. Some may even argue that trying to reduce soundscape quality to a single-value quantity, and deriving any soundscape index, could be what philosophers would call a *contradictio in adjecto*, as the soundscape approach intrinsically advocates for a multi-dimensional characterization of the acoustic environments that we experience in our lives. For these reasons, we felt that it was necessary to take a step back and create instead a framework tailored for the field specifically that could easily be adapted to different contexts and capture the multi-faceted aspects of the soundscape of a place.
 
 The proposed framework addresses the existing gap in quantifying multi-dimensional soundscape perception, facilitating a broader application of the soundscape approach in areas such as urban planning, environmental management, acoustic design, and policy development. Through the creation of bespoke indices tailored to specific design goals and the utilization of reference targets for benchmarking, this framework empowers stakeholders and decision-makers to make informed choices and prioritize soundscape improvements aligned with their unique objectives and constraints.
 
-Furthermore, the grounding of the SPI framework in the soundscape circumplex model ensures a robust theoretical foundation, capturing the multi-dimensional nature of soundscape perception. The use of a distance metric enables quantitative assessments and comparisons, fostering a common language and understanding of soundscape quality across different domains. This shared understanding facilitates knowledge exchange, collaborative efforts, and the development of best practices within the field. As the SPI framework continues to be explored and refined, future research should focus on validating and expanding the range of reference targets, as well as investigating the potential for incorporating additional dimensions and factors that influence soundscape perception. The integration of emerging technologies, such as virtual and augmented reality, may also provide new avenues for immersive soundscape evaluation and index development. Additionally, the application of the framework in diverse real-world scenarios, ranging from urban planning and environmental management to acoustic design and policy development, will provide valuable insights and contribute to the ongoing refinement and adaptation of the SPI framework.
+Furthermore, the grounding of the SPI framework in the soundscape circumplex model ensures a robust theoretical foundation, capturing the multi-dimensional nature of soundscape perception. The use of a distance metric enables quantitative assessments and comparisons, fostering a common language and understanding of soundscape quality across different domains. This shared understanding facilitates knowledge exchange, collaborative efforts, and the development of best practices within the field. As the SPI framework continues to be explored and refined, future research should focus on validating and expanding the range of reference targets, as well as investigating the potential for incorporating additional dimensions and factors that influence soundscape perception. The integration of emerging technologies (such as virtual, mixed, and augmented reality) may also provide new avenues for immersive soundscape evaluation and index development. Additionally, the application of the framework in diverse real-world scenarios, ranging from urban planning and environmental management to acoustic design and policy development, will provide valuable insights and contribute to the ongoing refinement and adaptation of the SPI framework.
 
-In many ways, the proposed SPI framework is not so conceptually different from the whole idea of decibel-based set of indicators that the Soundscape Indices (SSID) project itself is trying to "overcome". There is no such thing as a single noise indicator (*L*) to univocally describe sound levels in all circumstances; rather, different noise indicators are defined for different scenarios and temporal or spectral requirements (e.g., $L_{den}$, $L_{Aeq, T}$, etc.), based on testing needs. The decibel (dB) is the unit for all of them, but A-weighted equivalent sound levels for a one-hour interval cannot be directly compared with whole-day indicators with penalties.
+In many ways, the proposed SPI framework is not so conceptually different from the whole idea of decibel-based set of indicators that the Soundscape Indices (SSID) project itself is trying to "overcome". There is no such thing as a single noise indicator (*L*) to univocally describe sound levels in all circumstances; rather, different noise indicators are defined for different scenarios and temporal or spectral requirements (e.g., $L_{den}$, $L_{Aeq, T}$, etc.), based on testing needs. The decibel (dB) is the unit for all of them, but A-weighted equivalent sound levels for a one-hour interval cannot be directly compared with whole-day indicators with penalties. We are trying to achieve the same with the SPI to provide a way of defining different indices for different contexts, while maintaining a consistent framework.
 
 Ultimately, for the SPI approach to succeed, collaboration with stakeholders, end-users, and experts from various domains will be crucial in ensuring the framework's relevance and applicability across a wide range of contexts.
 

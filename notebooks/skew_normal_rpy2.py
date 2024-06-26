@@ -28,7 +28,6 @@ Calling routines in R package sn through rpy2
 
 from math import pi, sqrt, copysign
 
-import rpy2.robjects.numpy2ri
 from rpy2.robjects.packages import importr
 from rpy2.robjects import numpy2ri
 import numpy as np

@@ -2,7 +2,6 @@ from __future__ import division
 
 import numpy as np
 import pandas as pd
-import soundscapy as sspy
 from numpy import random
 from scipy.spatial.distance import cdist, pdist
 
@@ -311,14 +310,14 @@ def spi_plot(test_data, target, n=1000, ax=None):
     return None
 
 
-def adj_angle_iso_coords(data: pd.DataFrame, angles, scale=100):
-    isopl = data.apply(
-        lambda x: adj_iso_pl(x[scales].values, angles, scale=scale), axis=1
-    )
-    isoev = data.apply(
-        lambda x: adj_iso_ev(x[scales].values, angles, scale=scale), axis=1
-    )
-    return isopl, isoev
+# def adj_angle_iso_coords(data: pd.DataFrame, angles, scale=100):
+#     isopl = data.apply(
+#         lambda x: adj_iso_pl(x[scales].values, angles, scale=scale), axis=1
+#     )
+#     isoev = data.apply(
+#         lambda x: adj_iso_ev(x[scales].values, angles, scale=scale), axis=1
+#     )
+#     return isopl, isoev
 
 
 def adj_iso_pl(values, angles, scale=None):
