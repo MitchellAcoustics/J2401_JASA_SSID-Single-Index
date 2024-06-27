@@ -329,11 +329,11 @@ This project has received funding from the European Research Council (ERC) under
 
 # Data and Code Availability {.unnumbered}
 
-The data used in this paper are drawn from the publicly available International Soundscape Database (ISD v1.0.1-alpha.1) @Mitchell2024International available on Zenodo[^3]. The analysis code developed for this method has been integrated into the open-source Python package Soundscapy, which can be found on Github[^4]. The code to recreate the figures in this paper can be found on this paper's Github page.
+The data used in this paper are drawn from the publicly available International Soundscape Database (ISD v1.0.1-alpha.1) @Mitchell2024International available on Zenodo[^3]. The code to recreate the figures in this paper can be found on this paper's Github page[^4].
 
 [^3]: See <https://doi.org/10.5281/zenodo.10672568>
 
-[^4]: See <https://github.com/MitchellAcoustics/Soundscapy>
+[^4]: See <https://github.com/MitchellAcoustics/J2401_JASA_SSID-Single-Index>
 
 # Author contributions {.unnumbered}
 
