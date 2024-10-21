@@ -1,7 +1,6 @@
 project:
-  type: manuscript
-  render:
-    - index.qmd
+  # type: manuscript
+  title: "Soundscape Perception Indices (SPI)"
 
 execute:
   freeze: auto
@@ -27,6 +26,14 @@ format:
   #   keep-typ: true
   #   suppress-bibliography: true
   #   bib-file: "FellowshipRefs-biblatex.bib"
+    html:
+    toc: true
+    toc-expand: 3
+    theme: flatly
+    number-sections: true
+    code-fold: show
+    page-layout: full
+    embed-resources: true
 bibliography: FellowshipRefs-biblatex.bib
 
 

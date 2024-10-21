@@ -4,9 +4,9 @@
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-  letterpaper,
-  DIV=11,
-  numbers=noendperiod]{scrartcl}
+  authoryear,
+  preprint,
+  3p]{elsarticle}
 
 \usepackage{amsmath,amssymb}
 \usepackage{iftex}
@@ -41,7 +41,7 @@
 \makeatother
 \usepackage{xcolor}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
 \makeatletter
 \ifx\paragraph\undefined\else
@@ -132,7 +132,6 @@
 \def\fps@figure{htbp}
 \makeatother
 
-\KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -174,16 +173,20 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
+\journal{Journal of the Acoustical Society of America}
 
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+\usepackage[]{natbib}
+\bibliographystyle{elsarticle-harv}
 \usepackage{bookmark}
 
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={Supplementary Material},
+  pdftitle={Supplementary Material for: Soundscape Perception Indices (SPI)},
+  pdfauthor={Andrew Mitchell; Francesco Aletta},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -192,13 +195,43 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{Supplementary Material}
-\author{}
-\date{}
-
+\setlength{\parindent}{6pt}
 \begin{document}
-\maketitle
 
+\begin{frontmatter}
+\title{Supplementary Material for: Soundscape Perception Indices (SPI)}
+\author[1]{Andrew Mitchell%
+\corref{cor1}%
+}
+ \ead{andrew.mitchell.18@ucl.ac.uk} 
+\author[1]{Francesco Aletta%
+%
+}
+ \ead{f.aletta@ucl.ac.uk} 
+
+\affiliation[1]{organization={University College London, Institute for
+Environmental Design and Engineering},addressline={Central House, 14
+Upper Woburn Place},city={London},postcode={WC1H 0NN},postcodesep={}}
+
+\cortext[cor1]{Corresponding author}
+
+
+        
+
+
+
+
+
+\end{frontmatter}
+    
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+
+\section{Supplementary Material}\label{supplementary-material}
 
 \subsection{Multi-objective Optimization to Derive an SPI
 target}\label{multi-objective-optimization-to-derive-an-spi-target}
@@ -286,48 +319,12 @@ scores and ranking will be scored using the objective functions. Goal
 \ImportTok{import}\NormalTok{ soundscapy }\ImportTok{as}\NormalTok{ sspy}
 \ImportTok{from}\NormalTok{ soundscapy.surveys.survey\_utils }\ImportTok{import}\NormalTok{ LANGUAGE\_ANGLES, PAQ\_IDS}
 
-\ImportTok{import}\NormalTok{ notebooks.optimize\_target }\ImportTok{as}\NormalTok{ ot}
-\ImportTok{from}\NormalTok{ notebooks.MultiSkewNorm }\ImportTok{import}\NormalTok{ MultiSkewNorm}
+\ImportTok{import}\NormalTok{ optimize\_target }\ImportTok{as}\NormalTok{ ot}
+\ImportTok{from}\NormalTok{ MultiSkewNorm }\ImportTok{import}\NormalTok{ MultiSkewNorm}
 
 \NormalTok{warnings.filterwarnings(}\StringTok{"ignore"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-/workspaces/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/soundscapy/surveys/processing.py:31: UserWarning: legacy printing option can currently only be '1.13', '1.21', or `False`
-  np.set_printoptions(legacy="1.25")
-\end{verbatim}
-
-\begin{verbatim}
-ModuleNotFoundError: No module named 'MultiSkewNorm'
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[1], line 9[0m
-[1;32m      6[0m [38;5;28;01mimport[39;00m [38;5;21;01msoundscapy[39;00m [38;5;28;01mas[39;00m [38;5;21;01msspy[39;00m
-[1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01msoundscapy[39;00m[38;5;21;01m.[39;00m[38;5;21;01msurveys[39;00m[38;5;21;01m.[39;00m[38;5;21;01msurvey_utils[39;00m [38;5;28;01mimport[39;00m LANGUAGE_ANGLES, PAQ_IDS
-[0;32m----> 9[0m [38;5;28;01mimport[39;00m [38;5;21;01mnotebooks[39;00m[38;5;21;01m.[39;00m[38;5;21;01moptimize_target[39;00m [38;5;28;01mas[39;00m [38;5;21;01mot[39;00m
-[1;32m     10[0m [38;5;28;01mfrom[39;00m [38;5;21;01mnotebooks[39;00m[38;5;21;01m.[39;00m[38;5;21;01mMultiSkewNorm[39;00m [38;5;28;01mimport[39;00m MultiSkewNorm
-[1;32m     12[0m warnings[38;5;241m.[39mfilterwarnings([38;5;124m"[39m[38;5;124mignore[39m[38;5;124m"[39m)
-
-File [0;32m/workspaces/J2401_JASA_SSID-Single-Index/notebooks/optimize_target.py:10[0m
-[1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmodel_selection[39;00m [38;5;28;01mimport[39;00m ParameterGrid
-[1;32m      8[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtqdm_pathos[39;00m [38;5;28;01mimport[39;00m tqdm_pathos
-[0;32m---> 10[0m [38;5;28;01mfrom[39;00m [38;5;21;01mMultiSkewNorm[39;00m [38;5;28;01mimport[39;00m MultiSkewNorm
-[1;32m     13[0m [38;5;28;01mdef[39;00m [38;5;21mtarget_success[39m(
-[1;32m     14[0m     target: MultiSkewNorm,
-[1;32m     15[0m     ranking: pd[38;5;241m.[39mSeries,
-[1;32m     16[0m     data: pd[38;5;241m.[39mDataFrame,
-[1;32m     17[0m     group: [38;5;28mstr[39m [38;5;241m=[39m [38;5;124m"[39m[38;5;124mLocationID[39m[38;5;124m"[39m,
-[1;32m     18[0m ) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mtuple[39m:
-[1;32m     19[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
-[1;32m     20[0m [38;5;124;03m    Calculate the success of a target function by comparing the ranking of groups to the SPI of the target function.[39;00m
-[1;32m     21[0m 
-[0;32m   (...)[0m
-[1;32m     42[0m [38;5;124;03m        Target function[39;00m
-[1;32m     43[0m [38;5;124;03m    """[39;00m
-
-[0;31mModuleNotFoundError[0m: No module named 'MultiSkewNorm'
-\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -340,9 +337,12 @@ File [0;32m/workspaces/J2401_JASA_SSID-Single-Index/notebooks/optimize_target.p
 \NormalTok{data }\OperatorTok{=}\NormalTok{ data.query(}\StringTok{"Language != \textquotesingle{}cmn\textquotesingle{}"}\NormalTok{)}
 
 \CommentTok{\# Exclude RegentsParkJapan outliers}
-\CommentTok{\# excl\_id = list(data.query("LocationID == \textquotesingle{}RegentsParkJapan\textquotesingle{}").query("ISOEventful \textgreater{} 0.72 | ISOEventful \textless{} {-}0.5").index)}
+\CommentTok{\# excl\_id = list(data.query(}
+    \CommentTok{\# "LocationID == \textquotesingle{}RegentsParkJapan\textquotesingle{}"}
+    \CommentTok{\# ).query("ISOEventful \textgreater{} 0.72 | ISOEventful \textless{} {-}0.5").index)}
 \CommentTok{\# Excluded RegentsParkFields outliers}
-\CommentTok{\# excl\_id = excl\_id + list(data.query("LocationID == \textquotesingle{}RegentsParkFields\textquotesingle{} and ISOPleasant \textless{} 0").index) \# Helicopters}
+\CommentTok{\# excl\_id = excl\_id + list(data.query(}
+    \CommentTok{\# "LocationID == \textquotesingle{}RegentsParkFields\textquotesingle{} and ISOPleasant \textless{} 0").index) \# Helicopters}
 \NormalTok{excl\_id }\OperatorTok{=}\NormalTok{ [}\DecValTok{652}\NormalTok{, }\DecValTok{706}\NormalTok{, }\DecValTok{548}\NormalTok{, }\DecValTok{550}\NormalTok{, }\DecValTok{551}\NormalTok{, }\DecValTok{553}\NormalTok{, }\DecValTok{569}\NormalTok{, }\DecValTok{580}\NormalTok{, }\DecValTok{609}\NormalTok{, }\DecValTok{618}\NormalTok{, }\DecValTok{623}\NormalTok{, }\DecValTok{636}\NormalTok{, }\DecValTok{643}\NormalTok{]}
 \NormalTok{data.drop(excl\_id, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
 \NormalTok{data}
@@ -479,74 +479,6 @@ RussellSq & 4.020548 & 5 \\
 MiradorSanNicolas & 3.964286 & 6 \\
 StPaulsCross & 3.803030 & 7 \\
 Noorderplantsoen & 2.412371 & 8 \\
-\end{longtable}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{not\_park\_quality }\OperatorTok{=}\NormalTok{ pd.DataFrame(}
-\NormalTok{    not\_park\_data.groupby(}\StringTok{"LocationID"}\NormalTok{)[rank\_on].mean().sort\_values(ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
-\NormalTok{)}
-\NormalTok{not\_park\_quality[}\StringTok{"Rank"}\NormalTok{] }\OperatorTok{=} \BuiltInTok{range}\NormalTok{(}\DecValTok{1}\NormalTok{, }\BuiltInTok{len}\NormalTok{(not\_park\_quality) }\OperatorTok{+} \DecValTok{1}\NormalTok{)}
-\NormalTok{not\_park\_quality}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}lll@{}}
-\toprule\noalign{}
-& sss01 & Rank \\
-LocationID & & \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-CarloV & 4.344828 & 1 \\
-PlazaBibRambla & 4.333333 & 2 \\
-TateModern & 3.827815 & 3 \\
-StPaulsRow & 3.736111 & 4 \\
-SanMarco & 3.562500 & 5 \\
-MarchmontGarden & 3.552381 & 6 \\
-PancrasLock & 3.516129 & 7 \\
-TorringtonSq & 3.278261 & 8 \\
-CamdenTown & 2.838095 & 9 \\
-EustonTap & 2.770000 & 10 \\
-\end{longtable}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{quality }\OperatorTok{=}\NormalTok{ pd.DataFrame(}
-\NormalTok{    data.groupby(}\StringTok{"LocationID"}\NormalTok{)[rank\_on].mean().sort\_values(ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
-\NormalTok{)}
-\NormalTok{quality[}\StringTok{"Rank"}\NormalTok{] }\OperatorTok{=} \BuiltInTok{range}\NormalTok{(}\DecValTok{1}\NormalTok{, }\BuiltInTok{len}\NormalTok{(quality) }\OperatorTok{+} \DecValTok{1}\NormalTok{)}
-\NormalTok{quality}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}lll@{}}
-\toprule\noalign{}
-& sss01 & Rank \\
-LocationID & & \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-RegentsParkJapan & 4.617978 & 1 \\
-RegentsParkFields & 4.467290 & 2 \\
-CampoPrincipe & 4.345455 & 3 \\
-CarloV & 4.344828 & 4 \\
-PlazaBibRambla & 4.333333 & 5 \\
-MonumentoGaribaldi & 4.156250 & 6 \\
-RussellSq & 4.020548 & 7 \\
-MiradorSanNicolas & 3.964286 & 8 \\
-TateModern & 3.827815 & 9 \\
-StPaulsCross & 3.803030 & 10 \\
-StPaulsRow & 3.736111 & 11 \\
-SanMarco & 3.562500 & 12 \\
-MarchmontGarden & 3.552381 & 13 \\
-PancrasLock & 3.516129 & 14 \\
-TorringtonSq & 3.278261 & 15 \\
-CamdenTown & 2.838095 & 16 \\
-EustonTap & 2.770000 & 17 \\
-Noorderplantsoen & 2.412371 & 18 \\
 \end{longtable}
 
 \subsection{\texorpdfstring{\texttt{pymoo} Multi-objective
@@ -732,275 +664,6 @@ Constraint: - \(\Omega\) must be symmetric and positive definite -
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-
-Compiled modules for significant speedup can not be used!
-https://pymoo.org/installation.html#installation
-
-To disable this warning:
-from pymoo.config import Config
-Config.warnings['not_compiled'] = False
-\end{verbatim}
-
-\subsubsection{Overall Quality
-optimization}\label{overall-quality-optimization}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# initialize the thread pool and create the runner}
-\NormalTok{mp }\OperatorTok{=}\NormalTok{ pathos.helpers.mp}
-\NormalTok{n\_process }\OperatorTok{=} \DecValTok{12}
-\NormalTok{pool }\OperatorTok{=}\NormalTok{ mp.Pool(n\_process)}
-\NormalTok{runner }\OperatorTok{=}\NormalTok{ StarmapParallelization(pool.starmap)}
-
-\NormalTok{problem }\OperatorTok{=}\NormalTok{ MyProblem(}
-\NormalTok{    data}\OperatorTok{=}\NormalTok{data, ranking}\OperatorTok{=}\NormalTok{quality.sort\_index()[}\StringTok{"Rank"}\NormalTok{], elementwise\_runner}\OperatorTok{=}\NormalTok{runner}
-\NormalTok{)}
-
-\NormalTok{res }\OperatorTok{=}\NormalTok{ minimize(}
-\NormalTok{    problem, algorithm, termination, seed}\OperatorTok{=}\DecValTok{42}\NormalTok{, save\_history}\OperatorTok{=}\VariableTok{True}\NormalTok{, verbose}\OperatorTok{=}\VariableTok{True}
-\NormalTok{)}
-
-\NormalTok{pool.close()}
-
-\NormalTok{F }\OperatorTok{=}\NormalTok{ res.F}
-\NormalTok{X }\OperatorTok{=}\NormalTok{ res.X}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-==========================================================================================
-n_gen  |  n_eval  | n_nds  |     cv_min    |     cv_avg    |      eps      |   indicator  
-==========================================================================================
-     1 |      150 |      2 |  0.000000E+00 |  0.7599240000 |             - |             -
-     2 |      250 |      3 |  0.000000E+00 |  0.5199480000 |  0.0269063526 |         ideal
-     3 |      350 |      4 |  0.000000E+00 |  0.0466620000 |  0.0589317613 |             f
-     4 |      450 |      4 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-     5 |      550 |      8 |  0.000000E+00 |  0.000000E+00 |  0.1666666667 |         ideal
-     6 |      650 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0598215445 |             f
-     7 |      750 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0406926102 |         ideal
-     8 |      850 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0408888290 |             f
-     9 |      950 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0973058506 |         ideal
-    10 |     1050 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0190795659 |             f
-    11 |     1150 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0128222628 |         ideal
-    12 |     1250 |     18 |  0.000000E+00 |  0.000000E+00 |  0.0139018580 |         ideal
-    13 |     1350 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0430595390 |         ideal
-    14 |     1450 |     21 |  0.000000E+00 |  0.000000E+00 |  0.0124167201 |             f
-    15 |     1550 |     24 |  0.000000E+00 |  0.000000E+00 |  0.0058621289 |             f
-    16 |     1650 |     22 |  0.000000E+00 |  0.000000E+00 |  0.0111674227 |             f
-    17 |     1750 |     25 |  0.000000E+00 |  0.000000E+00 |  0.0162162162 |         ideal
-    18 |     1850 |     26 |  0.000000E+00 |  0.000000E+00 |  0.0004487113 |             f
-    19 |     1950 |     29 |  0.000000E+00 |  0.000000E+00 |  0.0044954806 |             f
-    20 |     2050 |     29 |  0.000000E+00 |  0.000000E+00 |  0.0056562799 |             f
-    21 |     2150 |     30 |  0.000000E+00 |  0.000000E+00 |  0.0315219948 |         ideal
-    22 |     2250 |     29 |  0.000000E+00 |  0.000000E+00 |  0.3908644665 |         nadir
-    23 |     2350 |     31 |  0.000000E+00 |  0.000000E+00 |  0.0013747226 |             f
-    24 |     2450 |     26 |  0.000000E+00 |  0.000000E+00 |  0.0049436113 |             f
-    25 |     2550 |     25 |  0.000000E+00 |  0.000000E+00 |  0.0090159576 |             f
-    26 |     2650 |     26 |  0.000000E+00 |  0.000000E+00 |  0.0061446632 |             f
-\end{verbatim}
-
-\begin{verbatim}
-KeyboardInterrupt: 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mKeyboardInterrupt[0m                         Traceback (most recent call last)
-Cell [0;32mIn[13], line 11[0m
-[1;32m      5[0m runner [38;5;241m=[39m StarmapParallelization(pool[38;5;241m.[39mstarmap)
-[1;32m      7[0m problem [38;5;241m=[39m MyProblem(
-[1;32m      8[0m     data[38;5;241m=[39mdata, ranking[38;5;241m=[39mquality[38;5;241m.[39msort_index()[[38;5;124m"[39m[38;5;124mRank[39m[38;5;124m"[39m], elementwise_runner[38;5;241m=[39mrunner
-[1;32m      9[0m )
-[0;32m---> 11[0m res [38;5;241m=[39m [43mminimize[49m[43m([49m
-[1;32m     12[0m [43m    [49m[43mproblem[49m[43m,[49m[43m [49m[43malgorithm[49m[43m,[49m[43m [49m[43mtermination[49m[43m,[49m[43m [49m[43mseed[49m[38;5;241;43m=[39;49m[38;5;241;43m42[39;49m[43m,[49m[43m [49m[43msave_history[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m[43m [49m[43mverbose[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m
-[1;32m     13[0m [43m)[49m
-[1;32m     15[0m pool[38;5;241m.[39mclose()
-[1;32m     17[0m F [38;5;241m=[39m res[38;5;241m.[39mF
-
-File [0;32m/workspaces/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/pymoo/optimize.py:67[0m, in [0;36mminimize[0;34m(problem, algorithm, termination, copy_algorithm, copy_termination, **kwargs)[0m
-[1;32m     64[0m     algorithm[38;5;241m.[39msetup(problem, [38;5;241m*[39m[38;5;241m*[39mkwargs)
-[1;32m     66[0m [38;5;66;03m# actually execute the algorithm[39;00m
-[0;32m---> 67[0m res [38;5;241m=[39m [43malgorithm[49m[38;5;241;43m.[39;49m[43mrun[49m[43m([49m[43m)[49m
-[1;32m     69[0m [38;5;66;03m# store the deep copied algorithm in the result object[39;00m
-[1;32m     70[0m res[38;5;241m.[39malgorithm [38;5;241m=[39m algorithm
-
-File [0;32m/workspaces/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/pymoo/core/algorithm.py:138[0m, in [0;36mAlgorithm.run[0;34m(self)[0m
-[1;32m    136[0m [38;5;28;01mdef[39;00m [38;5;21mrun[39m([38;5;28mself[39m):
-[1;32m    137[0m     [38;5;28;01mwhile[39;00m [38;5;28mself[39m[38;5;241m.[39mhas_next():
-[0;32m--> 138[0m         [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mnext[49m[43m([49m[43m)[49m
-[1;32m    139[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mresult()
-
-File [0;32m/workspaces/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/pymoo/core/algorithm.py:158[0m, in [0;36mAlgorithm.next[0;34m(self)[0m
-[1;32m    156[0m [38;5;66;03m# call the advance with them after evaluation[39;00m
-[1;32m    157[0m [38;5;28;01mif[39;00m infills [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
-[0;32m--> 158[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mevaluator[49m[38;5;241;43m.[39;49m[43meval[49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mproblem[49m[43m,[49m[43m [49m[43minfills[49m[43m,[49m[43m [49m[43malgorithm[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[43m)[49m
-[1;32m    159[0m     [38;5;28mself[39m[38;5;241m.[39madvance(infills[38;5;241m=[39minfills)
-[1;32m    161[0m [38;5;66;03m# if the algorithm does not follow the infill-advance scheme just call advance[39;00m
-[1;32m    162[0m [38;5;28;01melse[39;00m:
-
-File [0;32m/workspaces/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/pymoo/core/evaluator.py:69[0m, in [0;36mEvaluator.eval[0;34m(self, problem, pop, skip_already_evaluated, evaluate_values_of, count_evals, **kwargs)[0m
-[1;32m     65[0m [38;5;66;03m# evaluate the solutions (if there are any)[39;00m
-[1;32m     66[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(I) [38;5;241m>[39m [38;5;241m0[39m:
-[1;32m     67[0m 
-[1;32m     68[0m     [38;5;66;03m# do the actual evaluation - call the sub-function to set the corresponding values to the population[39;00m
-[0;32m---> 69[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_eval[49m[43m([49m[43mproblem[49m[43m,[49m[43m [49m[43mpop[49m[43m[[49m[43mI[49m[43m][49m[43m,[49m[43m [49m[43mevaluate_values_of[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
-[1;32m     71[0m [38;5;66;03m# update the function evaluation counter[39;00m
-[1;32m     72[0m [38;5;28;01mif[39;00m count_evals:
-
-File [0;32m/workspaces/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/pymoo/core/evaluator.py:90[0m, in [0;36mEvaluator._eval[0;34m(self, problem, pop, evaluate_values_of, **kwargs)[0m
-[1;32m     87[0m X [38;5;241m=[39m pop[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mX[39m[38;5;124m"[39m)
-[1;32m     89[0m [38;5;66;03m# call the problem to evaluate the solutions[39;00m
-[0;32m---> 90[0m out [38;5;241m=[39m [43mproblem[49m[38;5;241;43m.[39;49m[43mevaluate[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43mreturn_values_of[49m[38;5;241;43m=[39;49m[43mevaluate_values_of[49m[43m,[49m[43m [49m[43mreturn_as_dictionary[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
-[1;32m     92[0m [38;5;66;03m# for each of the attributes set it to the problem[39;00m
-[1;32m     93[0m [38;5;28;01mfor[39;00m key, val [38;5;129;01min[39;00m out[38;5;241m.[39mitems():
-
-File [0;32m/workspaces/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/pymoo/core/problem.py:257[0m, in [0;36mProblem.evaluate[0;34m(self, X, return_values_of, return_as_dictionary, *args, **kwargs)[0m
-[1;32m    254[0m     only_single_value [38;5;241m=[39m [38;5;129;01mnot[39;00m ([38;5;28misinstance[39m(X, [38;5;28mlist[39m) [38;5;129;01mor[39;00m [38;5;28misinstance[39m(X, np[38;5;241m.[39mndarray))
-[1;32m    256[0m [38;5;66;03m# this is where the actual evaluation takes place[39;00m
-[0;32m--> 257[0m _out [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mdo[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43mreturn_values_of[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
-[1;32m    259[0m out [38;5;241m=[39m {}
-[1;32m    260[0m [38;5;28;01mfor[39;00m k, v [38;5;129;01min[39;00m _out[38;5;241m.[39mitems():
-[1;32m    261[0m 
-[1;32m    262[0m     [38;5;66;03m# copy it to a numpy array (it might be one of jax at this point)[39;00m
-
-File [0;32m/workspaces/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/pymoo/core/problem.py:297[0m, in [0;36mProblem.do[0;34m(self, X, return_values_of, *args, **kwargs)[0m
-[1;32m    295[0m [38;5;66;03m# do the function evaluation[39;00m
-[1;32m    296[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39melementwise:
-[0;32m--> 297[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_evaluate_elementwise[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43mout[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
-[1;32m    298[0m [38;5;28;01melse[39;00m:
-[1;32m    299[0m     [38;5;28mself[39m[38;5;241m.[39m_evaluate_vectorized(X, out, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)
-
-File [0;32m/workspaces/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/pymoo/core/problem.py:315[0m, in [0;36mProblem._evaluate_elementwise[0;34m(self, X, out, *args, **kwargs)[0m
-[1;32m    312[0m f [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39melementwise_func([38;5;28mself[39m, args, kwargs)
-[1;32m    314[0m [38;5;66;03m# execute the runner[39;00m
-[0;32m--> 315[0m elems [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43melementwise_runner[49m[43m([49m[43mf[49m[43m,[49m[43m [49m[43mX[49m[43m)[49m
-[1;32m    317[0m [38;5;66;03m# for each evaluation call[39;00m
-[1;32m    318[0m [38;5;28;01mfor[39;00m elem [38;5;129;01min[39;00m elems:
-[1;32m    319[0m 
-[1;32m    320[0m     [38;5;66;03m# for each key stored for this evaluation[39;00m
-
-File [0;32m/workspaces/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/pymoo/core/problem.py:42[0m, in [0;36mStarmapParallelization.__call__[0;34m(self, f, X)[0m
-[1;32m     41[0m [38;5;28;01mdef[39;00m [38;5;21m__call__[39m([38;5;28mself[39m, f, X):
-[0;32m---> 42[0m     [38;5;28;01mreturn[39;00m [38;5;28mlist[39m([38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mstarmap[49m[43m([49m[43mf[49m[43m,[49m[43m [49m[43m[[49m[43m[[49m[43mx[49m[43m][49m[43m [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43mx[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43mX[49m[43m][49m[43m)[49m)
-
-File [0;32m/workspaces/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/multiprocess/pool.py:375[0m, in [0;36mPool.starmap[0;34m(self, func, iterable, chunksize)[0m
-[1;32m    369[0m [38;5;28;01mdef[39;00m [38;5;21mstarmap[39m([38;5;28mself[39m, func, iterable, chunksize[38;5;241m=[39m[38;5;28;01mNone[39;00m):
-[1;32m    370[0m [38;5;250m    [39m[38;5;124;03m'''[39;00m
-[1;32m    371[0m [38;5;124;03m    Like `map()` method but the elements of the `iterable` are expected to[39;00m
-[1;32m    372[0m [38;5;124;03m    be iterables as well and will be unpacked as arguments. Hence[39;00m
-[1;32m    373[0m [38;5;124;03m    `func` and (a, b) becomes func(a, b).[39;00m
-[1;32m    374[0m [38;5;124;03m    '''[39;00m
-[0;32m--> 375[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_map_async[49m[43m([49m[43mfunc[49m[43m,[49m[43m [49m[43miterable[49m[43m,[49m[43m [49m[43mstarmapstar[49m[43m,[49m[43m [49m[43mchunksize[49m[43m)[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[43m)[49m
-
-File [0;32m/workspaces/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/multiprocess/pool.py:768[0m, in [0;36mApplyResult.get[0;34m(self, timeout)[0m
-[1;32m    767[0m [38;5;28;01mdef[39;00m [38;5;21mget[39m([38;5;28mself[39m, timeout[38;5;241m=[39m[38;5;28;01mNone[39;00m):
-[0;32m--> 768[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mwait[49m[43m([49m[43mtimeout[49m[43m)[49m
-[1;32m    769[0m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28mself[39m[38;5;241m.[39mready():
-[1;32m    770[0m         [38;5;28;01mraise[39;00m [38;5;167;01mTimeoutError[39;00m
-
-File [0;32m/workspaces/J2401_JASA_SSID-Single-Index/.venv/lib/python3.11/site-packages/multiprocess/pool.py:765[0m, in [0;36mApplyResult.wait[0;34m(self, timeout)[0m
-[1;32m    764[0m [38;5;28;01mdef[39;00m [38;5;21mwait[39m([38;5;28mself[39m, timeout[38;5;241m=[39m[38;5;28;01mNone[39;00m):
-[0;32m--> 765[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_event[49m[38;5;241;43m.[39;49m[43mwait[49m[43m([49m[43mtimeout[49m[43m)[49m
-
-File [0;32m/opt/rye/py/cpython@3.11.8/lib/python3.11/threading.py:629[0m, in [0;36mEvent.wait[0;34m(self, timeout)[0m
-[1;32m    627[0m signaled [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_flag
-[1;32m    628[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m signaled:
-[0;32m--> 629[0m     signaled [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_cond[49m[38;5;241;43m.[39;49m[43mwait[49m[43m([49m[43mtimeout[49m[43m)[49m
-[1;32m    630[0m [38;5;28;01mreturn[39;00m signaled
-
-File [0;32m/opt/rye/py/cpython@3.11.8/lib/python3.11/threading.py:327[0m, in [0;36mCondition.wait[0;34m(self, timeout)[0m
-[1;32m    325[0m [38;5;28;01mtry[39;00m:    [38;5;66;03m# restore state no matter what (e.g., KeyboardInterrupt)[39;00m
-[1;32m    326[0m     [38;5;28;01mif[39;00m timeout [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
-[0;32m--> 327[0m         [43mwaiter[49m[38;5;241;43m.[39;49m[43macquire[49m[43m([49m[43m)[49m
-[1;32m    328[0m         gotit [38;5;241m=[39m [38;5;28;01mTrue[39;00m
-[1;32m    329[0m     [38;5;28;01melse[39;00m:
-
-[0;31mKeyboardInterrupt[0m: 
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ControlFlowTok{with}\NormalTok{ Recorder(Video(}\StringTok{"all\_loc\_nsga2.mp4"}\NormalTok{)) }\ImportTok{as}\NormalTok{ rec:}
-    \ControlFlowTok{for}\NormalTok{ entry }\KeywordTok{in}\NormalTok{ res.history:}
-\NormalTok{        sc }\OperatorTok{=}\NormalTok{ Scatter(title}\OperatorTok{=}\StringTok{"Generation: }\SpecialCharTok{\%s}\StringTok{"} \OperatorTok{\%}\NormalTok{ entry.n\_gen)}
-\NormalTok{        sc.add(entry.pop.get(}\StringTok{"F"}\NormalTok{))}
-\NormalTok{        sc.do()}
-\NormalTok{        rec.record()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ImportTok{from}\NormalTok{ pymoo.decomposition.asf }\ImportTok{import}\NormalTok{ ASF}
-
-\CommentTok{\# Get the approximated ideal and nadir points}
-\NormalTok{approx\_ideal }\OperatorTok{=}\NormalTok{ res.F.}\BuiltInTok{min}\NormalTok{(axis}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
-\NormalTok{approx\_nadir }\OperatorTok{=}\NormalTok{ res.F.}\BuiltInTok{max}\NormalTok{(axis}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
-
-\CommentTok{\# Normalize the obtained front}
-\NormalTok{nF }\OperatorTok{=}\NormalTok{ (res.F }\OperatorTok{{-}}\NormalTok{ approx\_ideal) }\OperatorTok{/}\NormalTok{ (approx\_nadir }\OperatorTok{{-}}\NormalTok{ approx\_ideal)}
-
-\NormalTok{weights }\OperatorTok{=}\NormalTok{ np.array([}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{])}
-\NormalTok{decomp }\OperatorTok{=}\NormalTok{ ASF()}
-
-\NormalTok{I }\OperatorTok{=}\NormalTok{ decomp(nF, weights).argmin()}
-\BuiltInTok{print}\NormalTok{(}\StringTok{"Best regarding decomposition: Point }\SpecialCharTok{\%s}\StringTok{ {-} }\SpecialCharTok{\%s}\StringTok{"} \OperatorTok{\%}\NormalTok{ (I, res.F[I]))}
-
-\NormalTok{plot }\OperatorTok{=}\NormalTok{ Scatter()}
-\NormalTok{plot.add(res.F, color}\OperatorTok{=}\StringTok{"blue"}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.2}\NormalTok{, s}\OperatorTok{=}\DecValTok{10}\NormalTok{)}
-\NormalTok{plot.add(res.F[I], color}\OperatorTok{=}\StringTok{"red"}\NormalTok{, s}\OperatorTok{=}\DecValTok{30}\NormalTok{)}
-\NormalTok{plot.add(approx\_ideal, color}\OperatorTok{=}\StringTok{"green"}\NormalTok{, s}\OperatorTok{=}\DecValTok{30}\NormalTok{)}
-\NormalTok{plot.do()}
-\CommentTok{\# plot.apply(lambda ax: ax.arrow(0, 0, 0.5, 0.5, color=\textquotesingle{}black\textquotesingle{},}
-\CommentTok{\#                                head\_width=0.01, head\_length=0.01, alpha=0.4))}
-\NormalTok{plot.show()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-Best regarding decomposition: Point 0 - [-0.81011352 -2.35756429]
-\end{verbatim}
-
-\includegraphics{TargetOptimization_files/figure-pdf/cell-13-output-2.png}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{X }\OperatorTok{=}\NormalTok{ res.X[I]}
-\NormalTok{tgt }\OperatorTok{=}\NormalTok{ MultiSkewNorm()}
-\NormalTok{tgt.define\_dp(}
-\NormalTok{    np.array([X[}\DecValTok{0}\NormalTok{], X[}\DecValTok{1}\NormalTok{]]),}
-\NormalTok{    np.array([[X[}\DecValTok{2}\NormalTok{], X[}\DecValTok{4}\NormalTok{]], [X[}\DecValTok{4}\NormalTok{], X[}\DecValTok{3}\NormalTok{]]]),}
-\NormalTok{    np.array([X[}\DecValTok{5}\NormalTok{], X[}\DecValTok{6}\NormalTok{]]),}
-\NormalTok{)}
-\BuiltInTok{print}\NormalTok{(tgt.summary())}
-\NormalTok{tgt.sample()}
-\NormalTok{tgt.sspy\_plot()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-Fitted from direct parameters.
-Direct Parameters:
-xi:    [0.789 0.34 ]
-omega: [[0.151 0.085]
- [0.085 0.24 ]]
-alpha: [ -7.72 -34.59]
-
-
-None
-None
-\end{verbatim}
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics{TargetOptimization_files/figure-pdf/fig-pymoo-overall-target-output-2.png}
-
-}
-
-\caption{\label{fig-pymoo-overall-target}}
-
-\end{figure}%
-
 \subsubsection{Park Quality
 optimization}\label{park-quality-optimization}
 
@@ -1032,105 +695,105 @@ optimization}\label{park-quality-optimization}
 n_gen  |  n_eval  | n_nds  |     cv_min    |     cv_avg    |      eps      |   indicator  
 ==========================================================================================
      1 |      150 |      2 |  0.000000E+00 |  0.7599240000 |             - |             -
-     2 |      250 |      4 |  0.000000E+00 |  0.5266140000 |  0.2222222222 |         ideal
-     3 |      350 |      6 |  0.000000E+00 |  0.1066560000 |  0.0924198251 |         ideal
-     4 |      450 |      7 |  0.000000E+00 |  0.000000E+00 |  0.0227272727 |         ideal
-     5 |      550 |      6 |  0.000000E+00 |  0.000000E+00 |  0.0222222222 |         ideal
-     6 |      650 |      7 |  0.000000E+00 |  0.000000E+00 |  0.0232551845 |             f
-     7 |      750 |     11 |  0.000000E+00 |  0.000000E+00 |  0.7586061972 |         nadir
-     8 |      850 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0212291577 |             f
-     9 |      950 |     10 |  0.000000E+00 |  0.000000E+00 |  0.1042472364 |         ideal
-    10 |     1050 |      9 |  0.000000E+00 |  0.000000E+00 |  0.0225371829 |         nadir
-    11 |     1150 |      8 |  0.000000E+00 |  0.000000E+00 |  0.1989678177 |         nadir
-    12 |     1250 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0183402069 |             f
-    13 |     1350 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0292105389 |             f
-    14 |     1450 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0303030303 |         ideal
-    15 |     1550 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0427330378 |             f
-    16 |     1650 |      9 |  0.000000E+00 |  0.000000E+00 |  0.0569148936 |         ideal
-    17 |     1750 |      7 |  0.000000E+00 |  0.000000E+00 |  0.0231029957 |             f
-    18 |     1850 |      8 |  0.000000E+00 |  0.000000E+00 |  0.0329851405 |             f
-    19 |     1950 |      8 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    20 |     2050 |      9 |  0.000000E+00 |  0.000000E+00 |  0.0084751652 |             f
-    21 |     2150 |      9 |  0.000000E+00 |  0.000000E+00 |  0.0046348140 |             f
-    22 |     2250 |      9 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    23 |     2350 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0038151640 |             f
-    24 |     2450 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0173656733 |             f
-    25 |     2550 |     10 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    26 |     2650 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0159604151 |             f
-    27 |     2750 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0500000000 |         ideal
-    28 |     2850 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0538500252 |         ideal
-    29 |     2950 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0051336395 |             f
-    30 |     3050 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    31 |     3150 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0021871330 |             f
-    32 |     3250 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0136731138 |             f
-    33 |     3350 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    34 |     3450 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0058561979 |             f
-    35 |     3550 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0100050327 |             f
-    36 |     3650 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0031741677 |             f
-    37 |     3750 |     11 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    38 |     3850 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0030271766 |             f
-    39 |     3950 |     10 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    40 |     4050 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0026245596 |             f
-    41 |     4150 |     10 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    42 |     4250 |     10 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    43 |     4350 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0108368736 |             f
-    44 |     4450 |     11 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    45 |     4550 |     11 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    46 |     4650 |     11 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    47 |     4750 |     11 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    48 |     4850 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0050239221 |             f
-    49 |     4950 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0029965610 |             f
-    50 |     5050 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0002516356 |             f
-    51 |     5150 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0002516356 |             f
-    52 |     5250 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0002516356 |             f
-    53 |     5350 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0002516356 |             f
-    54 |     5450 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0040539369 |             f
-    55 |     5550 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    56 |     5650 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    57 |     5750 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0002709922 |             f
-    58 |     5850 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0002709922 |             f
-    59 |     5950 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0026334189 |             f
-    60 |     6050 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0005643828 |             f
-    61 |     6150 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0005643828 |             f
-    62 |     6250 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0005643828 |             f
-    63 |     6350 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0005643828 |             f
-    64 |     6450 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0005643828 |             f
-    65 |     6550 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0005643828 |             f
-    66 |     6650 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0005643828 |             f
-    67 |     6750 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0071936825 |             f
-    68 |     6850 |     15 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    69 |     6950 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0000301963 |             f
-    70 |     7050 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0000301963 |             f
-    71 |     7150 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0023569877 |             f
-    72 |     7250 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0023569877 |             f
-    73 |     7350 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0023569877 |             f
-    74 |     7450 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0023569877 |             f
-    75 |     7550 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0023569877 |             f
-    76 |     7650 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0023569877 |             f
-    77 |     7750 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0054557285 |         ideal
-    78 |     7850 |     16 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    79 |     7950 |     16 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    80 |     8050 |     16 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    81 |     8150 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0027028380 |             f
-    82 |     8250 |     15 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    83 |     8350 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0041427869 |             f
-    84 |     8450 |     15 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    85 |     8550 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0021775150 |             f
-    86 |     8650 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0026936820 |             f
-    87 |     8750 |     16 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    88 |     8850 |     16 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    89 |     8950 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0018832274 |             f
-    90 |     9050 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0018832274 |             f
-    91 |     9150 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0018832274 |             f
-    92 |     9250 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0020240002 |             f
-    93 |     9350 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0021897993 |             f
-    94 |     9450 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0021897993 |             f
-    95 |     9550 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0051893774 |             f
-    96 |     9650 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    97 |     9750 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0048129026 |             f
-    98 |     9850 |     15 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    99 |     9950 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0027473177 |             f
-   100 |    10050 |     16 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+     2 |      250 |      3 |  0.000000E+00 |  0.4999500000 |  0.2727272727 |         ideal
+     3 |      350 |      3 |  0.000000E+00 |  0.0199980000 |  0.2142857143 |         ideal
+     4 |      450 |      4 |  0.000000E+00 |  0.000000E+00 |  0.1620792395 |         ideal
+     5 |      550 |      7 |  0.000000E+00 |  0.000000E+00 |  0.0558552677 |             f
+     6 |      650 |      4 |  0.000000E+00 |  0.000000E+00 |  0.8461538462 |         nadir
+     7 |      750 |      5 |  0.000000E+00 |  0.000000E+00 |  0.0222136817 |             f
+     8 |      850 |      6 |  0.000000E+00 |  0.000000E+00 |  0.1101638372 |         ideal
+     9 |      950 |      6 |  0.000000E+00 |  0.000000E+00 |  0.0657188723 |             f
+    10 |     1050 |      5 |  0.000000E+00 |  0.000000E+00 |  1.0047062320 |         nadir
+    11 |     1150 |      6 |  0.000000E+00 |  0.000000E+00 |  0.0691690492 |         ideal
+    12 |     1250 |      8 |  0.000000E+00 |  0.000000E+00 |  0.0503174951 |         ideal
+    13 |     1350 |      7 |  0.000000E+00 |  0.000000E+00 |  0.0127793462 |             f
+    14 |     1450 |      9 |  0.000000E+00 |  0.000000E+00 |  0.0424372038 |         ideal
+    15 |     1550 |      8 |  0.000000E+00 |  0.000000E+00 |  0.0292206309 |             f
+    16 |     1650 |      9 |  0.000000E+00 |  0.000000E+00 |  0.0785192627 |         ideal
+    17 |     1750 |      9 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    18 |     1850 |      9 |  0.000000E+00 |  0.000000E+00 |  0.0185516738 |             f
+    19 |     1950 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0370370370 |         ideal
+    20 |     2050 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0083471711 |             f
+    21 |     2150 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0033142727 |             f
+    22 |     2250 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0093007525 |         ideal
+    23 |     2350 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0034666441 |             f
+    24 |     2450 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0098196917 |             f
+    25 |     2550 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    26 |     2650 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0034300107 |             f
+    27 |     2750 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0053483509 |             f
+    28 |     2850 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    29 |     2950 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    30 |     3050 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    31 |     3150 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0006784315 |             f
+    32 |     3250 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0082062343 |             f
+    33 |     3350 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0021983597 |             f
+    34 |     3450 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0154559077 |         ideal
+    35 |     3550 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0008284906 |             f
+    36 |     3650 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0065038186 |             f
+    37 |     3750 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0047267260 |             f
+    38 |     3850 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    39 |     3950 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0011035360 |             f
+    40 |     4050 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0016008743 |             f
+    41 |     4150 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0167253281 |         ideal
+    42 |     4250 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0052208080 |             f
+    43 |     4350 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    44 |     4450 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0030262140 |             f
+    45 |     4550 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    46 |     4650 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0029423569 |             f
+    47 |     4750 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0001362881 |             f
+    48 |     4850 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0168434981 |             f
+    49 |     4950 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0065122582 |             f
+    50 |     5050 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0044925500 |             f
+    51 |     5150 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0071445969 |         ideal
+    52 |     5250 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0074595724 |             f
+    53 |     5350 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0026178835 |             f
+    54 |     5450 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0016927330 |             f
+    55 |     5550 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0016927330 |             f
+    56 |     5650 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0016927330 |             f
+    57 |     5750 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0016927330 |             f
+    58 |     5850 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0016927330 |             f
+    59 |     5950 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0016927330 |             f
+    60 |     6050 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0030163061 |             f
+    61 |     6150 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    62 |     6250 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    63 |     6350 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    64 |     6450 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    65 |     6550 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    66 |     6650 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0035306991 |             f
+    67 |     6750 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    68 |     6850 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    69 |     6950 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0000145448 |             f
+    70 |     7050 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0026667316 |             f
+    71 |     7150 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0019718538 |             f
+    72 |     7250 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0027648400 |             f
+    73 |     7350 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0054222167 |             f
+    74 |     7450 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    75 |     7550 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0060101024 |             f
+    76 |     7650 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    77 |     7750 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    78 |     7850 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    79 |     7950 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    80 |     8050 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0010485449 |             f
+    81 |     8150 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0010485449 |             f
+    82 |     8250 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0010485449 |             f
+    83 |     8350 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0010485449 |             f
+    84 |     8450 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0010485449 |             f
+    85 |     8550 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0010485449 |             f
+    86 |     8650 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0010485449 |             f
+    87 |     8750 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0010485449 |             f
+    88 |     8850 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0021136652 |             f
+    89 |     8950 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0021136652 |             f
+    90 |     9050 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0021136652 |             f
+    91 |     9150 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0047031047 |             f
+    92 |     9250 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    93 |     9350 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    94 |     9450 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    95 |     9550 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0005236113 |             f
+    96 |     9650 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0007334714 |             f
+    97 |     9750 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0007334714 |             f
+    98 |     9850 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0007604831 |             f
+    99 |     9950 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0007604831 |             f
+   100 |    10050 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0007604831 |             f
 \end{verbatim}
 
 \begin{Shaded}
@@ -1171,9 +834,13 @@ n_gen  |  n_eval  | n_nds  |     cv_min    |     cv_avg    |      eps      |   i
 \NormalTok{            np.array([park\_X[}\DecValTok{5}\NormalTok{], park\_X[}\DecValTok{6}\NormalTok{]]),}
 \NormalTok{        )}
 \NormalTok{        park\_tgt.sample()}
-\NormalTok{        ss }\OperatorTok{=}\NormalTok{ sspy.plotting.density(}
-\NormalTok{            x}\OperatorTok{=}\NormalTok{park\_tgt.sample\_data[:,}\DecValTok{0}\NormalTok{],}
-\NormalTok{            y}\OperatorTok{=}\NormalTok{park\_tgt.sample\_data[:,}\DecValTok{1}\NormalTok{],}
+\NormalTok{        ss }\OperatorTok{=}\NormalTok{ sspy.plotting.density\_plot(}
+\NormalTok{            data}\OperatorTok{=}\NormalTok{pd.DataFrame(\{}
+                \StringTok{"ISOPleasant"}\NormalTok{: park\_tgt.sample\_data[:,}\DecValTok{0}\NormalTok{],}
+                \StringTok{"ISOEventful"}\NormalTok{: park\_tgt.sample\_data[:,}\DecValTok{1}\NormalTok{],}
+\NormalTok{            \}),}
+            \CommentTok{\# x=park\_tgt.sample\_data[:,0],}
+            \CommentTok{\# y=park\_tgt.sample\_data[:,1],}
 \NormalTok{            title}\OperatorTok{=}\StringTok{"Generation: }\SpecialCharTok{\%s}\StringTok{"} \OperatorTok{\%}\NormalTok{ entry.n\_gen,}
 \NormalTok{        )}
 \NormalTok{        rec.record()}
@@ -1199,13 +866,9 @@ n_gen  |  n_eval  | n_nds  |     cv_min    |     cv_avg    |      eps      |   i
 \NormalTok{decomp }\OperatorTok{=}\NormalTok{ ASF()}
 
 \NormalTok{park\_I }\OperatorTok{=}\NormalTok{ decomp(nF, weights).argmin()}
-\BuiltInTok{print}\NormalTok{(}\StringTok{"Best regarding decomposition: Point }\SpecialCharTok{\%s}\StringTok{ {-} }\SpecialCharTok{\%s}\StringTok{"} \OperatorTok{\%}\NormalTok{ (park\_I, park\_res.F[park\_I]))}
+\CommentTok{\# print("Best regarding decomposition: Point \%s {-} \%s" \% (park\_I, park\_res.F[park\_I]))}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-Best regarding decomposition: Point 10 - [-0.83333333 -1.85242857]
-\end{verbatim}
 
 }
 
@@ -1241,8 +904,8 @@ Best regarding decomposition: Point 10 - [-0.83333333 -1.85242857]
 
 \CommentTok{\# park\_tgt.sspy\_plot()}
 \NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(park\_tgt.sample\_data, columns}\OperatorTok{=}\NormalTok{[}\StringTok{"ISOPleasant"}\NormalTok{, }\StringTok{"ISOEventful"}\NormalTok{])}
-\NormalTok{sspy.plotting.density(}
-\NormalTok{    df, color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{, scatter\_kws}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}color\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{\}, title}\OperatorTok{=}\VariableTok{None}
+\NormalTok{sspy.plotting.density\_plot(}
+\NormalTok{    df, color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\VariableTok{None}
 \NormalTok{)}
 \NormalTok{plt.show()}
 \end{Highlighting}
@@ -1283,23 +946,13 @@ parameters which produce the Park ranking.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{(park\_tgt.summary())}
+\CommentTok{\# print(park\_tgt.summary())}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-Fitted from direct parameters.
-Direct Parameters:
-xi:    [0.616 0.436]
-omega: [[0.129 0.017]
- [0.017 0.296]]
-alpha: [ 1.826 -7.109]
 
 
-None
-None
-\end{verbatim}
-
+  \bibliography{FellowshipRefs.bib}
 
 
 
