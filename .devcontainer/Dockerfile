@@ -6,7 +6,8 @@ ENV RYE_HOME="/opt/rye"
 ENV PATH="$RYE_HOME/shims:$PATH"
 
 # hadolint ignore=DL3008
-RUN apt-get update && \
+RUN apt-get clean && \
+    apt-get update && \
     apt-get install -y --no-install-recommends \
         ca-certificates \
         curl \

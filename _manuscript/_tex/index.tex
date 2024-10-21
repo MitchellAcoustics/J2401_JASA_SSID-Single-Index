@@ -43,14 +43,28 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
+\makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
 \fi
 \ifx\subparagraph\undefined\else
   \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
+\makeatother
 
 
 \providecommand{\tightlist}{%
@@ -120,6 +134,7 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 \journal{Journal of the Acoustical Society of America}
+
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -139,6 +154,7 @@
   citecolor={Blue},
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
+
 
 \setlength{\parindent}{6pt}
 \begin{document}
@@ -205,6 +221,7 @@ and a method for empirically defining perception indices is proposed.
 \end{keyword}
 \end{frontmatter}
     
+
 \section{Introduction}\label{introduction}
 
 The EU Green Paper on Future Noise Policy indicates that 80 million EU
@@ -276,12 +293,12 @@ contexts and definitions of what a `good' soundscape is for a given
 purpose. To address this, we will propose the Soundscape Perception
 Index (SPI) framework, a flexible method for defining single value
 indices of soundscape quality based on distributions within the
-Soundscape Circumplex Model (SCM) \citep[\citet{Axelsson2012Swedish},
-\citet{Mitchell2022How}]{Axelsson2010principal}. As previously
-suggested, the primary motivation behind the development of the
-Soundscape Perception Indices (SPI) framework stems from the need to
-address the existing gap in quantifying and comparing soundscape quality
-across diverse contexts and applications. By creating a unified
+Soundscape Circumplex Model (SCM)
+\citep[@Axelsson2012Swedish, @Mitchell2022How]{Axelsson2010principal}.
+As previously suggested, the primary motivation behind the development
+of the Soundscape Perception Indices (SPI) framework stems from the need
+to address the existing gap in quantifying and comparing soundscape
+quality across diverse contexts and applications. By creating a unified
 framework for defining these indices, the aim is to is to empower
 stakeholders, decision-makers, and researchers with the ability to
 create tailored indices that align with their specific objectives and
@@ -1291,7 +1308,7 @@ between soundscape indicators, through descriptors, to indices can be
 made by predictive soundscape models. These models are trained on
 increasingly large scale datasets and generally designed to predict
 soundscape descriptors, including the SCM attributes
-\citep[\citet{Hou2024Soundscape}]{Ooi2022Probably}. With the complex and
+\citep[@Hou2024Soundscape]{Ooi2022Probably}. With the complex and
 multidimensional nature of soundscape perception and with the rapid
 progression in machine learning techniques and applications, an index
 framework should be able to integrate new and improved models. By
@@ -1441,6 +1458,7 @@ Conceptualization, Supervision, Funding acquisition.
 
 \renewcommand\refname{References}
   \bibliography{FellowshipRefs-biblatex.bib}
+
 
 
 \end{document}
