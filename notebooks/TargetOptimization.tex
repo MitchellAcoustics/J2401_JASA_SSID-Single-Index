@@ -203,7 +203,7 @@
 \author[1]{Andrew Mitchell%
 \corref{cor1}%
 }
- \ead{andrew.mitchell.18@ucl.ac.uk} 
+ \ead{a.j.mitchell@ucl.ac.uk} 
 \author[1]{Francesco Aletta%
 %
 }
@@ -217,6 +217,13 @@ Upper Woburn Place},city={London},postcode={WC1H 0NN},postcodesep={}}
 
 
         
+\begin{abstract}
+This document provides additional detail for the multi-objective
+optimization method of deriving Soundscape Perception Indices (SPI) from
+soundscape data presented in Section IV.B.1 of \emph{Soundscape
+Perception Indices (SPI): Developing context-dependent single value
+scores of multidimensional soundscape perceptual quality}
+\end{abstract}
 
 
 
@@ -231,86 +238,53 @@ Upper Woburn Place},city={London},postcode={WC1H 0NN},postcodesep={}}
 \tableofcontents
 }
 
-\section{Supplementary Material}\label{supplementary-material}
+The method is based on the optimization of a set of objective functions
+that are designed to capture the most important aspects of soundscape
+perception. The optimization is performed using a genetic algorithm,
+which is a stochastic optimization method that is well-suited to the
+multi-objective optimization problem of deriving SPI targets.
 
-\subsection{Multi-objective Optimization to Derive an SPI
-target}\label{multi-objective-optimization-to-derive-an-spi-target}
+\section{\texorpdfstring{Role of \emph{a priori} rankings in target
+definition}{Role of a priori rankings in target definition}}\label{role-of-a-priori-rankings-in-target-definition}
 
-To set up the optimisation task, we first need to express the parameter
-space and any constraints. Since our goal is to identify an optimised
-soundscape target distribution, the parameters we will search over are:
+The core challenge in developing a reference SPI target is determining
+what constitutes an ``ideal'' soundscape perception distribution for a
+given context. While we can directly specify MSN parameters to create
+bespoke targets based on theoretical expectations or design goals,
+developing empirically-grounded reference targets requires a more
+systematic approach.
 
-\begin{itemize}
-\item
-  \(\xi = (\xi_x, \xi_y)\), \(-1 \leq \xi \leq 1\)
-\item
-  \(\Omega = \begin{pmatrix} var(x) & cov(x, y) \\ cov(y, x) & var(y) \end{pmatrix}\)
+The a priori ranking serves as a bridge between existing knowledge about
+soundscape quality and the mathematical framework of the SPI. By
+starting with a ranking of soundscapes whose relative quality has been
+assessed through some external measure (in this demonstration, mean
+SSS01 scores, though other metrics could be used), we can use
+optimization techniques to derive MSN parameters that:
 
-  \begin{itemize}
-  \tightlist
-  \item
-    \(0 \leq var() \leq 1\)
-  \item
-    \(-1 \leq cov() \leq 1\)
-  \item
-    \(\Omega\) must be symmetric and positive definite
-  \end{itemize}
-\item
-  \(\alpha = (\alpha_x, \alpha_y)\), \(-5 \leq \alpha \leq 5\)
-\item
-  \(-1 \leq x, y \leq 1\) In \texttt{pymoo}, each objective function is
-  supposed to be minimized. Therefore, we need to convert both SPI and
-  r() to minimize problems.
-\item
-  min \(-r(ranks_{quality}, ranks_{target})\)
-\item
-  min \(-mean(SPI_{target}(X_i))\)
-\end{itemize}
-
-The final objective function is:
-
-\begin{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \(f_1 = -r(ranks_{quality}, ranks_{target})\)
+  When used as an SPI target, produce scores that result in the same
+  ranking order
 \item
-  \(f_2 = -mean(SPI_{target}(X_i))\)
-\end{itemize}
+  Generate high SPI scores for the highly-ranked soundscapes
+\item
+  Define a distribution in the circumplex space that captures the
+  perceptual characteristics common to high-quality soundscapes in this
+  context
+\end{enumerate}
 
-So our variables to optimize are:
-
-\begin{itemize}
-\tightlist
-\item
-  \(-1 \leq \xi_x \leq 1\)
-\item
-  \(-1 \leq \xi_y \leq 1\)
-\item
-  \(0 \leq var(x) \leq 1\)
-\item
-  \(0 \leq var(y) \leq 1\)
-\item
-  \(-1 \leq cov(x, y) \leq 1\)
-\item
-  \(-5 \leq \alpha_x \leq 5\)
-\item
-  \(-5 \leq \alpha_y \leq 5\)
-\end{itemize}
-
-Constraint: - \(\Omega\) must be symmetric and positive definite -
-\texttt{np.linalg.eigvals(omega)\ \textgreater{}\ 0}
-
-We then define the objective functions based on the two goals given
-above. For each step in the algorithm with a given trial set of
-parameters, a target distribution will be produced, the SPI for each
-test location assessed according to the protocol described in
-Section\textasciitilde{}\ref{sec-method}, and the resulting set of SPI
-scores and ranking will be scored using the objective functions. Goal
-(1) is assessed by calculating the Spearman rank correlation between the
-\emph{a priori} ranking and the SPI ranking:
+This approach allows us to work backwards from known good (and poor)
+examples to define what the target distribution should look like. For
+instance, if we know that location A has a better soundscape than
+location B for our purposes, the optimal target distribution should
+result in location A receiving a higher SPI score than location B.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# Import libraries}
+
 \ImportTok{import}\NormalTok{ warnings}
 \ImportTok{from}\NormalTok{ pathlib }\ImportTok{import}\NormalTok{ Path}
 
@@ -326,17 +300,23 @@ scores and ranking will be scored using the objective functions. Goal
 \end{Highlighting}
 \end{Shaded}
 
+\subsection{Example using park soundscapes from the
+ISD}\label{example-using-park-soundscapes-from-the-isd}
+
+To demonstrate the method of deriving an SPI target from empirical data,
+we used a subset of locations from the International Soundscape Database
+(ISD) (Mitchell et al., 2024) that were classified as parks or park-like
+spaces.
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Load latest ISD dataset}
-\CommentTok{\# data = sspy.isd.load\_zenodo()}
 \CommentTok{\# Load latest ISD dataset}
 
 \NormalTok{data }\OperatorTok{=}\NormalTok{ sspy.isd.load()}
 \NormalTok{data, excl\_data }\OperatorTok{=}\NormalTok{ sspy.isd.validate(data)}
 \NormalTok{data }\OperatorTok{=}\NormalTok{ data.query(}\StringTok{"Language != \textquotesingle{}cmn\textquotesingle{}"}\NormalTok{)}
 
-\CommentTok{\# Exclude RegentsParkJapan outliers}
+\CommentTok{\# Exclude RegentsParkJapan outliers (the below code resulted in the \textasciigrave{}excl\_id\textasciigrave{} list)}
 \CommentTok{\# excl\_id = list(data.query(}
     \CommentTok{\# "LocationID == \textquotesingle{}RegentsParkJapan\textquotesingle{}"}
     \CommentTok{\# ).query("ISOEventful \textgreater{} 0.72 | ISOEventful \textless{} {-}0.5").index)}
@@ -345,65 +325,9 @@ scores and ranking will be scored using the objective functions. Goal
     \CommentTok{\# "LocationID == \textquotesingle{}RegentsParkFields\textquotesingle{} and ISOPleasant \textless{} 0").index) \# Helicopters}
 \NormalTok{excl\_id }\OperatorTok{=}\NormalTok{ [}\DecValTok{652}\NormalTok{, }\DecValTok{706}\NormalTok{, }\DecValTok{548}\NormalTok{, }\DecValTok{550}\NormalTok{, }\DecValTok{551}\NormalTok{, }\DecValTok{553}\NormalTok{, }\DecValTok{569}\NormalTok{, }\DecValTok{580}\NormalTok{, }\DecValTok{609}\NormalTok{, }\DecValTok{618}\NormalTok{, }\DecValTok{623}\NormalTok{, }\DecValTok{636}\NormalTok{, }\DecValTok{643}\NormalTok{]}
 \NormalTok{data.drop(excl\_id, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
-\NormalTok{data}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{longtable}[]{@{}llllllllllllllllllllll@{}}
-\toprule\noalign{}
-& LocationID & SessionID & GroupID & RecordID & start\_time & end\_time
-& latitude & longitude & Language & Survey\_Version & ... &
-RA\_cp90\_Max & RA\_cp95\_Max & THD\_THD\_Max & THD\_Min\_Max &
-THD\_Max\_Max & THD\_L5\_Max & THD\_L10\_Max & THD\_L50\_Max &
-THD\_L90\_Max & THD\_L95\_Max \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-0 & CarloV & CarloV2 & 2CV12 & 1434 & 2019-05-16 18:46:00 & 2019-05-16
-18:56:00 & 37.17685 & -3.590392 & eng & engISO2018 & ... & 8.15 & 6.72 &
--0.09 & -11.76 & 54.18 & 34.82 & 26.53 & 5.57 & -9.00 & -10.29 \\
-1 & CarloV & CarloV2 & 2CV12 & 1435 & 2019-05-16 18:46:00 & 2019-05-16
-18:56:00 & 37.17685 & -3.590392 & eng & engISO2018 & ... & 8.15 & 6.72 &
--0.09 & -11.76 & 54.18 & 34.82 & 26.53 & 5.57 & -9.00 & -10.29 \\
-2 & CarloV & CarloV2 & 2CV13 & 1430 & 2019-05-16 19:02:00 & 2019-05-16
-19:12:00 & 37.17685 & -3.590392 & eng & engISO2018 & ... & 5.00 & 3.91 &
--2.10 & -19.32 & 72.52 & 32.33 & 24.52 & 0.25 & -16.30 & -17.33 \\
-3 & CarloV & CarloV2 & 2CV13 & 1431 & 2019-05-16 19:02:00 & 2019-05-16
-19:12:00 & 37.17685 & -3.590392 & eng & engISO2018 & ... & 5.00 & 3.91 &
--2.10 & -19.32 & 72.52 & 32.33 & 24.52 & 0.25 & -16.30 & -17.33 \\
-4 & CarloV & CarloV2 & 2CV13 & 1432 & 2019-05-16 19:02:00 & 2019-05-16
-19:12:00 & 37.17685 & -3.590392 & eng & engISO2018 & ... & 5.00 & 3.91 &
--2.10 & -19.32 & 72.52 & 32.33 & 24.52 & 0.25 & -16.30 & -17.33 \\
-... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... &
-... & ... & ... & ... & ... & ... & ... & ... & ... & ... \\
-1693 & Noorderplantsoen & Noorderplantsoen1 & NP161 & 61 & 2020-03-11
-12:42:00 & 2020-03-11 12:55:00 & NaN & NaN & nld & nldSSIDv1 & ... &
-2.54 & 2.00 & -3.17 & -11.97 & 59.64 & 37.87 & 26.54 & 6.33 & -9.79 &
--10.34 \\
-1694 & Noorderplantsoen & Noorderplantsoen1 & NP162 & 63 & 2020-03-11
-12:39:00 & 2020-03-11 13:00:00 & NaN & NaN & nld & nldSSIDv1 & ... & NaN
-& NaN & NaN & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
-1695 & Noorderplantsoen & Noorderplantsoen1 & NP162 & 62 & 2020-03-11
-12:54:00 & 2020-03-11 12:58:00 & NaN & NaN & nld & nldSSIDv1 & ... & NaN
-& NaN & NaN & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
-1696 & Noorderplantsoen & Noorderplantsoen1 & NP162 & 64 & 2020-03-11
-12:56:00 & 2020-03-11 12:59:00 & NaN & NaN & nld & nldSSIDv1 & ... & NaN
-& NaN & NaN & NaN & NaN & NaN & NaN & NaN & NaN & NaN \\
-1697 & Noorderplantsoen & Noorderplantsoen1 & NP163 & 70 & 2020-03-11
-23:08:00 & 2020-03-11 23:18:00 & NaN & NaN & nld & nldSSIDv1 & ... &
-2.58 & 1.99 & -3.20 & -9.67 & 57.99 & 35.54 & 29.32 & 8.86 & -5.61 &
--6.71 \\
-\end{longtable}
-
-\subsection{Calculate ISOPleasant and ISOEventful
-coordinates}\label{calculate-isopleasant-and-isoeventful-coordinates}
-
-Here we use the adjusted angles from Aletta et al.~(2024) for each
-language included.
-
-\begin{Shaded}
-\begin{Highlighting}[]
+\CommentTok{\# Calculate ISOPleasant and ISOEventful}
+\CommentTok{\# Here we use the adjusted angles from Aletta et al. (2024) for each language included.}
 \ControlFlowTok{for}\NormalTok{ i, row }\KeywordTok{in}\NormalTok{ data.iterrows():}
 \NormalTok{    lang }\OperatorTok{=}\NormalTok{ row[}\StringTok{"Language"}\NormalTok{]}
 \NormalTok{    angles }\OperatorTok{=}\NormalTok{ LANGUAGE\_ANGLES[lang]}
@@ -416,9 +340,11 @@ language included.
 \end{Highlighting}
 \end{Shaded}
 
+The following locations were identified as parks and included:
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Separate out parks and non{-}parks}
+\CommentTok{\# Separate out parks}
 
 \NormalTok{parks }\OperatorTok{=}\NormalTok{ [}
     \StringTok{"RegentsParkFields"}\NormalTok{,}
@@ -432,34 +358,23 @@ language included.
     \StringTok{"CampoPrincipe"}\NormalTok{,}
 \NormalTok{]}
 
-\NormalTok{not\_parks }\OperatorTok{=}\NormalTok{ [}
-    \StringTok{"MarchmontGarden"}\NormalTok{,}
-    \StringTok{"PancrasLock"}\NormalTok{,}
-    \StringTok{"TateModern"}\NormalTok{,}
-    \StringTok{"PlazaBibRambla"}\NormalTok{,}
-    \StringTok{"SanMarco"}\NormalTok{,}
-    \StringTok{"StPaulsRow"}\NormalTok{,}
-    \StringTok{"CarloV"}\NormalTok{,}
-    \StringTok{"CamdenTown"}\NormalTok{,}
-    \StringTok{"EustonTap"}\NormalTok{,}
-    \StringTok{"TorringtonSq"}\NormalTok{,}
-\NormalTok{]}
-
 \NormalTok{park\_data }\OperatorTok{=}\NormalTok{ data.query(}\StringTok{"LocationID in @parks"}\NormalTok{)}
-\NormalTok{not\_park\_data }\OperatorTok{=}\NormalTok{ data.query(}\StringTok{"LocationID in @not\_parks"}\NormalTok{)}
-
-\NormalTok{rank\_on }\OperatorTok{=} \StringTok{"sss01"}
 \end{Highlighting}
 \end{Shaded}
+
+An initial ranking of these locations was created based on their mean
+SSS01 scores (overall soundscape quality rating) from the survey
+responses in the ISD:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Creating a somewhat arbitrary ranking of parks}
+\NormalTok{rank\_on }\OperatorTok{=} \StringTok{"sss01"}
 \NormalTok{park\_quality }\OperatorTok{=}\NormalTok{ pd.DataFrame(}
 \NormalTok{    park\_data.groupby(}\StringTok{"LocationID"}\NormalTok{)[rank\_on].mean().sort\_values(ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
 \NormalTok{)}
 \NormalTok{park\_quality[}\StringTok{"Rank"}\NormalTok{] }\OperatorTok{=} \BuiltInTok{range}\NormalTok{(}\DecValTok{1}\NormalTok{, }\BuiltInTok{len}\NormalTok{(park\_quality) }\OperatorTok{+} \DecValTok{1}\NormalTok{)}
-\NormalTok{park\_quality}
+\NormalTok{park\_quality.head(}\DecValTok{10}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -481,97 +396,164 @@ StPaulsCross & 3.803030 & 7 \\
 Noorderplantsoen & 2.412371 & 8 \\
 \end{longtable}
 
-\subsection{\texorpdfstring{\texttt{pymoo} Multi-objective
-Optimization}{pymoo Multi-objective Optimization}}\label{pymoo-multi-objective-optimization}
+It's important to note that, as stated in the main paper, this ranking
+is used primarily to demonstrate the methodology of deriving a target
+from a pre-existing ranking. While based on real survey data, this
+particular ranking should not be considered a definitive assessment of
+these spaces' soundscape quality, due to the mono-dimensional nature of
+the SSS01 question. To develop a true reference target, the ranking
+would need to be arrived at through more rigorous empirical methods such
+as paired-choice comparisons or other experimental protocols. The
+purpose of using this ranking is twofold:
 
-Defining the optimization problem:
-
-\begin{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  max \(r(ranks_{quality}, ranks_{target})\)
+  To demonstrate that the SPI framework can incorporate existing
+  knowledge or preferences about soundscape quality into the target
+  definition process
 \item
-  max \(mean(SPI_{target}(X_i))\)
-\end{itemize}
+  To show how multi-objective optimization can be used to derive MSN
+  parameters that produce an SPI scoring system aligned with
+  predetermined quality assessments
+\end{enumerate}
 
-where \(r\) is the rank correlation coefficient, \(ranks_{quality}\) and
-\(ranks_{target}\) are the ranks of the quality and target values, and
-\(SPI_{target}(X_i)\) is the SPI for a given target on the data for the
-\(i\)-th location. Therefore we are trying to achieve the best
-correlation between the desired ranking and the ranking produced by
-\(SPI_{target}\) \emph{and} to achieve the highest mean
-\(SPI_{target}\).
+\section{Optimisation Task
+Formulation}\label{optimisation-task-formulation}
 
-\(ranks_{quality}\) is pre-defined. \(ranks_{target}\) is calculated by
-sorting the target values and assigning ranks to them. \(SPI_{target}\)
-is calculated for each location and target.
+\subsection{SPI Targets}\label{sec-targets}
 
-\texttt{target\_success(target,\ pre\_ranks,\ data)}
+To set up the optimisation task, we first need to express the parameter
+space and any constraints. The SPI target is a set of parameters that
+define the distribution of soundscape perception in a given soundscape.
+The target is defined as a multivariate skew-normal (MSN) distribution
+with the following parameters:
 
-\texttt{target} = \texttt{MultiSkewNorm}(\(\xi\), \(\Omega\),
-\(\alpha\)) parameters
+\begin{equation}\phantomsection\label{eq-target}{
+Y \sim MSN(\xi, \Omega, \alpha)
+}\end{equation}
 
-\begin{itemize}
+where:
+
+\begin{equation}\phantomsection\label{eq-target-xi}{
+\xi = (\xi_x, \xi_y), -1 \leq \xi \leq 1
+}\end{equation}
+
+is the location parameter, which defines the mean of the distribution in
+the x and y dimensions. The location parameter is constrained to lie
+within the range \(-1 \leq \xi \leq 1\) to ensure that the target
+distribution is within the range of possible soundscape perceptions
+(i.e.~within the circumplex).
+
+\begin{equation}\phantomsection\label{eq-target-omega}{
+\Omega = \begin{pmatrix} var(x) & cov(x, y) \\ cov(y, x) & var(y) \end{pmatrix}
+}\end{equation}
+
+and
+
+\begin{equation}\phantomsection\label{eq-target-omega-constraints}{
+0 \leq var() \leq 1; -1 \leq cov() \leq 1
+}\end{equation}
+
+is the covariance matrix, which defines the shape of the distribution.
+The covariance matrix must be symmetric \((cov(x,y) = cov(y,x))\) and
+positive definite to ensure that the distribution is well-defined. These
+requirements arise from the mathematical properties needed for a valid
+probability distribution. The variance and covariance parameters are
+constrained within realistic ranges based on observed soundscape
+distributions in the ISD.
+
+\begin{equation}\phantomsection\label{eq-target-alpha}{
+\alpha = (\alpha_x, \alpha_y), -5 \leq \alpha \leq 5
+}\end{equation}
+
+is the skewness parameter, which defines the skewness of the
+distribution in the x and y dimensions. The skewness parameter range is
+chosen to allow for meaningful asymmetry while preventing extreme or
+unrealistic distributions.
+
+\subsection{Objective Functions}\label{objective-functions}
+
+Our optimization problem requires carefully chosen objective functions
+that can effectively translate an ordinal ranking of soundscape quality
+into meaningful MSN parameters. Two competing objectives are defined to
+ensure the resulting target distribution is both valid and useful:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \item
-  \(\xi = (\xi_x, \xi_y)\), \(-1 \leq \xi \leq 1\)
+  Rank Correlation Objective:
+
+  \[
+   f_1 = r(ranks_{quality}, ranks_{target})
+   \]
+
+  where \(r\) is the Spearman rank correlation coefficient. This
+  objective ensures the derived target preserves the original quality
+  ordering of the soundscapes. A high rank correlation indicates that
+  when the target is used to calculate SPI scores for each location,
+  those scores produce a similar ranking to our \emph{a priori}
+  assessment.
 \item
-  \(\Omega = \begin{pmatrix} var(x) & cov(x, y) \\ cov(y, x) & var(y) \end{pmatrix}\)
+  Weighted SPI Objective:
+
+  \[
+   f_2 = \sum_{i=1}^{m} \frac{1}{rank_i} \cdot SPI_i
+   \]
+
+  where \(m\) is the number of locations and \(rank_i\) is the \emph{a
+  priori} rank of location \(i\). This objective addresses several
+  important aspects:
 
   \begin{itemize}
   \tightlist
   \item
-    \(0 \leq var() \leq 1\)
+    It ensures the target produces meaningfully scaled scores, not just
+    correct rankings
   \item
-    \(-1 \leq cov() \leq 1\)
+    The weighting (\(\frac{1}{rank_i}\)) prioritizes high SPI scores for
+    locations ranked as high quality
   \item
-    \(\Omega\) must be symmetric and positive definite
+    It prevents solutions that achieve the correct ranking but with
+    compressed or arbitrary score ranges
+  \item
+    It helps anchor the target distribution in regions of the circumplex
+    space associated with positive soundscape experiences for this
+    context.
   \end{itemize}
-\item
-  \(\alpha = (\alpha_x, \alpha_y)\), \(-5 \leq \alpha \leq 5\)
-\item
-  \(-1 \leq x, y \leq 1\) In \texttt{pymoo}, each objective function is
-  supposed to be minimized. Therefore, we need to convert both SPI and
-  r() to minimize problems.
-\item
-  min \(-r(ranks_{quality}, ranks_{target})\)
-\item
-  min \(-mean(SPI_{target}(X_i))\)
-\end{itemize}
+\end{enumerate}
 
-The final objective function is:
+The two objectives work together to resolve key challenges in target
+derivation:
 
 \begin{itemize}
 \tightlist
 \item
-  \(f_1 = -r(ranks_{quality}, ranks_{target})\)
+  Rank correlation alone could produce valid but impractical targets
+  (e.g., targets that correctly rank soundscapes but give very low
+  scores to all locations)
 \item
-  \(f_2 = -mean(SPI_{target}(X_i))\)
+  Weighted scores alone might maximize scores without preserving the
+  relative quality relationships
+\item
+  Together, they ensure the target both discriminates between soundscape
+  quality levels and produces scores that reflect absolute quality
+  judgments
 \end{itemize}
 
-So our variables to optimize are:
+In \texttt{pymoo}, each objective function is supposed to be minimized.
+Therefore, in the code implementation these objectives are negated to
+convert them into minimization problems. For each step in the algorithm
+with a given trial set of parameters, a target distribution will be
+produced, the SPI for each test location assessed according to the
+protocol described in the full paper, and the resulting set of SPI
+scores and ranking will be scored using the objective functions.
 
-\begin{itemize}
-\tightlist
-\item
-  \(-1 \leq \xi_x \leq 1\)
-\item
-  \(-1 \leq \xi_y \leq 1\)
-\item
-  \(0 \leq var(x) \leq 1\)
-\item
-  \(0 \leq var(y) \leq 1\)
-\item
-  \(-1 \leq cov(x, y) \leq 1\)
-\item
-  \(-5 \leq \alpha_x \leq 5\)
-\item
-  \(-5 \leq \alpha_y \leq 5\)
-\end{itemize}
-
-Constraint: - \(\Omega\) must be symmetric and positive definite -
-\texttt{np.linalg.eigvals(omega)\ \textgreater{}\ 0}
-
-\subsubsection{Problem Definition}\label{problem-definition}
+\subsection[NSGA-II Problem Definition in \texttt{pymoo}
+]{\texorpdfstring{NSGA-II Problem Definition in \texttt{pymoo}
+\footnote{Disclosure: The LLM `Claude Sonnet' was used to assist in
+  writing the explanation and code in this section.}}{NSGA-II Problem Definition in pymoo }}\label{nsga-ii-problem-definition-in-pymoo}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -642,6 +624,24 @@ Constraint: - \(\Omega\) must be symmetric and positive definite -
 \end{Highlighting}
 \end{Shaded}
 
+The optimization problem described above presents significant
+computational challenges. A naive approach might involve systematically
+sampling the parameter space through a grid search, evaluating both
+objective functions at each point. However, with seven parameters to
+optimize and the need for fine granularity to capture optimal solutions,
+the search space becomes prohibitively large. Additionally, the
+requirement that the covariance matrix must be positive definite creates
+irregular boundaries in the parameter space that make systematic
+searching impractical.
+
+We therefore employ the Non-dominated Sorting Genetic Algorithm II
+(NSGA-II), which uses principles from evolutionary computation to search
+the parameter space efficiently. The algorithm maintains a population of
+potential solutions, where each solution represents a complete set of
+MSN parameters (ξ, Ω, α). In our implementation, we use a population of
+150 solutions, initialized randomly within the parameter constraints
+defined in Section~\ref{sec-targets}.
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \ImportTok{from}\NormalTok{ pymoo.algorithms.moo.nsga2 }\ImportTok{import}\NormalTok{ NSGA2}
@@ -664,8 +664,47 @@ Constraint: - \(\Omega\) must be symmetric and positive definite -
 \end{Highlighting}
 \end{Shaded}
 
-\subsubsection{Park Quality
-optimization}\label{park-quality-optimization}
+The algorithm proceeds iteratively, with each iteration (or generation)
+involving four main steps:
+
+First, the algorithm evaluates both objective functions (rank
+correlation and weighted scores) for each solution in the current
+population. Since we have multiple objectives, there is rarely a single
+``best'' solution. Instead, solutions are ranked based on dominance -
+solution A dominates solution B if it performs at least as well on both
+objectives and better on at least one. Solutions that are not dominated
+by any other solutions form the first front, those only dominated by
+solutions in the first front form the second front, and so on.
+
+Second, to maintain diversity in the population, the algorithm
+calculates a ``crowding distance'' for each solution. This distance
+measures how close a solution is to its neighbors in terms of objective
+function values. Solutions that are more isolated (have larger crowding
+distances) are preferred to prevent the population from clustering too
+tightly around local optima.
+
+Third, new solutions are generated through crossover and mutation
+operations. Crossover combines parameters from two parent solutions to
+create offspring solutions, while mutation introduces small random
+changes to parameter values. These operations are controlled to ensure
+new solutions remain within the valid parameter ranges and covariance
+matrix constraints.
+
+Finally, the algorithm selects solutions to form the next generation's
+population. Solutions are chosen primarily based on their front ranking
+(lower/better fronts are preferred), and within the same front,
+solutions with larger crowding distances are preferred. This selection
+process ensures both convergence toward better solutions and maintenance
+of diversity in the population.
+
+The algorithm runs for 100 generations, producing a set of solutions
+known as the Pareto front - solutions representing different trade-offs
+between our two objectives. From this front, we select a final solution
+using an Augmented Scalarizing Function with weights {[}0.48, 0.52{]},
+indicating a slight preference for the weighted score objective while
+maintaining strong rank correlation.
+
+\subsection{Park Quality optimization}\label{park-quality-optimization}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -675,10 +714,12 @@ optimization}\label{park-quality-optimization}
 \NormalTok{pool }\OperatorTok{=}\NormalTok{ mp.Pool(n\_process)}
 \NormalTok{runner }\OperatorTok{=}\NormalTok{ StarmapParallelization(pool.starmap)}
 
+\CommentTok{\# Initialize the NSGA problem}
 \NormalTok{park\_problem }\OperatorTok{=}\NormalTok{ MyProblem(}
 \NormalTok{    data}\OperatorTok{=}\NormalTok{park\_data, ranking}\OperatorTok{=}\NormalTok{park\_quality.sort\_index()[}\StringTok{"Rank"}\NormalTok{], elementwise\_runner}\OperatorTok{=}\NormalTok{runner}
 \NormalTok{)}
 
+\CommentTok{\# Run the optimization}
 \NormalTok{park\_res }\OperatorTok{=}\NormalTok{ minimize(}
 \NormalTok{    park\_problem, algorithm, termination, seed}\OperatorTok{=}\DecValTok{42}\NormalTok{, save\_history}\OperatorTok{=}\VariableTok{True}\NormalTok{, verbose}\OperatorTok{=}\VariableTok{True}
 \NormalTok{)}
@@ -695,162 +736,139 @@ optimization}\label{park-quality-optimization}
 n_gen  |  n_eval  | n_nds  |     cv_min    |     cv_avg    |      eps      |   indicator  
 ==========================================================================================
      1 |      150 |      2 |  0.000000E+00 |  0.7599240000 |             - |             -
-     2 |      300 |      2 |  0.000000E+00 |  0.3732960000 |  0.1111111111 |         ideal
-     3 |      450 |      4 |  0.000000E+00 |  0.000000E+00 |  0.2500000000 |         ideal
-     4 |      600 |      5 |  0.000000E+00 |  0.000000E+00 |  0.0335522234 |             f
-     5 |      750 |      5 |  0.000000E+00 |  0.000000E+00 |  0.0680302031 |         ideal
-     6 |      900 |      9 |  0.000000E+00 |  0.000000E+00 |  0.2047687061 |         ideal
-     7 |     1050 |     11 |  0.000000E+00 |  0.000000E+00 |  0.2929936306 |         nadir
-     8 |     1200 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0966259235 |         ideal
-     9 |     1350 |      7 |  0.000000E+00 |  0.000000E+00 |  0.0782387648 |         ideal
-    10 |     1500 |      8 |  0.000000E+00 |  0.000000E+00 |  0.0611556026 |         ideal
-    11 |     1650 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0333333333 |         ideal
-    12 |     1800 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0334725144 |             f
-    13 |     1950 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0059250141 |             f
-    14 |     2100 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0304028573 |             f
-    15 |     2250 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0027672766 |             f
-    16 |     2400 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0362256249 |         ideal
-    17 |     2550 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0257801437 |             f
-    18 |     2700 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0329304891 |         nadir
-    19 |     2850 |      8 |  0.000000E+00 |  0.000000E+00 |  0.0276813880 |         ideal
-    20 |     3000 |      8 |  0.000000E+00 |  0.000000E+00 |  0.0111481604 |             f
-    21 |     3150 |      9 |  0.000000E+00 |  0.000000E+00 |  0.0232629795 |         ideal
-    22 |     3300 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0026909865 |             f
-    23 |     3450 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0083226943 |             f
-    24 |     3600 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0314069149 |             f
-    25 |     3750 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0128504961 |             f
-    26 |     3900 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0013253064 |             f
-    27 |     4050 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0231753198 |         ideal
-    28 |     4200 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0054205862 |             f
-    29 |     4350 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0314117047 |         ideal
-    30 |     4500 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0165317133 |             f
-    31 |     4650 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0053217968 |             f
-    32 |     4800 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0045225121 |             f
-    33 |     4950 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0069662325 |             f
-    34 |     5100 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0094260974 |             f
-    35 |     5250 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0003031699 |             f
-    36 |     5400 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0030972357 |             f
-    37 |     5550 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    38 |     5700 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0032527831 |             f
-    39 |     5850 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0004001843 |             f
-    40 |     6000 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0009926650 |             f
-    41 |     6150 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0076455607 |             f
-    42 |     6300 |     15 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    43 |     6450 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0000258705 |             f
-    44 |     6600 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0046279606 |             f
-    45 |     6750 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0010413888 |             f
-    46 |     6900 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0010413888 |             f
-    47 |     7050 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0031917732 |             f
-    48 |     7200 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0009410395 |             f
-    49 |     7350 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0154731488 |         ideal
-    50 |     7500 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0003014637 |             f
-    51 |     7650 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0020714439 |             f
-    52 |     7800 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0020714439 |             f
-    53 |     7950 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0020714439 |             f
-    54 |     8100 |     17 |  0.000000E+00 |  0.000000E+00 |  0.0040563409 |             f
-    55 |     8250 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0042581308 |             f
-    56 |     8400 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0019451644 |             f
-    57 |     8550 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0040756506 |             f
-    58 |     8700 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0016595430 |             f
-    59 |     8850 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0040902713 |         ideal
-    60 |     9000 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    61 |     9150 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    62 |     9300 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    63 |     9450 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    64 |     9600 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0012311058 |             f
-    65 |     9750 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0012311058 |             f
-    66 |     9900 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0059885720 |             f
-    67 |    10050 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    68 |    10200 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    69 |    10350 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    70 |    10500 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    71 |    10650 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0000983841 |             f
-    72 |    10800 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0009176864 |             f
-    73 |    10950 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0317293086 |         nadir
-    74 |    11100 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0004672766 |             f
-    75 |    11250 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0004672766 |             f
-    76 |    11400 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0004672766 |             f
-    77 |    11550 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0004672766 |             f
-    78 |    11700 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0004672766 |             f
-    79 |    11850 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0004672766 |             f
-    80 |    12000 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0004672766 |             f
-    81 |    12150 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0004672766 |             f
-    82 |    12300 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0032732863 |             f
-    83 |    12450 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0009604547 |             f
-    84 |    12600 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0009604547 |             f
-    85 |    12750 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0009604547 |             f
-    86 |    12900 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0017378491 |             f
-    87 |    13050 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0017378491 |             f
-    88 |    13200 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0017378491 |             f
-    89 |    13350 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0017378491 |             f
-    90 |    13500 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0058632315 |             f
-    91 |    13650 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    92 |    13800 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    93 |    13950 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    94 |    14100 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    95 |    14250 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    96 |    14400 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    97 |    14550 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-    98 |    14700 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0080206105 |         ideal
+     2 |      300 |      4 |  0.000000E+00 |  0.3532980000 |  0.2307692308 |         ideal
+     3 |      450 |      5 |  0.000000E+00 |  0.000000E+00 |  0.2103253984 |             f
+     4 |      600 |      6 |  0.000000E+00 |  0.000000E+00 |  0.0675906442 |         ideal
+     5 |      750 |      7 |  0.000000E+00 |  0.000000E+00 |  0.4865944937 |         nadir
+     6 |      900 |      8 |  0.000000E+00 |  0.000000E+00 |  0.0400000000 |         ideal
+     7 |     1050 |      8 |  0.000000E+00 |  0.000000E+00 |  1.3605273566 |         nadir
+     8 |     1200 |      8 |  0.000000E+00 |  0.000000E+00 |  0.3479604701 |         ideal
+     9 |     1350 |      7 |  0.000000E+00 |  0.000000E+00 |  0.0532169713 |             f
+    10 |     1500 |      8 |  0.000000E+00 |  0.000000E+00 |  0.0283981598 |         nadir
+    11 |     1650 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0536853296 |         ideal
+    12 |     1800 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0389273969 |             f
+    13 |     1950 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0152857034 |             f
+    14 |     2100 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0220277675 |         ideal
+    15 |     2250 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0112857632 |         ideal
+    16 |     2400 |     15 |  0.000000E+00 |  0.000000E+00 |  0.2329789760 |         nadir
+    17 |     2550 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0298152224 |         ideal
+    18 |     2700 |     14 |  0.000000E+00 |  0.000000E+00 |  0.1541574361 |         nadir
+    19 |     2850 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0314136126 |         ideal
+    20 |     3000 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0221547289 |             f
+    21 |     3150 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0042640672 |             f
+    22 |     3300 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0221583788 |             f
+    23 |     3450 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0030074562 |             f
+    24 |     3600 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0038190783 |         ideal
+    25 |     3750 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0032096043 |             f
+    26 |     3900 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0029877594 |             f
+    27 |     4050 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0031231890 |             f
+    28 |     4200 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0087298000 |         ideal
+    29 |     4350 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0033031039 |             f
+    30 |     4500 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0100999852 |             f
+    31 |     4650 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0018602710 |             f
+    32 |     4800 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0035010475 |             f
+    33 |     4950 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0149444800 |         ideal
+    34 |     5100 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0056905039 |             f
+    35 |     5250 |     10 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    36 |     5400 |     10 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    37 |     5550 |     10 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    38 |     5700 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0006039017 |             f
+    39 |     5850 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0006039017 |             f
+    40 |     6000 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0006039017 |             f
+    41 |     6150 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0006039017 |             f
+    42 |     6300 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0017727437 |             f
+    43 |     6450 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0195162366 |             f
+    44 |     6600 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    45 |     6750 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    46 |     6900 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    47 |     7050 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    48 |     7200 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0042393714 |             f
+    49 |     7350 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0020779414 |             f
+    50 |     7500 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0020779414 |             f
+    51 |     7650 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0029476155 |             f
+    52 |     7800 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    53 |     7950 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0527040487 |         nadir
+    54 |     8100 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0022303428 |             f
+    55 |     8250 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0042397805 |             f
+    56 |     8400 |     11 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    57 |     8550 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0032736003 |             f
+    58 |     8700 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    59 |     8850 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    60 |     9000 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    61 |     9150 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    62 |     9300 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    63 |     9450 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0010929922 |             f
+    64 |     9600 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0010929922 |             f
+    65 |     9750 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0010929922 |             f
+    66 |     9900 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0010929922 |             f
+    67 |    10050 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0010929922 |             f
+    68 |    10200 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0010929922 |             f
+    69 |    10350 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0127464015 |         ideal
+    70 |    10500 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    71 |    10650 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    72 |    10800 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0000889336 |             f
+    73 |    10950 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0000889336 |             f
+    74 |    11100 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0000889336 |             f
+    75 |    11250 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0001067203 |             f
+    76 |    11400 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0001067203 |             f
+    77 |    11550 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0002112172 |             f
+    78 |    11700 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0002112172 |             f
+    79 |    11850 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0002112172 |             f
+    80 |    12000 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0002112172 |             f
+    81 |    12150 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0002112172 |             f
+    82 |    12300 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0002112172 |             f
+    83 |    12450 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0002112172 |             f
+    84 |    12600 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0002112172 |             f
+    85 |    12750 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0002112172 |             f
+    86 |    12900 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0002112172 |             f
+    87 |    13050 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0002112172 |             f
+    88 |    13200 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0067505547 |             f
+    89 |    13350 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    90 |    13500 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    91 |    13650 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0014340535 |             f
+    92 |    13800 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0027146967 |             f
+    93 |    13950 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    94 |    14100 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    95 |    14250 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    96 |    14400 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    97 |    14550 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    98 |    14700 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0030192941 |             f
     99 |    14850 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
-   100 |    15000 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0046174059 |             f
+   100 |    15000 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{weights }\OperatorTok{=}\NormalTok{ np.array([}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{])}
-\NormalTok{decomp }\OperatorTok{=}\NormalTok{ ASF()}
+\subsection{Selecting the best
+solution}\label{selecting-the-best-solution}
 
-\ControlFlowTok{with}\NormalTok{ Recorder(Video(}\StringTok{"park\_nsga2.mp4"}\NormalTok{)) }\ImportTok{as}\NormalTok{ rec:}
-    \ControlFlowTok{for}\NormalTok{ entry }\KeywordTok{in}\NormalTok{ park\_res.history:}
-        \CommentTok{\# Get the approximated ideal and nadir points}
-\NormalTok{        approx\_ideal }\OperatorTok{=}\NormalTok{ park\_res.F.}\BuiltInTok{min}\NormalTok{(axis}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
-\NormalTok{        approx\_nadir }\OperatorTok{=}\NormalTok{ park\_res.F.}\BuiltInTok{max}\NormalTok{(axis}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
+The optimization produces a set of non-dominated solutions forming a
+Pareto front, where each point represents a different set of MSN
+parameters. However, selecting a single solution from this front
+requires careful consideration of the relative scales of our objective
+functions. The rank correlation objective (f₁) typically ranges from -1
+to 1, while the weighted SPI score objective (f₂) can range from 0 to
+100. This difference in scales means we cannot directly compare or
+combine these objectives without normalization.
 
-        \CommentTok{\# Normalize the obtained front}
-\NormalTok{        nF }\OperatorTok{=}\NormalTok{ (entry.pop.get(}\StringTok{"F"}\NormalTok{) }\OperatorTok{{-}}\NormalTok{ approx\_ideal) }\OperatorTok{/}\NormalTok{ (approx\_nadir }\OperatorTok{{-}}\NormalTok{ approx\_ideal)}
-\NormalTok{        park\_I }\OperatorTok{=}\NormalTok{ decomp(nF, weights).argmin()}
-\NormalTok{        sc }\OperatorTok{=}\NormalTok{ Scatter(title}\OperatorTok{=}\StringTok{"Generation: }\SpecialCharTok{\%s}\StringTok{"} \OperatorTok{\%}\NormalTok{ entry.n\_gen)}
-\NormalTok{        sc.add(entry.pop.get(}\StringTok{"F"}\NormalTok{))}
-\NormalTok{        sc.add(entry.pop.get(}\StringTok{"F"}\NormalTok{)[park\_I], color}\OperatorTok{=}\StringTok{"red"}\NormalTok{, s}\OperatorTok{=}\DecValTok{30}\NormalTok{)}
-\NormalTok{        sc.do()}
-\NormalTok{        rec.record()}
+To address this scale disparity, we first approximate the boundaries of
+our objective space using the best and worst values found for each
+objective during the optimization process. These boundary points (called
+the ideal and nadir points) allow us to normalize both objectives to a
+common scale ranging from 0 to 1. The normalized front maintains the
+same trade-off relationships between solutions but allows for fair
+weighting in the final selection process.
 
+To select a single solution from this normalized front, we employ the
+Augmented Scalarization Function (ASF). The ASF combines multiple
+objectives into a single metric while maintaining Pareto optimality. We
+assign equal weights {[}0.5, 0.5{]} to both objectives, indicating no
+preference between ranking accuracy and score distribution. The ASF also
+includes a small augmentation term that ensures we select solutions that
+perform reasonably well on both objectives rather than extremely well on
+one but poorly on the other.
 
-\ControlFlowTok{with}\NormalTok{ Recorder(Video(}\StringTok{"park\_nsga2\_sspy.mp4"}\NormalTok{)) }\ImportTok{as}\NormalTok{ rec:}
-    \ControlFlowTok{for}\NormalTok{ entry }\KeywordTok{in}\NormalTok{ park\_res.history:}
-        \CommentTok{\# Get the approximated ideal and nadir points}
-\NormalTok{        approx\_ideal }\OperatorTok{=}\NormalTok{ park\_res.F.}\BuiltInTok{min}\NormalTok{(axis}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
-\NormalTok{        approx\_nadir }\OperatorTok{=}\NormalTok{ park\_res.F.}\BuiltInTok{max}\NormalTok{(axis}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
+The solution minimizing the ASF yields the following MSN parameters:
 
-        \CommentTok{\# Normalize the obtained front}
-\NormalTok{        nF }\OperatorTok{=}\NormalTok{ (entry.pop.get(}\StringTok{"F"}\NormalTok{) }\OperatorTok{{-}}\NormalTok{ approx\_ideal) }\OperatorTok{/}\NormalTok{ (approx\_nadir }\OperatorTok{{-}}\NormalTok{ approx\_ideal)}
-\NormalTok{        park\_I }\OperatorTok{=}\NormalTok{ decomp(nF, weights).argmin()}
-\NormalTok{        park\_X }\OperatorTok{=}\NormalTok{ entry.pop.get(}\StringTok{"X"}\NormalTok{)[park\_I]}
-\NormalTok{        park\_tgt }\OperatorTok{=}\NormalTok{ MultiSkewNorm()}
-\NormalTok{        park\_tgt.define\_dp(}
-\NormalTok{            np.array([park\_X[}\DecValTok{0}\NormalTok{], park\_X[}\DecValTok{1}\NormalTok{]]),}
-\NormalTok{            np.array([[park\_X[}\DecValTok{2}\NormalTok{], park\_X[}\DecValTok{4}\NormalTok{]], [park\_X[}\DecValTok{4}\NormalTok{], park\_X[}\DecValTok{3}\NormalTok{]]]),}
-\NormalTok{            np.array([park\_X[}\DecValTok{5}\NormalTok{], park\_X[}\DecValTok{6}\NormalTok{]]),}
-\NormalTok{        )}
-\NormalTok{        park\_tgt.sample()}
-\NormalTok{        ss }\OperatorTok{=}\NormalTok{ sspy.plotting.density\_plot(}
-\NormalTok{            data}\OperatorTok{=}\NormalTok{pd.DataFrame(\{}
-                \StringTok{"ISOPleasant"}\NormalTok{: park\_tgt.sample\_data[:,}\DecValTok{0}\NormalTok{],}
-                \StringTok{"ISOEventful"}\NormalTok{: park\_tgt.sample\_data[:,}\DecValTok{1}\NormalTok{],}
-\NormalTok{            \}),}
-            \CommentTok{\# x=park\_tgt.sample\_data[:,0],}
-            \CommentTok{\# y=park\_tgt.sample\_data[:,1],}
-\NormalTok{            title}\OperatorTok{=}\StringTok{"Generation: }\SpecialCharTok{\%s}\StringTok{"} \OperatorTok{\%}\NormalTok{ entry.n\_gen,}
-\NormalTok{        )}
-\NormalTok{        rec.record()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-
-\centering{
-
+\phantomsection\label{park_tgt}
 \begin{Shaded}
 \begin{Highlighting}[]
 \ImportTok{from}\NormalTok{ pymoo.decomposition.asf }\ImportTok{import}\NormalTok{ ASF}
@@ -862,23 +880,69 @@ n_gen  |  n_eval  | n_nds  |     cv_min    |     cv_avg    |      eps      |   i
 \CommentTok{\# Normalize the obtained front}
 \NormalTok{nF }\OperatorTok{=}\NormalTok{ (park\_res.F }\OperatorTok{{-}}\NormalTok{ approx\_ideal) }\OperatorTok{/}\NormalTok{ (approx\_nadir }\OperatorTok{{-}}\NormalTok{ approx\_ideal)}
 
-\NormalTok{weights }\OperatorTok{=}\NormalTok{ np.array([}\FloatTok{0.48}\NormalTok{, }\FloatTok{0.52}\NormalTok{])}
+\NormalTok{weights }\OperatorTok{=}\NormalTok{ np.array([}\FloatTok{0.4}\NormalTok{, }\FloatTok{0.5}\NormalTok{])}
 \NormalTok{decomp }\OperatorTok{=}\NormalTok{ ASF()}
 
 \NormalTok{park\_I }\OperatorTok{=}\NormalTok{ decomp(nF, weights).argmin()}
-\BuiltInTok{print}\NormalTok{(}\StringTok{"Best regarding decomposition: Point }\SpecialCharTok{\%s}\StringTok{ {-} }\SpecialCharTok{\%s}\StringTok{"} \OperatorTok{\%}\NormalTok{ (park\_I, park\_res.F[park\_I]))}
+\CommentTok{\# print("Best regarding decomposition: Point \%s {-} \%s" \% (park\_I, park\_res.F[park\_I]))}
+
+\BuiltInTok{print}\NormalTok{(park\_tgt.summary())}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-Best regarding decomposition: Point 2 - [-0.71428571 -1.89225   ]
+Fitted from direct parameters.
+Direct Parameters:
+xi:    [0.694 0.406]
+omega: [[0.157 0.04 ]
+ [0.04  0.255]]
+alpha: [  5.054 -37.671]
+
+
+None
+None
 \end{verbatim}
 
-}
+These parameters define a target distribution that achieves a rank
+correlation of 0.714 with the a priori ranking while maintaining
+meaningfully scaled SPI scores. The location parameters (\(\xi\)) place
+the distribution's center in the vibrant quadrant of the circumplex,
+while the covariance matrix (\(\Omega\)) describes a moderately spread
+distribution with positive correlation between pleasantness and
+eventfulness. The skewness parameters (\(\alpha\)) indicate strong
+negative skew, particularly in the eventfulness dimension, suggesting
+the target favors soundscapes that avoid high eventfulness while
+maintaining moderate to high pleasantness.
 
-\caption{\label{fig-pymoo-park-pareto}}
+\subsection{Resulting Target
+Distribution}\label{resulting-target-distribution}
 
-\end{figure}%
+Figure~\ref{fig-pymoo-parks} (a) shows the Pareto front obtained from
+the optimization process, where each point represents a different set of
+MSN parameters and their corresponding objective function values. The
+x-axis shows the negative rank correlation (-f₁) and the y-axis shows
+the negative weighted SPI score (-f₂). The selected solution using the
+ASF with equal weights is highlighted in red. The spread of solutions
+along the front illustrates the fundamental trade-off between achieving
+perfect rank correlation and maximizing SPI scores.
+
+Figure~\ref{fig-pymoo-parks} (b) shows the resulting target distribution
+in the soundscape circumplex model, sampled from the MSN parameters of
+our selected solution. The distribution is centered in the
+pleasant-eventful quadrant but shows clear asymmetry, with a longer tail
+extending into the calm quadrant. This shape suggests that while the
+target generally favors pleasant soundscapes, it is more tolerant of
+variation in eventfulness than in pleasantness. The moderate spread of
+the distribution indicates that the target allows for some natural
+variation in perception while still maintaining clear preferences for
+certain regions of the circumplex.
+
+Together, these visualizations demonstrate both the optimization process
+(through the Pareto front) and its outcome (through the target
+distribution). The selected solution represents a balanced compromise
+between maintaining ranking accuracy and producing meaningful score
+distributions, while the resulting target distribution aligns with
+theoretical expectations about high-quality park soundscapes.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -947,25 +1011,6 @@ target distribution.}
 parameters which produce the Park ranking.}
 
 \end{figure}%
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{(park\_tgt.summary())}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-Fitted from direct parameters.
-Direct Parameters:
-xi:    [0.418 0.284]
-omega: [[ 0.164 -0.044]
- [-0.044  0.152]]
-alpha: [ 16.628 -30.187]
-
-
-None
-None
-\end{verbatim}
 
 
   \bibliography{FellowshipRefs.bib}
