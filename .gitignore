@@ -170,3 +170,5 @@ cython_debug/
 notebooks/TargetOptimization_files/*
 notebooks/SingleIndex-Code_files/*
 .DS_Store
+
+.ruff_cache
