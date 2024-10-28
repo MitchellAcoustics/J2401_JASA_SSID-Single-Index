@@ -1,39 +1,43 @@
 project:
-  # type: manuscript
-  title: "Soundscape Perception Indices (SPI)"
+  type: default
+  output-dir: paper
 
-execute:
-  freeze: auto
+manuscript:
+  article: index.qmd
+  # notebooks:
+  #   - notebooks/SingleIndex-Code.ipynb
+  #   - notebooks/TargetOptimization.ipynb
 
 format:
+  html:
+    # clean: true
+    toc: true
+    code-fold: true
+    # embed-resources: true
+    self-contained-math: true
+    output-file: paper.html
+    comments:
+      hypothesis: true
+  # docx: default
+  # jats: default
+  # typst: default
   elsevier-pdf:
+    # latex-clean: true
+    latex-output-dir: paper/_tex
+    keep-tex: false
+    output-file: paper.pdf
+    hyperrefoptions: 
+      - "citecolor=black"
     echo: false
-    keep-tex: true
-    keep-ipynb: true
     journal:
-      name: Journal of the Acoustical Society of America
+      name: JASA-EL
       formatting: preprint
       model: 3p
       cite-style: authoryear
-    # include-in-header:
-    #   text: |
-    #     \usepackage{lineno}
-    #     \linenumbers
-  # docx:
-  #   reference-doc: apaquarto.docx
-  #   number-sections: true
-  # qtypst-arkheion-typst:
-  #   keep-typ: true
-  #   suppress-bibliography: true
-  #   bib-file: "FellowshipRefs-biblatex.bib"
-    html:
-    toc: true
-    toc-expand: 3
-    theme: flatly
-    number-sections: true
-    code-fold: show
-    page-layout: full
-    embed-resources: true
-bibliography: FellowshipRefs-biblatex.bib
 
+  # (other formats)
+  # pdf: default
 
+execute:
+  freeze: auto
+  keep-ipynb: true
