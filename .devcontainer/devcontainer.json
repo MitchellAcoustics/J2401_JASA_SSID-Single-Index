@@ -1,65 +1,70 @@
 {
-    "name": "Rye",
-    "build": {
-        "context": "..",
-        "dockerfile": "Dockerfile"
-    },
-    "features": {
-        // "ghcr.io/devcontainers-contrib/features/pre-commit:2": {},
-        "ghcr.io/dhoeric/features/hadolint:1": {},
-        "ghcr.io/rocker-org/devcontainer-features/r-apt:0": {
-            "installDevTools": true,
-            "useTesting": true,
-            "vscodeRSupport": "lsp"
-            },
-        "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
-            // "installTinyTex": true,
-            "version": "latest"
-            },
-        // "ghcr.io/prulloac/devcontainer-features/latex": {
-        //     "version": "latest",
-        //     "scheme": "medium"
-        //     },
-    },
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "charliermarsh.ruff",
-                "codezombiech.gitignore",
-                "exiasr.hadolint",
-                "kevinrose.vsc-python-indent",
-                "ms-azuretools.vscode-docker",
-                "ms-python.python",
-                "njpwerner.autodocstring",
-                "oderwat.indent-rainbow",
-                "pkief.material-icon-theme",
-                "shardulm94.trailing-spaces",
-                "usernamehw.errorlens",
-                "yzhang.markdown-all-in-one",
-                "James-Yu.latex-workshop",
-                "ms-toolsai.jupyter"
-            ],
-            "settings": {
-                "python.defaultInterpreterPath": "/opt/rye/shims/python",
-                "[python]": {
-                    "editor.defaultFormatter": "charliermarsh.ruff",
-                    "editor.codeActionsOnSave": {
-                        "source.fixAll.ruff": "explicit",
-                        "source.organizeImports.ruff": "explicit"
-                    },
-                    "editor.formatOnSave": true
-                },
-                "files.insertFinalNewline": true,
-                "files.trimTrailingWhitespace": true,
-                "terminal.integrated.defaultProfile.linux": "zsh",
-                "terminal.integrated.profiles.linux": {
-                    "zsh": {
-                        "path": "/bin/zsh"
-                    }
-                }
-            }
+  "name": "Research Environment",
+  "image": "mitchellacoustics/repro-tinytex:latest",
+  "remoteEnv": {
+    "PYTHON_VERSION": "3.11",
+    "SETUP_UV": "true",
+    "SETUP_RENV": "false",
+    // Set environment variables for R and Python
+    "PYTHONPATH": "/workspace/src/python:${containerEnv:PYTHONPATH}",
+    "R_LIBS_USER": "/opt/r_env",
+    "RENV_PATHS_ROOT": "/opt/r_env",
+    "RENV_PATHS_LIBRARY": "/opt/r_env/library",
+    "UV_HOME": "/opt/python_env",
+    "UV_LINK_MODE": "copy",
+    "VIRTUAL_ENV": "/opt/.venv",
+    "UV_PROJECT_ENVIRONMENT": "/opt/.venv"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "REditorSupport.r",
+        "quarto.quarto-vscode",
+        "James-Yu.latex-workshop",
+        "nvarner.typst-lsp",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-renderers",
+        "ms-azuretools.vscode-docker",
+        "GitHub.copilot",
+        "ms-vscode-remote.remote-containers",
+        "quarto.quarto"
+      ],
+      "settings": {
+        "r.rpath.linux": "/usr/local/bin/R",
+        "r.rterm.linux": "/usr/local/bin/R",
+        "editor.formatOnSave": true,
+        "r.lsp.enabled": true,
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        // ruff settings
+        "[python]": {
+          "defaultInterpreterPath": "/opt/.venv/bin/python",
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+          },
+          "editor.defaultFormatter": "charliermarsh.ruff"
+        },
+        "notebook.formatOnSave.enabled": true,
+        "notebook.codeActionsOnSave": {
+          "notebook.source.fixAll": "explicit",
+          "notebook.source.organizeImports": "explicit"
         }
+      }
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {},
+    "ghcr.io/rocker-org/devcontainer-features/renv-cache:0": {},
+    "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+      "packages": "yaml, languageserver, rmarkdown, knitr"
     },
-    "postStartCommand": "rye sync -f && R -e 'install.packages(c(\"tinytex\", \"sn\"))' && R -e 'if (!tinytex::is_tinytex()) {tinytex::install_tinytex()}'",
-    "remoteUser": "vscode"
+    "ghcr.io/jsburckhardt/devcontainer-features/uv:1": {}
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+  ],
+  "postCreateCommand": "bash .devcontainer/setup_env.sh --python_version $PYTHON_VERSION --setup_uv $SETUP_UV --setup_renv $SETUP_RENV bash .devcontainer/test_devcontainer_setup.sh --python_version $PYTHON_VERSION --setup_uv $SETUP_UV --setup_renv $SETUP_RENV"
 }
