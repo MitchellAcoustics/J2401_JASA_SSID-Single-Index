@@ -47,7 +47,6 @@ keywords:
   - urban design
 
 date: "2024-10-28"
-bibliography: FellowshipRefs-biblatex.bib
 
 citation:
   type: article-journal

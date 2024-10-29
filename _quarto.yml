@@ -1,12 +1,14 @@
 project:
   type: default
-  output-dir: paper
+  output-dir: ./paper/
 
 manuscript:
   article: index.qmd
-  # notebooks:
-  #   - notebooks/SingleIndex-Code.ipynb
-  #   - notebooks/TargetOptimization.ipynb
+  notebooks:
+    - ./notebooks/SingleIndex-Code.ipynb
+    - ./notebooks/TargetOptimization.ipynb
+
+bibliography: FellowshipRefs-biblatex.bib
 
 format:
   html:
@@ -15,7 +17,7 @@ format:
     code-fold: true
     # embed-resources: true
     self-contained-math: true
-    output-file: paper.html
+    # output-file: paper.html
     comments:
       hypothesis: true
   # docx: default
@@ -23,9 +25,9 @@ format:
   # typst: default
   elsevier-pdf:
     # latex-clean: true
-    latex-output-dir: paper/_tex
+    # latex-output-dir: _tex
     keep-tex: false
-    output-file: paper.pdf
+    # output-file: paper.pdf
     hyperrefoptions: 
       - "citecolor=black"
     echo: false

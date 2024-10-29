@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Andrew Mitchell">
+<meta name="dcterms.date" content="2024-10-29">
+<meta name="description" content="Code accompanying the paper: “Soundscape Perception Indices:”">
+
+<title>Supplementary Material</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="TargetOptimization_files/libs/clipboard/clipboard.min.js"></script>
+<script src="TargetOptimization_files/libs/quarto-html/quarto.js"></script>
+<script src="TargetOptimization_files/libs/quarto-html/popper.min.js"></script>
+<script src="TargetOptimization_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="TargetOptimization_files/libs/quarto-html/anchor.min.js"></script>
+<link href="TargetOptimization_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="TargetOptimization_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="TargetOptimization_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="TargetOptimization_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="TargetOptimization_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#code-setup" id="toc-code-setup" class="nav-link active" data-scroll-target="#code-setup">Code setup</a></li>
+  <li><a href="#role-of-a-priori-rankings-in-target-definition" id="toc-role-of-a-priori-rankings-in-target-definition" class="nav-link" data-scroll-target="#role-of-a-priori-rankings-in-target-definition">Role of <em>a priori</em> rankings in target definition</a>
+  <ul class="collapse">
+  <li><a href="#example-using-park-soundscapes-from-the-isd" id="toc-example-using-park-soundscapes-from-the-isd" class="nav-link" data-scroll-target="#example-using-park-soundscapes-from-the-isd">Example using park soundscapes from the ISD</a></li>
+  </ul></li>
+  <li><a href="#optimisation-task-formulation" id="toc-optimisation-task-formulation" class="nav-link" data-scroll-target="#optimisation-task-formulation">Optimisation Task Formulation</a>
+  <ul class="collapse">
+  <li><a href="#sec-targets" id="toc-sec-targets" class="nav-link" data-scroll-target="#sec-targets">SPI Targets</a></li>
+  <li><a href="#objective-functions" id="toc-objective-functions" class="nav-link" data-scroll-target="#objective-functions">Objective Functions</a></li>
+  <li><a href="#nsga-ii-problem-definition-in-pymoo" id="toc-nsga-ii-problem-definition-in-pymoo" class="nav-link" data-scroll-target="#nsga-ii-problem-definition-in-pymoo">NSGA-II Problem Definition in <code>pymoo</code></a></li>
+  <li><a href="#park-quality-optimization" id="toc-park-quality-optimization" class="nav-link" data-scroll-target="#park-quality-optimization">Park Quality optimization</a></li>
+  </ul></li>
+  <li><a href="#optimization-result" id="toc-optimization-result" class="nav-link" data-scroll-target="#optimization-result">Optimization result</a>
+  <ul class="collapse">
+  <li><a href="#selecting-the-best-solution" id="toc-selecting-the-best-solution" class="nav-link" data-scroll-target="#selecting-the-best-solution">Selecting the best solution</a></li>
+  <li><a href="#resulting-target-distribution" id="toc-resulting-target-distribution" class="nav-link" data-scroll-target="#resulting-target-distribution">Resulting Target Distribution</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="TargetOptimization.pdf"><i class="bi bi-file-pdf"></i>PDF (elsevier)</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><p>Supplementary Material</p></h1>
+<p class="subtitle lead"></p><p>Enabling empirical SPI target derivation using <em>a priori</em> soundscape rankings and multi-objective optimisation</p><p></p>
+</div>
+
+<div>
+  <div class="description">
+    <p>Code accompanying the paper: “Soundscape Perception Indices:”</p>
+  </div>
+</div>
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Andrew Mitchell <a href="mailto:a.j.mitchell@ucl.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0003-0978-5046" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University College London
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 29, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>This document provides detailed technical information supporting the multi-objective optimization method presented in Section IV.B.1 of <em>Soundscape Perception Indices (SPI): Developing context-dependent single value scores of multidimensional soundscape perceptual quality.</em> The optimization method enables systematic derivation of SPI target distributions from empirical soundscape quality rankings. The method is based on the optimization of a set of objective functions that are designed to capture the most important aspects of soundscape perception. The optimization is performed using a genetic algorithm, which is a stochastic optimization method that is well-suited to the multi-objective optimization problem of deriving SPI targets.</p>
+  </div>
+</div>
+
+
+</header>
+
+
+<section id="code-setup" class="level1">
+<h1>Code setup</h1>
+<p>This analysis uses the following Python (v3.11.8) packages:</p>
+<ul>
+<li><code>pymoo</code> v0.6.1.3 <span class="citation" data-cites="pymoo">(<a href="#ref-pymoo" role="doc-biblioref">Blank and Deb 2020</a>)</span></li>
+<li><code>soundscapy</code> v0.7.4 <span class="citation" data-cites="Mitchell2024Soundscapy Mitchell2023How">(<a href="#ref-Mitchell2024Soundscapy" role="doc-biblioref"><strong>Mitchell2024Soundscapy?</strong></a>; <a href="#ref-Mitchell2023How" role="doc-biblioref">Mitchell et al. 2023</a>)</span></li>
+<li><code>KS2D</code> <span class="citation" data-cites="Taillon20182DKS">(<a href="#ref-Taillon20182DKS" role="doc-biblioref"><strong>Taillon20182DKS?</strong></a>)</span></li>
+<li><code>rpy2</code> v3.5.12 <a href="https://rpy2.github.io">https://rpy2.github.io</a></li>
+</ul>
+<p>And the following R (v4.4.1) package for MSN fitting and sampling:</p>
+<ul>
+<li><code>sn</code> v2.1.1 <span class="citation" data-cites="Azzalini2023R">(<a href="#ref-Azzalini2023R" role="doc-biblioref"><strong>Azzalini2023R?</strong></a>)</span></li>
+</ul>
+<div id="cell-2" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> soundscapy <span class="im">as</span> sspy</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> soundscapy.surveys.survey_utils <span class="im">import</span> LANGUAGE_ANGLES, PAQ_IDS</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scripts.optimize_target <span class="im">as</span> ot <span class="co"># import scripts</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scripts.MultiSkewNorm <span class="im">import</span> MultiSkewNorm</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="role-of-a-priori-rankings-in-target-definition" class="level1">
+<h1>Role of <em>a priori</em> rankings in target definition</h1>
+<p>The core challenge in developing a reference SPI target is determining what constitutes an “ideal” soundscape perception distribution for a given context. While we can directly specify MSN parameters to create bespoke targets based on theoretical expectations or design goals, developing empirically-grounded reference targets requires a more systematic approach.</p>
+<p>The <em>a priori</em> ranking serves as a bridge between existing knowledge about soundscape quality and the mathematical framework of the SPI. By starting with a ranking of soundscapes whose relative quality has been assessed through some external measure (in this demonstration, mean SSS01 scores, though other metrics could be used), we can use optimization techniques to derive MSN parameters that:</p>
+<ol type="1">
+<li>When used as an SPI target, produce scores that result in the same ranking order</li>
+<li>Generate high SPI scores for the highly-ranked soundscapes</li>
+<li>Define a distribution in the circumplex space that captures the perceptual characteristics common to high-quality soundscapes in this context</li>
+</ol>
+<p>This approach allows us to work backwards from known good (and poor) examples to define what the target distribution should look like. For instance, if we know that location A has a better soundscape than location B for our purposes, the optimal target distribution should result in location A receiving a higher SPI score than location B.</p>
+<section id="example-using-park-soundscapes-from-the-isd" class="level2">
+<h2 class="anchored" data-anchor-id="example-using-park-soundscapes-from-the-isd">Example using park soundscapes from the ISD</h2>
+<p>To demonstrate the method of deriving an SPI target from empirical data, we used a subset of locations from the International Soundscape Database (ISD) <span class="citation" data-cites="Mitchell2021International">(<a href="#ref-Mitchell2021International" role="doc-biblioref">Mitchell et al. 2021</a>)</span> that were classified as parks or park-like spaces.</p>
+<div id="cell-5" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load latest ISD dataset</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> sspy.isd.load()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>data, excl_data <span class="op">=</span> sspy.isd.validate(data)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.query(<span class="st">"Language != 'cmn'"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Exclude RegentsParkJapan outliers (the below code resulted in the `excl_id` list)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># excl_id = list(data.query(</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># "LocationID == 'RegentsParkJapan'"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ).query("ISOEventful &gt; 0.72 | ISOEventful &lt; -0.5").index)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Excluded RegentsParkFields outliers</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># excl_id = excl_id + list(data.query(</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># "LocationID == 'RegentsParkFields' and ISOPleasant &lt; 0").index) # Helicopters</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>excl_id <span class="op">=</span> [<span class="dv">652</span>, <span class="dv">706</span>, <span class="dv">548</span>, <span class="dv">550</span>, <span class="dv">551</span>, <span class="dv">553</span>, <span class="dv">569</span>, <span class="dv">580</span>, <span class="dv">609</span>, <span class="dv">618</span>, <span class="dv">623</span>, <span class="dv">636</span>, <span class="dv">643</span>]</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>data.drop(excl_id, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate ISOPleasant and ISOEventful</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we use the adjusted angles from Aletta et al. (2024) for each language included.</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, row <span class="kw">in</span> data.iterrows():</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    lang <span class="op">=</span> row[<span class="st">"Language"</span>]</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    angles <span class="op">=</span> LANGUAGE_ANGLES[lang]</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    iso_pl, iso_ev <span class="op">=</span> (</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        sspy.surveys.processing._adj_iso_pl(row[PAQ_IDS], angles, scale<span class="op">=</span><span class="dv">4</span>),</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        sspy.surveys.processing._adj_iso_ev(row[PAQ_IDS], angles, scale<span class="op">=</span><span class="dv">4</span>),</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    data.loc[i, <span class="st">"ISOPleasant"</span>] <span class="op">=</span> iso_pl</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    data.loc[i, <span class="st">"ISOEventful"</span>] <span class="op">=</span> iso_ev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The following locations were identified as parks and included:</p>
+<div id="cell-7" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate out parks</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>parks <span class="op">=</span> [</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"RegentsParkFields"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"RegentsParkJapan"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Noorderplantsoen"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"StPaulsCross"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"MiradorSanNicolas"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"RussellSq"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Noorderplantsoen"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"MonumentoGaribaldi"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"CampoPrincipe"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>park_data <span class="op">=</span> data.query(<span class="st">"LocationID in @parks"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>An initial ranking of these locations was created based on their mean SSS01 scores (overall soundscape quality rating) from the survey responses in the ISD:</p>
+<div id="cell-9" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a somewhat arbitrary ranking of parks</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>rank_on <span class="op">=</span> <span class="st">"sss01"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>park_quality <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    park_data.groupby(<span class="st">"LocationID"</span>)[rank_on].mean().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>park_quality[<span class="st">"Rank"</span>] <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(park_quality) <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>park_quality.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sss01</th>
+<th data-quarto-table-cell-role="th">Rank</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">LocationID</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">RegentsParkJapan</td>
+<td>4.617978</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">RegentsParkFields</td>
+<td>4.467290</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">CampoPrincipe</td>
+<td>4.345455</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">MonumentoGaribaldi</td>
+<td>4.156250</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">RussellSq</td>
+<td>4.020548</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">MiradorSanNicolas</td>
+<td>3.964286</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">StPaulsCross</td>
+<td>3.803030</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Noorderplantsoen</td>
+<td>2.412371</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>It’s important to note that, as stated in the main paper, this ranking is used primarily to demonstrate the methodology of deriving a target from a pre-existing ranking. While based on real survey data, this particular ranking should not be considered a definitive assessment of these spaces’ soundscape quality, due to the mono-dimensional nature of the SSS01 question. To develop a true reference target, the ranking would need to be arrived at through more rigorous empirical methods such as paired-choice comparisons or other experimental protocols. The purpose of using this ranking is twofold:</p>
+<ol type="1">
+<li>To demonstrate that the SPI framework can incorporate existing knowledge or preferences about soundscape quality into the target definition process</li>
+<li>To show how multi-objective optimization can be used to derive MSN parameters that produce an SPI scoring system aligned with predetermined quality assessments</li>
+</ol>
+</section>
+</section>
+<section id="optimisation-task-formulation" class="level1">
+<h1>Optimisation Task Formulation</h1>
+<section id="sec-targets" class="level2">
+<h2 class="anchored" data-anchor-id="sec-targets">SPI Targets</h2>
+<p>To set up the optimisation task, we first need to express the parameter space and any constraints. The SPI target is a set of parameters that define the distribution of soundscape perception in a given soundscape. The target is defined as a multivariate skew-normal (MSN) distribution with the following parameters:</p>
+<p><span id="eq-target"><span class="math display">\[
+Y \sim MSN(\xi, \Omega, \alpha)
+\tag{1}\]</span></span></p>
+<p>where:</p>
+<p><span id="eq-target-xi"><span class="math display">\[
+\xi = (\xi_x, \xi_y), -1 \leq \xi \leq 1
+\tag{2}\]</span></span></p>
+<p>is the location parameter, which defines the mean of the distribution in the x and y dimensions. The location parameter is constrained to lie within the range <span class="math inline">\(-1 \leq \xi \leq 1\)</span> to ensure that the target distribution is within the range of possible soundscape perceptions (i.e.&nbsp;within the circumplex).</p>
+<p><span id="eq-target-omega"><span class="math display">\[
+\Omega = \begin{pmatrix} var(x) &amp; cov(x, y) \\ cov(y, x) &amp; var(y) \end{pmatrix}
+\tag{3}\]</span></span></p>
+<p>and</p>
+<p><span id="eq-target-omega-constraints"><span class="math display">\[
+0 \leq var() \leq 1; -1 \leq cov() \leq 1
+\tag{4}\]</span></span></p>
+<p>is the covariance matrix, which defines the shape of the distribution. The covariance matrix must be symmetric <span class="math inline">\((cov(x,y) = cov(y,x))\)</span> and positive definite to ensure that the distribution is well-defined. These requirements arise from the mathematical properties needed for a valid probability distribution. The variance and covariance parameters are constrained within realistic ranges based on observed soundscape distributions in the ISD.</p>
+<p><span id="eq-target-alpha"><span class="math display">\[
+\alpha = (\alpha_x, \alpha_y), -50 \leq \alpha \leq 50
+\tag{5}\]</span></span></p>
+<p>is the skewness parameter, which defines the skewness of the distribution in the x and y dimensions.</p>
+</section>
+<section id="objective-functions" class="level2">
+<h2 class="anchored" data-anchor-id="objective-functions">Objective Functions</h2>
+<p>Our optimization problem requires carefully chosen objective functions that can effectively translate an ordinal ranking of soundscape quality into meaningful MSN parameters. Two competing objectives are defined to ensure the resulting target distribution is both valid and useful:</p>
+<ol type="1">
+<li><p>Rank Correlation Objective:</p>
+<p><span id="eq-rank-obj"><span class="math display">\[
+f_1 = r(ranks_{quality}, ranks_{target})
+  \tag{6}\]</span></span></p>
+<p>where <span class="math inline">\(r\)</span> is the Spearman rank correlation coefficient. This objective ensures the derived target preserves the original quality ordering of the soundscapes. A high rank correlation indicates that when the target is used to calculate SPI scores for each location, those scores produce a similar ranking to our <em>a priori</em> assessment.</p></li>
+<li><p>Weighted SPI Objective:</p>
+<p><span id="eq-spi-obj"><span class="math display">\[
+f_2 = \sum_{i=1}^{m} \frac{1}{rank_i} \cdot SPI_i
+  \tag{7}\]</span></span></p>
+<p>where <span class="math inline">\(m\)</span> is the number of locations and <span class="math inline">\(rank_i\)</span> is the <em>a priori</em> rank of location <span class="math inline">\(i\)</span>. This objective addresses several important aspects:</p>
+<ul>
+<li>It ensures the target produces meaningfully scaled scores, not just correct rankings</li>
+<li>The weighting (<span class="math inline">\(\frac{1}{rank_i}\)</span>) prioritizes high SPI scores for locations ranked as high quality</li>
+<li>It prevents solutions that achieve the correct ranking but with compressed or arbitrary score ranges</li>
+<li>It helps anchor the target distribution in regions of the circumplex space associated with positive soundscape experiences for this context.</li>
+</ul></li>
+</ol>
+<p>The two objectives work together to resolve key challenges in target derivation:</p>
+<ul>
+<li>Rank correlation alone could produce valid but impractical targets (e.g., targets that correctly rank soundscapes but give very low scores to all locations)</li>
+<li>Weighted scores alone might maximize scores without preserving the relative quality relationships</li>
+<li>Together, they ensure the target both discriminates between soundscape quality levels and produces scores that reflect absolute quality judgments</li>
+</ul>
+<p>In <code>pymoo</code>, each objective function is supposed to be minimized. Therefore, in the code implementation these objectives are negated to convert them into minimization problems. For each step in the algorithm with a given trial set of parameters, a target distribution will be produced, the SPI for each test location assessed according to the protocol described in the full paper, and the resulting set of SPI scores and ranking will be scored using the objective functions.</p>
+</section>
+<section id="nsga-ii-problem-definition-in-pymoo" class="level2">
+<h2 class="anchored" data-anchor-id="nsga-ii-problem-definition-in-pymoo">NSGA-II Problem Definition in <code>pymoo</code></h2>
+<div id="cell-14" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pathos</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymoo.core.callback <span class="im">import</span> Callback</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymoo.core.problem <span class="im">import</span> ElementwiseProblem, StarmapParallelization</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymoo.visualization.scatter <span class="im">import</span> Scatter</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyrecorder.recorder <span class="im">import</span> Recorder</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyrecorder.writers.streamer <span class="im">import</span> Streamer</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyrecorder.writers.video <span class="im">import</span> Video</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymoo.decomposition.asf <span class="im">import</span> ASF</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyProblem(ElementwiseProblem):</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data, ranking, <span class="op">**</span>kwargs):</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            n_var<span class="op">=</span><span class="dv">7</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>            n_obj<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            n_constr<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>            xl<span class="op">=</span>np.array([<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">50</span>, <span class="op">-</span><span class="dv">50</span>]),</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>            xu<span class="op">=</span>np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">50</span>, <span class="dv">50</span>]),</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>            n_eq_constr<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            elementwise_evaluation<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>kwargs,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.data <span class="op">=</span> data</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ranking <span class="op">=</span> ranking</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _evaluate(<span class="va">self</span>, X, out, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check if the matrix is positive definite</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> <span class="bu">int</span>(</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>            np.<span class="bu">all</span>(np.linalg.eigvals(np.array([[X[<span class="dv">2</span>], X[<span class="dv">4</span>]], [X[<span class="dv">4</span>], X[<span class="dv">3</span>]]])) <span class="op">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        out[<span class="st">"H"</span>] <span class="op">=</span> h</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> h <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>            out[<span class="st">"F"</span>] <span class="op">=</span> np.column_stack([<span class="dv">0</span>, <span class="dv">0</span>])</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>            tgt <span class="op">=</span> MultiSkewNorm()</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>            tgt.define_dp(</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>                np.array([X[<span class="dv">0</span>], X[<span class="dv">1</span>]]),</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>                np.array([[X[<span class="dv">2</span>], X[<span class="dv">4</span>]], [X[<span class="dv">4</span>], X[<span class="dv">3</span>]]]),</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>                np.array([X[<span class="dv">5</span>], X[<span class="dv">6</span>]]),</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>            tgt.sample()</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>            r, wspi, spi_ranks, target <span class="op">=</span> ot.target_success(tgt, <span class="va">self</span>.ranking, <span class="va">self</span>.data)</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>            f1 <span class="op">=</span> <span class="op">-</span>r[<span class="dv">0</span>]</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>            f2 <span class="op">=</span> <span class="op">-</span>wspi <span class="op">/</span> <span class="dv">100</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>            out[<span class="st">"F"</span>] <span class="op">=</span> np.column_stack([f1, f2])</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> VideoCallback(Callback):</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rec <span class="op">=</span> Recorder(Streamer(sleep<span class="op">=</span><span class="fl">0.1</span>))</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> notify(<span class="va">self</span>, algorithm):</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>        sc <span class="op">=</span> Scatter(</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>            title<span class="op">=</span><span class="st">"Gen </span><span class="sc">%s</span><span class="st">"</span> <span class="op">%</span> algorithm.n_gen,</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>            labels<span class="op">=</span>[<span class="st">"spearman"</span>, <span class="st">"WSPI"</span>],</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>        sc.add(algorithm.pop.get(<span class="st">"F"</span>))</span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>        sc.do()</span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.rec.record()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The optimization problem described above presents significant computational challenges. A naive approach might involve systematically sampling the parameter space through a grid search, evaluating both objective functions at each point. However, with seven parameters to optimize and the need for fine granularity to capture optimal solutions, the search space becomes prohibitively large. Additionally, the requirement that the covariance matrix must be positive definite creates irregular boundaries in the parameter space that make systematic searching impractical.</p>
+<p>We therefore employ the Non-dominated Sorting Genetic Algorithm II (NSGA-II), which uses principles from evolutionary computation to search the parameter space efficiently. The algorithm maintains a population of potential solutions, where each solution represents a complete set of MSN parameters (ξ, Ω, α). In our implementation, we use a population of 150 solutions, initialized randomly within the parameter constraints defined in <a href="#sec-targets" class="quarto-xref">Section&nbsp;3.1</a>.</p>
+<div id="cell-16" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymoo.algorithms.moo.nsga2 <span class="im">import</span> NSGA2</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymoo.operators.crossover.sbx <span class="im">import</span> SBX</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymoo.operators.mutation.pm <span class="im">import</span> PM</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymoo.operators.sampling.rnd <span class="im">import</span> FloatRandomSampling</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymoo.optimize <span class="im">import</span> minimize</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymoo.termination.default <span class="im">import</span> DefaultMultiObjectiveTermination</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>algorithm <span class="op">=</span> NSGA2(</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    pop_size<span class="op">=</span><span class="dv">150</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    sampling<span class="op">=</span>FloatRandomSampling(),</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    crossover<span class="op">=</span>SBX(),</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    mutation<span class="op">=</span>PM(),</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    eliminate_duplicates<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># callback=VideoCallback()</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>termination <span class="op">=</span> DefaultMultiObjectiveTermination(n_max_gen<span class="op">=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The algorithm proceeds iteratively, with each iteration (or generation) involving four main steps:</p>
+<p>First, the algorithm evaluates both objective functions (rank correlation and weighted scores) for each solution in the current population. Since we have multiple objectives, there is rarely a single “best” solution. Instead, solutions are ranked based on dominance - solution A dominates solution B if it performs at least as well on both objectives and better on at least one. Solutions that are not dominated by any other solutions form the first front, those only dominated by solutions in the first front form the second front, and so on.</p>
+<p>Second, to maintain diversity in the population, the algorithm calculates a “crowding distance” for each solution. This distance measures how close a solution is to its neighbors in terms of objective function values. Solutions that are more isolated (have larger crowding distances) are preferred to prevent the population from clustering too tightly around local optima.</p>
+<p>Third, new solutions are generated through crossover and mutation operations. Crossover combines parameters from two parent solutions to create offspring solutions, while mutation introduces small random changes to parameter values. These operations are controlled to ensure new solutions remain within the valid parameter ranges and covariance matrix constraints.</p>
+<p>Finally, the algorithm selects solutions to form the next generation’s population. Solutions are chosen primarily based on their front ranking (lower/better fronts are preferred), and within the same front, solutions with larger crowding distances are preferred. This selection process ensures both convergence toward better solutions and maintenance of diversity in the population.</p>
+<p>The algorithm runs for 100 generations, producing a set of solutions known as the Pareto front - solutions representing different trade-offs between our two objectives. From this front, we select a final solution using an Augmented Scalarizing Function with weights [0.48, 0.52], indicating a slight preference for the weighted score objective while maintaining strong rank correlation.</p>
+</section>
+<section id="park-quality-optimization" class="level2">
+<h2 class="anchored" data-anchor-id="park-quality-optimization">Park Quality optimization</h2>
+<div id="cell-19" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize the thread pool and create the runner</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mp <span class="op">=</span> pathos.helpers.mp</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>n_process <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>pool <span class="op">=</span> mp.Pool(n_process)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>runner <span class="op">=</span> StarmapParallelization(pool.starmap)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the NSGA problem</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>park_problem <span class="op">=</span> MyProblem(</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>park_data, ranking<span class="op">=</span>park_quality.sort_index()[<span class="st">"Rank"</span>], elementwise_runner<span class="op">=</span>runner</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the optimization</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>park_res <span class="op">=</span> minimize(</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    park_problem, algorithm, termination, seed<span class="op">=</span><span class="dv">42</span>, save_history<span class="op">=</span><span class="va">True</span>, verbose<span class="op">=</span><span class="va">True</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>pool.close()</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>park_F <span class="op">=</span> park_res.F</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>park_X <span class="op">=</span> park_res.X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>==========================================================================================
+n_gen  |  n_eval  | n_nds  |     cv_min    |     cv_avg    |      eps      |   indicator  
+==========================================================================================
+     1 |      150 |      3 |  0.000000E+00 |  0.7599240000 |             - |             -
+     2 |      300 |      4 |  0.000000E+00 |  0.3399660000 |  0.2173913043 |         ideal
+     3 |      450 |      8 |  0.000000E+00 |  0.000000E+00 |  0.0952552535 |         ideal
+     4 |      600 |      7 |  0.000000E+00 |  0.000000E+00 |  0.0106235829 |         ideal
+     5 |      750 |      5 |  0.000000E+00 |  0.000000E+00 |  0.7484977685 |         nadir
+     6 |      900 |      8 |  0.000000E+00 |  0.000000E+00 |  0.0370370370 |         ideal
+     7 |     1050 |      8 |  0.000000E+00 |  0.000000E+00 |  0.0267292369 |         ideal
+     8 |     1200 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0347831010 |         ideal
+     9 |     1350 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0159651765 |             f
+    10 |     1500 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0233717640 |         ideal
+    11 |     1650 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0217655980 |             f
+    12 |     1800 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0023704857 |             f
+    13 |     1950 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0138693308 |             f
+    14 |     2100 |     11 |  0.000000E+00 |  0.000000E+00 |  0.3333333333 |         nadir
+    15 |     2250 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0174118328 |         ideal
+    16 |     2400 |      9 |  0.000000E+00 |  0.000000E+00 |  0.0071446303 |             f
+    17 |     2550 |     10 |  0.000000E+00 |  0.000000E+00 |  0.0259465675 |             f
+    18 |     2700 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0173322549 |         ideal
+    19 |     2850 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0113233433 |             f
+    20 |     3000 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0030394343 |             f
+    21 |     3150 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0095117593 |             f
+    22 |     3300 |     11 |  0.000000E+00 |  0.000000E+00 |  0.1111111111 |         nadir
+    23 |     3450 |     11 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    24 |     3600 |     11 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    25 |     3750 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0045209314 |         ideal
+    26 |     3900 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0036948738 |         ideal
+    27 |     4050 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0053803223 |             f
+    28 |     4200 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0011819826 |             f
+    29 |     4350 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0115737118 |         ideal
+    30 |     4500 |     17 |  0.000000E+00 |  0.000000E+00 |  0.0039607157 |             f
+    31 |     4650 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0039300984 |             f
+    32 |     4800 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0021240096 |             f
+    33 |     4950 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0044951367 |             f
+    34 |     5100 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0083281996 |             f
+    35 |     5250 |     16 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    36 |     5400 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0020892435 |             f
+    37 |     5550 |     17 |  0.000000E+00 |  0.000000E+00 |  0.0322580645 |         nadir
+    38 |     5700 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0001417147 |             f
+    39 |     5850 |     17 |  0.000000E+00 |  0.000000E+00 |  0.0051116677 |             f
+    40 |     6000 |     17 |  0.000000E+00 |  0.000000E+00 |  0.0017834913 |             f
+    41 |     6150 |     17 |  0.000000E+00 |  0.000000E+00 |  0.0017834913 |             f
+    42 |     6300 |     17 |  0.000000E+00 |  0.000000E+00 |  0.0020936859 |             f
+    43 |     6450 |     18 |  0.000000E+00 |  0.000000E+00 |  0.0058642162 |         ideal
+    44 |     6600 |     19 |  0.000000E+00 |  0.000000E+00 |  0.0028424969 |             f
+    45 |     6750 |     19 |  0.000000E+00 |  0.000000E+00 |  0.0004650099 |             f
+    46 |     6900 |     19 |  0.000000E+00 |  0.000000E+00 |  0.0004650099 |             f
+    47 |     7050 |     20 |  0.000000E+00 |  0.000000E+00 |  1.3840673708 |         nadir
+    48 |     7200 |     20 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    49 |     7350 |     19 |  0.000000E+00 |  0.000000E+00 |  0.0023071763 |             f
+    50 |     7500 |     19 |  0.000000E+00 |  0.000000E+00 |  0.0024513071 |             f
+    51 |     7650 |     18 |  0.000000E+00 |  0.000000E+00 |  0.0041992391 |             f
+    52 |     7800 |     17 |  0.000000E+00 |  0.000000E+00 |  0.1612903226 |         nadir
+    53 |     7950 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0206089937 |         ideal
+    54 |     8100 |     15 |  0.000000E+00 |  0.000000E+00 |  0.0012031996 |             f
+    55 |     8250 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0052686003 |             f
+    56 |     8400 |     16 |  0.000000E+00 |  0.000000E+00 |  0.0000768804 |             f
+    57 |     8550 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0109928982 |             f
+    58 |     8700 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    59 |     8850 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    60 |     9000 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    61 |     9150 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0018148820 |             f
+    62 |     9300 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0018696166 |             f
+    63 |     9450 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0038252129 |             f
+    64 |     9600 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    65 |     9750 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0007679640 |             f
+    66 |     9900 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0007679640 |             f
+    67 |    10050 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0007679640 |             f
+    68 |    10200 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0025206695 |             f
+    69 |    10350 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0017452199 |             f
+    70 |    10500 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0017452199 |             f
+    71 |    10650 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0017452199 |             f
+    72 |    10800 |     11 |  0.000000E+00 |  0.000000E+00 |  0.0017452199 |             f
+    73 |    10950 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0045846246 |             f
+    74 |    11100 |     12 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    75 |    11250 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0001142704 |             f
+    76 |    11400 |     12 |  0.000000E+00 |  0.000000E+00 |  0.0001142704 |             f
+    77 |    11550 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0030985804 |             f
+    78 |    11700 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    79 |    11850 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0001442599 |             f
+    80 |    12000 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0001442599 |             f
+    81 |    12150 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0001442599 |             f
+    82 |    12300 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0001442599 |             f
+    83 |    12450 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0001442599 |             f
+    84 |    12600 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0001954488 |             f
+    85 |    12750 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0001954488 |             f
+    86 |    12900 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0001954488 |             f
+    87 |    13050 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0001954488 |             f
+    88 |    13200 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0001954488 |             f
+    89 |    13350 |     14 |  0.000000E+00 |  0.000000E+00 |  0.0030620597 |             f
+    90 |    13500 |     14 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    91 |    13650 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0020211891 |             f
+    92 |    13800 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0020211891 |             f
+    93 |    13950 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0020211891 |             f
+    94 |    14100 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0020211891 |             f
+    95 |    14250 |     13 |  0.000000E+00 |  0.000000E+00 |  0.0029984333 |             f
+    96 |    14400 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    97 |    14550 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    98 |    14700 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+    99 |    14850 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+   100 |    15000 |     13 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="optimization-result" class="level1">
+<h1>Optimization result</h1>
+<section id="selecting-the-best-solution" class="level2">
+<h2 class="anchored" data-anchor-id="selecting-the-best-solution">Selecting the best solution</h2>
+<p>The optimization produces a set of non-dominated solutions forming a Pareto front, where each point represents a different set of MSN parameters. However, selecting a single solution from this front requires careful consideration of the relative scales of our objective functions. The rank correlation objective (f₁) typically ranges from -1 to 1, while the weighted SPI score objective (f₂) can range from 0 to 100. This difference in scales means we cannot directly compare or combine these objectives without normalization.</p>
+<p>To address this scale disparity, we first approximate the boundaries of our objective space using the best and worst values found for each objective during the optimization process. These boundary points (called the ideal and nadir points) allow us to normalize both objectives to a common scale ranging from 0 to 1. The normalized front maintains the same trade-off relationships between solutions but allows for fair weighting in the final selection process.</p>
+<p>To select a single solution from the Pareto front, we can use various methods such as:</p>
+<ol type="1">
+<li>Choosing the solution with the highest <span class="math inline">\(f_1\)</span> value that meets a minimum threshold for <span class="math inline">\(f_2\)</span>.</li>
+<li>Selecting the solution that minimises the Euclidean distance from the ideal point (min <span class="math inline">\(-f_1\)</span>, min <span class="math inline">\(-f_2\)</span>).</li>
+<li>Using an additional preference function to weight the relative importance of <span class="math inline">\(f_1\)</span> and <span class="math inline">\(f_2\)</span>.</li>
+</ol>
+<p>For this demonstration, we opt for the second method, selecting the solution closest to the ideal point in the normalised objective space. This approach provides a balance between ranking consistency and high SPI scores for top-ranked soundscapes. Once the optimal solution is selected, we can sample from the MSN distribution and plot the derived target distribution, shown in Figure~<span class="math inline">\(\ref{fig-pymoo-parks}\)</span>(b).</p>
+<p>The solution yields the following MSN parameters:</p>
+<div id="park_tgt" class="cell" data-caption="The target MSN distribution for the park optimization." data-execution_count="13">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymoo.decomposition.asf <span class="im">import</span> ASF</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the approximated ideal and nadir points</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>approx_ideal <span class="op">=</span> park_res.F.<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>approx_nadir <span class="op">=</span> park_res.F.<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize the obtained front</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>nF <span class="op">=</span> (park_res.F <span class="op">-</span> approx_ideal) <span class="op">/</span> (approx_nadir <span class="op">-</span> approx_ideal)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> np.array([<span class="fl">0.4</span>, <span class="fl">0.5</span>])</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>decomp <span class="op">=</span> ASF()</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>park_I <span class="op">=</span> decomp(nF, weights).argmin()</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Best regarding decomposition: Point %s - %s" % (park_I, park_res.F[park_I]))</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(park_tgt.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Fitted from direct parameters.
+Direct Parameters:
+xi:    [0.572 0.464]
+omega: [[ 0.14  -0.019]
+ [-0.019  0.343]]
+alpha: [  3.993 -11.611]
+
+
+None
+None</code></pre>
+</div>
+</div>
+</section>
+<section id="resulting-target-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="resulting-target-distribution">Resulting Target Distribution</h2>
+<p><a href="#fig-pymoo-parks" class="quarto-xref">Figure&nbsp;1</a> (a) shows the Pareto front obtained from the optimization process, where each point represents a different set of MSN parameters and their corresponding objective function values. The x-axis shows the negative rank correlation (-f₁) and the y-axis shows the negative weighted SPI score (-f₂). The selected solution using the ASF with equal weights is highlighted in red.</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>park_X <span class="op">=</span> park_res.X[park_I]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>park_tgt <span class="op">=</span> MultiSkewNorm()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>park_tgt.define_dp(</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    np.array([park_X[<span class="dv">0</span>], park_X[<span class="dv">1</span>]]),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    np.array([[park_X[<span class="dv">2</span>], park_X[<span class="dv">4</span>]], [park_X[<span class="dv">4</span>], park_X[<span class="dv">3</span>]]]),</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    np.array([park_X[<span class="dv">5</span>], park_X[<span class="dv">6</span>]]),</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>park_tgt.sample()</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># print(park_tgt.summary())</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>plot <span class="op">=</span> Scatter()</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>plot.add(park_res.F, color<span class="op">=</span><span class="st">"blue"</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, s<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>plot.add(park_res.F[park_I], color<span class="op">=</span><span class="st">"red"</span>, s<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>plot.do()</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># plot.apply(lambda ax: ax.arrow(0, 0, 0.5, 0.5, color='black',</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co">#                                head_width=0.01, head_length=0.01, alpha=0.4))</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>plot.show()</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="co"># park_tgt.sspy_plot()</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(park_tgt.sample_data, columns<span class="op">=</span>[<span class="st">"ISOPleasant"</span>, <span class="st">"ISOEventful"</span>])</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>sspy.plotting.density_plot(</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    df, color<span class="op">=</span><span class="st">'red'</span>, title<span class="op">=</span><span class="va">None</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="fig-pymoo-parks" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pymoo-parks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-pymoo-parks" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-pymoo-parks-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-pymoo-parks-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="TargetOptimization_files/figure-html/fig-pymoo-parks-output-1.png" class="img-fluid figure-img" data-ref-parent="fig-pymoo-parks">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-pymoo-parks-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Multi-objective optimization Pareto front. The selected solution is indicated in red.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-pymoo-parks" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-pymoo-parks-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-pymoo-parks-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="TargetOptimization_files/figure-html/fig-pymoo-parks-output-2.png" class="img-fluid figure-img" data-ref-parent="fig-pymoo-parks">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-pymoo-parks-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) SCM distribution of the derived target distribution.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pymoo-parks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: NSGA-II optimization to learn the MSN parameters which produce the Park ranking.
+</figcaption>
+</figure>
+</div>
+<p>The multi-objective optimization approach presented here demonstrates a systematic method for deriving SPI target distributions from empirical rankings. By simultaneously optimizing for rank correlation and weighted scores, the method produces targets that both preserve ordinal relationships and generate meaningful absolute scores. The park soundscape example shows how this approach can translate qualitative understanding of soundscape quality into quantitative assessment criteria.</p>
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-pymoo" class="csl-entry" role="listitem">
+Blank, J., and K. Deb. 2020. <span>“Pymoo: Multi-Objective Optimization in Python.”</span> <em>IEEE Access</em> 8: 89497–509.
+</div>
+<div id="ref-Mitchell2023How" class="csl-entry" role="listitem">
+Mitchell, Andrew, Francesco Aletta, Tin Oberman, and Jian Kang. 2023. <span>“How Do We Define Soundscape?”</span> In <em>Forum Acusticum 2023</em>. Turin.
+</div>
+<div id="ref-Mitchell2021International" class="csl-entry" role="listitem">
+Mitchell, Andrew, Tin Oberman, Francesco Aletta, Mercede Erfanian, Magdalena Kachlicka, Matteo Lionello, and Jian Kang. 2021. <span>“<span class="nocase">The International Soundscape Database: An integrated multimedia database of urban soundscape surveys – questionnaires with acoustical and contextual information</span>.”</span> Zenodo. <a href="https://doi.org/10.5281/zenodo.5578572">https://doi.org/10.5281/zenodo.5578572</a>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
