@@ -29,8 +29,36 @@ keywords:
   - Sound perception
   - index
   - urban design
-notebook-links: false
-date: last-modified
+
+date: "2024-10-28"
+
+format:
+  elsevier-pdf:
+    hyperrefoptions: 
+      - "citecolor=black"
+    echo: false
+    journal:
+      name: JASA-EL
+      formatting: preprint
+      model: 1p
+      cite-style: authoryear
+
+citation:
+  type: article-journal
+  container-title: "Journal of the Acoustical Society of America"
+  # doi: "10.1121/10.0009794"
+  # number: "3"
+  # page: "037201"
+  # volume: "2"
+  author: 
+    - name: Andrew Mitchell
+    - name: Francesco Aletta
+    - name: Tin Oberman
+    - name: Jian Kang
+  # url: https://pubs.aip.org/asa/jel/article/2/3/037201/2845750
+
+notebook-links: true
+sidebar: false
 ---
 
 # Introduction
