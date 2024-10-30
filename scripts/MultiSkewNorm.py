@@ -1,9 +1,9 @@
 # %%
 import numpy as np
 import pandas as pd
-import rpyskewnorm as rsn
+import scripts.rpyskewnorm as rsn
 import soundscapy as sspy
-import KS2D
+from scripts import KS2D
 
 
 class DirectParams:
@@ -285,7 +285,7 @@ class MultiSkewNorm:
             self.sample()
 
         df = pd.DataFrame(self.sample_data, columns=["ISOPleasant", "ISOEventful"])
-        sspy.plotting.jointplot(df, color=color, title=title)
+        sspy.density_plot(df, color=color, title=title)
 
     def ks2ds(
         self, test: pd.DataFrame | np.ndarray, nboot: int = None, extra: bool = True

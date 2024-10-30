@@ -7,7 +7,7 @@ from scipy.stats import spearmanr
 from sklearn.model_selection import ParameterGrid
 from tqdm_pathos import tqdm_pathos
 
-from MultiSkewNorm import MultiSkewNorm
+from scripts.MultiSkewNorm import MultiSkewNorm
 
 
 def target_success(

@@ -1,5 +1,5 @@
 project:
-  type: manuscript
+  type: default
   output-dir: ./paper/
 
 manuscript:
@@ -32,18 +32,10 @@ format:
       - "citecolor=black"
     echo: false
     journal:
-      name: JASA-EL
-      name: JASA-EL
+      name: Journal of the Acoustical Society of America
       formatting: preprint
       model: 3p
       cite-style: authoryear
-
-  # (other formats)
-  # pdf: default
-
-execute:
-  freeze: auto
-  keep-ipynb: true
 
   # (other formats)
   # pdf: default

@@ -39,4 +39,7 @@ dev-dependencies = [
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/single_index"]
+packages = ["scripts"]
+
+[tool.uv.sources]
+soundscapy = { git = "https://github.com/MitchellAcoustics/Soundscapy/", branch = "dev" }

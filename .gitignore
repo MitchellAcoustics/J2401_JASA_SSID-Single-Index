@@ -164,6 +164,9 @@ cython_debug/
 /.quarto/
 .idea/*
 *.mp4
+_manuscript/
+*/_tex/
+*/index_files/
 
 /.luarc.json
 .DS_Store
