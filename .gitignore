@@ -175,3 +175,4 @@ notebooks/SingleIndex-Code_files/*
 .DS_Store
 
 .ruff_cache
+index_files/
