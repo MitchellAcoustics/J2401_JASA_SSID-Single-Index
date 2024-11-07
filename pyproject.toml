@@ -18,6 +18,7 @@ dependencies = [
     "scikit-learn>=1.5.2",
     "pathos>=0.3.3",
     "tqdm-pathos>=0.4",
+    "jupyter>=1.1.1",
 ]
 readme = "README.md"
 requires-python = ">= 3.11"
@@ -38,4 +39,7 @@ dev-dependencies = [
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/single_index"]
+packages = ["scripts"]
+
+[tool.uv.sources]
+soundscapy = { git = "https://github.com/MitchellAcoustics/Soundscapy/", branch = "dev" }
