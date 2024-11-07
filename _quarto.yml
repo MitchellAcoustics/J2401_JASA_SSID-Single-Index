@@ -8,14 +8,14 @@ manuscript:
     - ./notebooks/SingleIndex-Code.ipynb
     - ./notebooks/TargetOptimization.ipynb
 
-bibliography: FellowshipRefs-biblatex.bib
+bibliography: FellowshipRefs2.bib
 
 format:
   html:
-    # clean: true
+    clean: true
     toc: true
     code-fold: true
-    # embed-resources: true
+    embed-resources: true
     self-contained-math: true
     # output-file: paper.html
     comments:
@@ -24,7 +24,7 @@ format:
   # jats: default
   # typst: default
   elsevier-pdf:
-    # latex-clean: true
+    latex-clean: true
     # latex-output-dir: _tex
     keep-tex: false
     # output-file: paper.pdf
@@ -32,14 +32,26 @@ format:
       - "citecolor=black"
     echo: false
     journal:
-      name: JASA-EL
-      formatting: preprint
+      name: Journal of the Acoustical Society of America
       model: 3p
       cite-style: authoryear
+    include-in-header: 
+       text: |
+         \usepackage{fvextra}
+         \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+    include-before-body:
+      text: |
+        \RecustomVerbatimEnvironment{verbatim}{Verbatim}{
+          showspaces = false,
+          showtabs = false,
+          breaksymbolleft={},
+          breaklines
+          % Note: setting commandchars=\\\{\} here will cause an error 
+          }
 
   # (other formats)
   # pdf: default
 
 execute:
   freeze: auto
-  keep-ipynb: true
+  keep-ipynb: false
