@@ -169,13 +169,9 @@ _manuscript/
 */index_files/
 
 /.luarc.json
-.DS_Store
 notebooks/TargetOptimization_files/*
 notebooks/SingleIndex-Code_files/*
 .DS_Store
-
-.ruff_cache
-index_files/
 
 .ruff_cache
 index_files/
