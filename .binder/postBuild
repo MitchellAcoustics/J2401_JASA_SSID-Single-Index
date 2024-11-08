@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -v
+#!/usr/bin/env bash 
 
 # determine which version of Quarto to install
 QUARTO_VERSION=1.5.57
