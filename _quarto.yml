@@ -22,7 +22,6 @@ format:
       hypothesis: true
     citations-hover: true
     crossrefs-hover: true
-    # output-file: paper.html
   docx: default
   jats: default
   elsevier-pdf:
