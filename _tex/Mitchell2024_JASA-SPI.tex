@@ -79,15 +79,17 @@
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 % Set default figure placement to htbp
-\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 
@@ -136,9 +138,6 @@
 \makeatother
 \journal{Journal of the Acoustical Society of America}
 
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \usepackage[]{natbib}
 \bibliographystyle{elsarticle-harv}
 \usepackage{bookmark}
@@ -597,7 +596,7 @@ Figure~\ref{fig-bespoke-spi}:
 
 \centering{
 
-\includegraphics[width=1\textwidth,height=\textheight]{figures/SPI-framework.drawio.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/SPI-framework.drawio.png}
 
 }
 
@@ -731,10 +730,10 @@ chosen for the example targets are given in
 Table~\ref{tbl-target-params}.
 
 \begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1455}}
-  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1455}}
-  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.5636}}
-  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1455}}@{}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1455}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1455}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.5636}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1455}}@{}}
 \caption{The MSN direct parameterizations for three arbitrary example
 target distributions. \(\text{tgt}_1\) is located in the pleasant half,
 with a wide variance, and a positive skew along the pleasantness axis.
@@ -798,7 +797,7 @@ plotting them as soundscape distributions.
 
 \centering{
 
-\includegraphics{Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-fig-tgts-output-1.png}
+\pandocbounded{\includegraphics[keepaspectratio]{Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-fig-tgts-output-1.png}}
 
 }
 
@@ -847,9 +846,9 @@ the target distributions defined above, shown in Table~\ref{tbl-ks-test}
 and \citet{fig}--targets.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1528}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.0972}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1944}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1528}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0972}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1944}}@{}}
 
 \caption{\label{tbl-ks-test}Kolmogorov-Smirnov test comparing the
 empirical test distribution (Piazza San Marco) against three soundscape
@@ -902,10 +901,10 @@ produce three separate rankings of soundscape quality for these
 locations, depending on which target is considered the goal.
 
 \begin{longtable}[]{@{}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1279}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2907}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2907}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2907}}@{}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1279}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2907}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2907}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2907}}@{}}
 
 \caption{\label{tbl-ex-spis}SPI scores and rankings for the soundscapes
 of locations included in the International Soundscape Database (ISD).}
@@ -1196,7 +1195,7 @@ those that emphasise high-SPI scores for top-ranked soundscapes.
 
 \centering{
 
-\includegraphics{Mitchell2024_JASA-SPI_files/figure-latex/notebooks-TargetOptimization-fig-pymoo-parks-output-1.png}
+\pandocbounded{\includegraphics[keepaspectratio]{Mitchell2024_JASA-SPI_files/figure-latex/notebooks-TargetOptimization-fig-pymoo-parks-output-1.png}}
 
 }
 
@@ -1209,7 +1208,7 @@ front. The selected solution is indicated in red.}
 
 \centering{
 
-\includegraphics{Mitchell2024_JASA-SPI_files/figure-latex/notebooks-TargetOptimization-fig-pymoo-parks-output-2.png}
+\pandocbounded{\includegraphics[keepaspectratio]{Mitchell2024_JASA-SPI_files/figure-latex/notebooks-TargetOptimization-fig-pymoo-parks-output-2.png}}
 
 }
 
@@ -1366,7 +1365,7 @@ between soundscape indicators, through descriptors, to indices can be
 made by predictive soundscape models. These models are trained on
 increasingly large scale datasets and generally designed to predict
 soundscape descriptors, including the SCM attributes
-\citep[@Hou2024Soundscape]{Ooi2022Probably}. With the complex and
+\citep[\citet{Hou2024Soundscape}]{Ooi2022Probably}. With the complex and
 multidimensional nature of soundscape perception and with the rapid
 progression in machine learning techniques and applications, an index
 framework should be able to integrate new and improved models. By
