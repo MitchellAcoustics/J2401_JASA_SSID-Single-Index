@@ -64,8 +64,36 @@ quarto install tinytex --no-prompt
 echo
 echo Installed TinyTex
 echo
+
+echo
+echo Configuring VSCode
+echo
+# download and install VS Code server
+CODE_VERSION=4.16.1
+
+# download and extract
+wget -q -O code-server.tar.gz https://github.com/coder/code-server/releases/download/v$CODE_VERSION/code-server-$CODE_VERSION-linux-amd64.tar.gz
+tar xzf code-server.tar.gz
+rm -rf code-server.tar.gz
+
+# place in hidden folder
+mv "code-server-$CODE_VERSION-linux-amd64" .code-server
+
+# get code-server in path
+mkdir -p ./.local/bin
+ln -s ~/.code-server/bin/code-server ~/.local/bin/code-server
+
+# install vscode extensions
+code-server --install-extension ms-python.python
+code-server --install-extension sumneko.lua
+code-server --install-extension quarto.quarto
+
+echo
+echo Configured VSCode
+echo
 # install required python packages
-python3 -m pip install jupyterlab-quarto
+python3 -m pip install jupyter-server-proxy
+python3 -m pip install jupyterlab-quarto==0.1.45
 
 echo
 echo Completed
