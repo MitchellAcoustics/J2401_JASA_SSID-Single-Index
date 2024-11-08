@@ -191,3 +191,4 @@ index_files/
 *.spl
 
 /.luarc.json
+.TinyTex
