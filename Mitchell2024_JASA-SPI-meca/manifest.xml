@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE manifest PUBLIC "-//MECA//DTD Manifest v1.0//en" "MECA_manifest.dtd">
+<manifest manifest-version="1" xmlns="https://manuscriptexchange.org/schema/manifest" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <item item-type="article-metadata">
+    <instance media-type="text/xml" xlink:href="Mitchell2024_JASA-SPI.xml"/>
+  </item>
+  <item item-type="manuscript">
+    <instance media-type="application/pdf" xlink:href="Mitchell2024_JASA-SPI.pdf"/>
+  </item>
+  <item item-type="manuscript">
+    <instance media-type="application/vnd.openxmlformats-officedocument.wordprocessingml.document" xlink:href="Mitchell2024_JASA-SPI.docx"/>
+  </item>
+  <item item-type="manuscript">
+    <instance media-type="text/plain" xlink:href="_tex/Mitchell2024_JASA-SPI.tex"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-SingleIndex-Code-cell-23-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-SingleIndex-Code-cell-24-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-SingleIndex-Code-cell-15-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-SingleIndex-Code-fig-tgts-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-SingleIndex-Code-cell-28-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-SingleIndex-Code-cell-20-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-SingleIndex-Code-cell-6-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-SingleIndex-Code-fig-dist-example-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-TargetOptimization-fig-pymoo-parks-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-SingleIndex-Code-cell-10-output-2.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-SingleIndex-Code-cell-7-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-SingleIndex-Code-cell-21-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-TargetOptimization-fig-pymoo-parks-output-2.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-SingleIndex-Code-cell-10-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="Mitchell2024_JASA-SPI_files/figure-jats/notebooks-SingleIndex-Code-cell-26-output-2.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="SingleIndex-Code_files/figure-jats/cell-28-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="SingleIndex-Code_files/figure-jats/cell-15-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="SingleIndex-Code_files/figure-jats/cell-23-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="SingleIndex-Code_files/figure-jats/fig-tgts-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="SingleIndex-Code_files/figure-jats/cell-24-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="SingleIndex-Code_files/figure-jats/cell-10-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="SingleIndex-Code_files/figure-jats/cell-26-output-2.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="SingleIndex-Code_files/figure-jats/cell-6-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="SingleIndex-Code_files/figure-jats/cell-10-output-2.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="SingleIndex-Code_files/figure-jats/cell-21-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="SingleIndex-Code_files/figure-jats/cell-7-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="SingleIndex-Code_files/figure-jats/cell-20-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="SingleIndex-Code_files/figure-jats/fig-dist-example-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="TargetOptimization_files/figure-jats/fig-pymoo-parks-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="TargetOptimization_files/figure-jats/fig-pymoo-parks-output-2.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-cell-23-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-cell-24-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-cell-15-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-fig-tgts-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-cell-28-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-cell-20-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-cell-6-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-fig-dist-example-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-TargetOptimization-fig-pymoo-parks-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-cell-10-output-2.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-cell-7-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-cell-21-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-TargetOptimization-fig-pymoo-parks-output-2.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-cell-10-output-1.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/Mitchell2024_JASA-SPI_files/figure-latex/notebooks-SingleIndex-Code-cell-26-output-2.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="_tex/figures/SPI-framework.drawio.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="application/octet-stream" xlink:href="_tex/elsarticle.cls"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="application/octet-stream" xlink:href="_tex/FellowshipRefs2.bib"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="image/png" xlink:href="figures/SPI-framework.drawio.png"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="application/x-ipynb+json" xlink:href="./notebooks/SingleIndex-Code.ipynb"/>
+  </item>
+  <item item-type="manuscript-supporting-file">
+    <instance media-type="application/x-ipynb+json" xlink:href="./notebooks/TargetOptimization.ipynb"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/.DS_Store"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/.devcontainer/.dockerignore"/>
+  </item>
+  <item item-type="article-source-environment">
+    <instance media-type="application/octet-stream" xlink:href="source/.devcontainer/Dockerfile"/>
+  </item>
+  <item item-type="article-source-environment">
+    <instance media-type="application/json" xlink:href="source/.devcontainer/devcontainer.json"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/.devcontainer/setup_env.sh"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/.devcontainer/test_devcontainer_setup.sh"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/.github/dependabot.yml"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/.gitignore"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/.python-version"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/FellowshipRefs2.bib"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="text/plain" xlink:href="source/LICENSE.txt"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/Mitchell2024_JASA-SPI.qmd"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="text/markdown" xlink:href="source/README.md"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/_extensions/quarto-journals/elsevier/_extension.yml"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/_extensions/quarto-journals/elsevier/bib/elsarticle-harv.bst"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/_extensions/quarto-journals/elsevier/bib/elsarticle-num-names.bst"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/_extensions/quarto-journals/elsevier/bib/elsarticle-num.bst"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/_extensions/quarto-journals/elsevier/bib/elsevier-harvard.csl"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/_extensions/quarto-journals/elsevier/elsarticle.cls"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/_extensions/quarto-journals/elsevier/elsevier.lua"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="text/plain" xlink:href="source/_extensions/quarto-journals/elsevier/partials/_two-column-longtable.tex"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="text/plain" xlink:href="source/_extensions/quarto-journals/elsevier/partials/before-body.tex"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="text/plain" xlink:href="source/_extensions/quarto-journals/elsevier/partials/title.tex"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/_extensions/quarto-journals/elsevier/styles/elsevier.scss"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/_quarto.yml"/>
+  </item>
+  <item item-type="article-source-environment">
+    <instance media-type="text/plain" xlink:href="source/apt.txt"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/figures/SPI-framework.drawio"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="image/png" xlink:href="source/figures/SPI-framework.drawio.png"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="image/png" xlink:href="source/figures/park_pareto.png"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="image/png" xlink:href="source/figures/park_sspy.png"/>
+  </item>
+  <item item-type="article-source-environment">
+    <instance media-type="application/octet-stream" xlink:href="source/install.R"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/x-ipynb+json" xlink:href="source/notebooks/SingleIndex-Code.ipynb"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/x-ipynb+json" xlink:href="source/notebooks/TargetOptimization.ipynb"/>
+  </item>
+  <item item-type="article-source-environment">
+    <instance media-type="application/octet-stream" xlink:href="source/postBuild"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/pyproject.toml"/>
+  </item>
+  <item item-type="article-source-environment">
+    <instance media-type="text/plain" xlink:href="source/requirements.txt"/>
+  </item>
+  <item item-type="article-source-environment">
+    <instance media-type="text/plain" xlink:href="source/runtime.txt"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/scripts/KS2D.py"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/scripts/MultiSkewNorm.py"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/scripts/__init__.py"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/scripts/msn_utils.py"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/scripts/optimize_target.py"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/scripts/rpyskewnorm.py"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/scripts/skew_normal_rpy2.py"/>
+  </item>
+  <item item-type="article-source">
+    <instance media-type="application/octet-stream" xlink:href="source/uv.lock"/>
+  </item>
+  <item item-type="article-source-directory">
+    <instance media-type="application/x-directory" xlink:href="source"/>
+  </item>
+</manifest>
