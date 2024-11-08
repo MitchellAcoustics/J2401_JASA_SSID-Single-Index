@@ -1,5 +1,7 @@
 # Repo for "A framework for creating context-dependent soundscape perception indices" submitted to JASA
 
+[![Quarto Publish](https://github.com/MitchellAcoustics/J2401_JASA_SSID-Single-Index/actions/workflows/publish.yml/badge.svg)](https://github.com/MitchellAcoustics/J2401_JASA_SSID-Single-Index/actions/workflows/publish.yml)
+
 `notebooks` contains the Jupyter notebooks used to generate the figures in the paper.
 
 The Quarto manuscript is written and rendered from `index.qmd`, which embeds code outputs from the notebooks. The manuscript is rendered to the `manuscript` folder.
