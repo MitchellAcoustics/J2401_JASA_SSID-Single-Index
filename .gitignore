@@ -175,3 +175,19 @@ notebooks/SingleIndex-Code_files/*
 
 .ruff_cache
 index_files/
+
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+/.quarto/
+/_manuscript
+
+/agujournal2019.cls
+/elsarticle.cls
+/elsarticle-harv.bst
+/trackchanges.sty
+/site_libs
+.DS_Store
+*.spl
+
+/.luarc.json

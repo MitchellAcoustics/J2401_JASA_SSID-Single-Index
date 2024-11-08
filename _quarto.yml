@@ -1,12 +1,16 @@
 project:
-  type: default
-  output-dir: ./paper/
+  type: manuscript
 
 manuscript:
   article: Mitchell2024_JASA-SPI.qmd
+  code-links: 
+    - binder
+    - repo
   notebooks:
     - ./notebooks/SingleIndex-Code.ipynb
     - ./notebooks/TargetOptimization.ipynb
+
+notebook-subarticles: true
 
 bibliography: FellowshipRefs2.bib
 
@@ -14,20 +18,16 @@ format:
   html:
     clean: true
     toc: true
-    code-fold: true
-    embed-resources: true
-    self-contained-math: true
-    # output-file: paper.html
     comments:
       hypothesis: true
-  # docx: default
-  # jats: default
-  # typst: default
+    citations-hover: true
+    crossrefs-hover: true
+    # output-file: paper.html
+  docx: default
+  jats: default
   elsevier-pdf:
     latex-clean: true
-    # latex-output-dir: _tex
     keep-tex: false
-    # output-file: paper.pdf
     hyperrefoptions: 
       - "citecolor=black"
     echo: false
@@ -49,9 +49,5 @@ format:
           % Note: setting commandchars=\\\{\} here will cause an error 
           }
 
-  # (other formats)
-  # pdf: default
-
 execute:
   freeze: auto
-  keep-ipynb: false

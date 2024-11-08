@@ -48,20 +48,6 @@ keywords:
 
 date: "2024-10-28"
 
-format:
-  html:
-    toc: true
-    code-fold: true
-    self-contained-math: true
-  elsevier-pdf:
-    hyperrefoptions: 
-      - "citecolor=black"
-    echo: false
-    journal:
-      name: Journal of the Acoustical Society of America
-      model: 3p
-      cite-style: authoryear
-
 citation:
   type: article-journal
   container-title: "Journal of the Acoustical Society of America"
@@ -76,8 +62,7 @@ citation:
     - name: Jian Kang
   # url: https://pubs.aip.org/asa/jel/article/2/3/037201/2845750
 
-notebook-links: true
-sidebar: false
+number-sections: true
 ---
 
 # Introduction {#sec-introduction}
