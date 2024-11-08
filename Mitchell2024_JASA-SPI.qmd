@@ -62,8 +62,7 @@ citation:
     - name: Jian Kang
   # url: https://pubs.aip.org/asa/jel/article/2/3/037201/2845750
 
-notebook-links: true
-sidebar: false
+number-sections: true
 ---
 
 # Introduction {#sec-introduction}
