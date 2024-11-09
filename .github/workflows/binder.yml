@@ -9,8 +9,8 @@ jobs:
       uses: actions/checkout@main
 
     - name: setup image name
-      run:
-        repo_name=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV # Convert to lowercase
+      run: |
+        echo "repo_name=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV # Convert to lowercase
 
     - name: cache on binderhub
       uses: jupyterhub/repo2docker-action@master
