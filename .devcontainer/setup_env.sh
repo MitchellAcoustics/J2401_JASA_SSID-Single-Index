@@ -64,8 +64,7 @@ setup_python_env() {
         echo "uv project detected."
         if command_exists uv; then
             log "Using uv for environment management."
-            uv sync
-            uv add ipykernel jupyter
+            uv sync --frozen
             uv run python -m ipykernel install --user --name=project_kernel
         fi
     elif [ -f ".venv/pyvenv.cfg" ]; then

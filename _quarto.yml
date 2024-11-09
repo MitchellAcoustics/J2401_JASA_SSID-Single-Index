@@ -18,10 +18,20 @@ format:
   html:
     clean: true
     toc: true
+    toc-depth: 4
     comments:
       hypothesis: true
     citations-hover: true
     crossrefs-hover: true
+    theme: 
+      light: flatly
+      dark: superhero
+    toc-title: "Contents"
+    html-math-method: katex
+    include-in-header:
+      - includes.html
+    highlight-style: tango
+    smooth-scroll: true
   docx: default
   jats: default
   elsevier-pdf:
