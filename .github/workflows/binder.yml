@@ -11,6 +11,7 @@ jobs:
     - name: cache on binderhub
       uses: jupyterhub/repo2docker-action@master
       with:
+        IMAGE_NAME: ${{ github.actor }}/${{ github.repository }}
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         BINDER_CACHE: true
