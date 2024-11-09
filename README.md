@@ -1,5 +1,10 @@
 # Repo for "A framework for creating context-dependent soundscape perception indices" submitted to JASA
 
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fdrandrewmitchell.com%2FJ2401_JASA_SSID-Single-Index%2F) This paper is published as a standalone website including the full text, code, and data. You can view it [here](https://drandrewmitchell.com/J2401_JASA_SSID-Single-Index/).
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5550005.svg)](https://doi.org/10.5281/zenodo.5550005)
+
+
 [![Quarto Publish](https://github.com/MitchellAcoustics/J2401_JASA_SSID-Single-Index/actions/workflows/publish.yml/badge.svg)](https://github.com/MitchellAcoustics/J2401_JASA_SSID-Single-Index/actions/workflows/publish.yml)
 
 `notebooks` contains the Jupyter notebooks used to generate the figures in the paper.
