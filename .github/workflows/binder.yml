@@ -8,10 +8,14 @@ jobs:
     - name: checkout files in repo
       uses: actions/checkout@main
 
+    - name: setup image name
+      run:
+        repo_name=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV # Convert to lowercase
+
     - name: cache on binderhub
       uses: jupyterhub/repo2docker-action@master
       with:
-        IMAGE_NAME: ${{ github.actor }}/${{ github.repository }}
+        IMAGE_NAME: ${{ env.repo_name }}
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         BINDER_CACHE: true
