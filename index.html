@@ -56,25 +56,43 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-07ba0ad10f5680c660e360ac31d2f3b6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b747b6386764b2b0c9ec970b3b05049a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b747b6386764b2b0c9ec970b3b05049a.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-27262f0026302d056883bfd2faaf8757.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-63c68012ddc2ab4c0a38192f321feba9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-af65e4d8a1d2435f7ffc691be2155461.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<style>html{ scroll-behavior: smooth; }</style>
 <script async="" src="https://hypothes.is/embed.js"></script>
 <script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -987,7 +1005,7 @@ window.Quarto = {
     <div>
       <div class="abstract">
         <div class="block-title">Abstract</div>
-        <p>The soundscape approach provides a basis for considering the holistic perception of sound environments, in context. While steady advancements have been made in methods for assessment and analysis, a gap exists for comparing soundscapes and quantifying improvements in the multi-dimensional perception of a soundscape. To this end, there is a need for the creation of single value indices to compare soundscape quality which incorporate context, aural diversity, and specific design goals for a given application. Just as a variety of decibel-based indices have been developed for various purposes (e.g.&nbsp;<span class="math inline">\(L_{Aeq}\)</span>, <span class="math inline">\(L_{Ceq}\)</span>, <span class="math inline">\(L_{90}\)</span>, <span class="math inline">\(L_{den}\)</span>, etc.), the soundscape approach requires the ability to create novel indices for different uses, which share a common language and understanding. We therefore propose a unified framework for creating bespoke and reference single index measures of soundscape perception, allowing for new metrics to be defined in the future. This framework is based on a four-step test-target paradigm wherein a desired soundscape perception is defined as a target distribution within the soundscape circumplex and the 2D Kolmogorov-Smirnov distance is used to test an assessed soundscape against this target. Applications and implications of this framework are discussed and a multi-objective optimisation method for empirically defining perception indices is proposed.</p>
+        <p>The soundscape approach provides a basis for considering the holistic perception of sound environments, in context. While steady advancements have been made in methods for assessment and analysis, a gap exists for comparing soundscapes and quantifying improvements in the multi-dimensional perception of a soundscape. To this end, there is a need for the creation of single value indices to compare soundscape quality which incorporate context, aural diversity, and specific design goals for a given application. Just as a variety of decibel-based indices have been developed for various purposes (e.g.&nbsp;<span class="math inline">L_{Aeq}</span>, <span class="math inline">L_{Ceq}</span>, <span class="math inline">L_{90}</span>, <span class="math inline">L_{den}</span>, etc.), the soundscape approach requires the ability to create novel indices for different uses, which share a common language and understanding. We therefore propose a unified framework for creating bespoke and reference single index measures of soundscape perception, allowing for new metrics to be defined in the future. This framework is based on a four-step test-target paradigm wherein a desired soundscape perception is defined as a target distribution within the soundscape circumplex and the 2D Kolmogorov-Smirnov distance is used to test an assessed soundscape against this target. Applications and implications of this framework are discussed and a multi-objective optimisation method for empirically defining perception indices is proposed.</p>
       </div>
     </div>
 
@@ -1003,12 +1021,12 @@ window.Quarto = {
 </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
 <div id="quarto-sidebar-toc-left" class="sidebar toc-left">
   <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
   <li><a href="#sec-introduction" id="toc-sec-introduction" class="nav-link active" data-scroll-target="#sec-introduction"><span class="header-section-number">1</span> Introduction</a></li>
   <li><a href="#sec-theoretical-background" id="toc-sec-theoretical-background" class="nav-link" data-scroll-target="#sec-theoretical-background"><span class="header-section-number">2</span> Theoretical Background</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#sec-existing-soundscape-indices" id="toc-sec-existing-soundscape-indices" class="nav-link" data-scroll-target="#sec-existing-soundscape-indices"><span class="header-section-number">2.1</span> Existing ‘Soundscape Indices’</a>
   <ul class="collapse">
   <li><a href="#sec-soundscape-ecology-and-bioacoustics" id="toc-sec-soundscape-ecology-and-bioacoustics" class="nav-link" data-scroll-target="#sec-soundscape-ecology-and-bioacoustics"><span class="header-section-number">2.1.1</span> Soundscape Ecology and Bioacoustics</a></li>
@@ -1016,7 +1034,7 @@ window.Quarto = {
   </ul></li>
   </ul></li>
   <li><a href="#sec-method" id="toc-sec-method" class="nav-link" data-scroll-target="#sec-method"><span class="header-section-number">3</span> Establishing the SPI Framework</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#sec-core-method" id="toc-sec-core-method" class="nav-link" data-scroll-target="#sec-core-method"><span class="header-section-number">3.1</span> Core Method</a></li>
   <li><a href="#sec-circumplex-distribution" id="toc-sec-circumplex-distribution" class="nav-link" data-scroll-target="#sec-circumplex-distribution"><span class="header-section-number">3.2</span> Define and Parameterise a Soundscape Circumplex Distribution</a></li>
   <li><a href="#sec-sample-a-target-distribution" id="toc-sec-sample-a-target-distribution" class="nav-link" data-scroll-target="#sec-sample-a-target-distribution"><span class="header-section-number">3.3</span> Sample a Target Distribution</a></li>
@@ -1024,7 +1042,7 @@ window.Quarto = {
   <li><a href="#calculate-the-spi-score" id="toc-calculate-the-spi-score" class="nav-link" data-scroll-target="#calculate-the-spi-score"><span class="header-section-number">3.5</span> Calculate the SPI score</a></li>
   </ul></li>
   <li><a href="#expanding-the-spi-framework" id="toc-expanding-the-spi-framework" class="nav-link" data-scroll-target="#expanding-the-spi-framework"><span class="header-section-number">4</span> Expanding the SPI framework</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#bespoke-targets" id="toc-bespoke-targets" class="nav-link" data-scroll-target="#bespoke-targets"><span class="header-section-number">4.1</span> Bespoke Targets</a></li>
   <li><a href="#reference-targets" id="toc-reference-targets" class="nav-link" data-scroll-target="#reference-targets"><span class="header-section-number">4.2</span> Reference Targets</a>
   <ul class="collapse">
@@ -1032,7 +1050,7 @@ window.Quarto = {
   </ul></li>
   </ul></li>
   <li><a href="#sec-discussion" id="toc-sec-discussion" class="nav-link" data-scroll-target="#sec-discussion"><span class="header-section-number">5</span> Discussion</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#applications-of-the-spi-framework" id="toc-applications-of-the-spi-framework" class="nav-link" data-scroll-target="#applications-of-the-spi-framework"><span class="header-section-number">5.1</span> Applications of the SPI framework</a></li>
   <li><a href="#connecting-with-soundscape-data" id="toc-connecting-with-soundscape-data" class="nav-link" data-scroll-target="#connecting-with-soundscape-data"><span class="header-section-number">5.2</span> Connecting with soundscape data</a></li>
   <li><a href="#comparison-with-existing-soundscape-indices" id="toc-comparison-with-existing-soundscape-indices" class="nav-link" data-scroll-target="#comparison-with-existing-soundscape-indices"><span class="header-section-number">5.3</span> Comparison with existing soundscape indices</a></li>
@@ -1089,10 +1107,10 @@ window.Quarto = {
 <section id="sec-soundscape-perception" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="sec-soundscape-perception"><span class="header-section-number">2.1.2</span> Soundscape Perception</h3>
 <p>In the domain of soundscape perception, several indices have emerged as attempts to quantify the perceived quality of soundscapes, particularly in urban environments.</p>
-<p>The Green Soundscape Index (GSI) <span class="citation" data-cites="Kogan2018Green">(<a href="#ref-Kogan2018Green" role="doc-biblioref">Kogan et al. 2018</a>)</span> incorporates factors such as the presence and levels of natural sounds and human-made sounds, and their respective contributions to the overall soundscape perception. The GSI is defined as the ratio of the perceived extent of natural sounds (PNS) to the perceived extent of traffic noise (PTN), ranging between 1/5 and 5. Subsequently, Cao and colleagues <span class="citation" data-cites="Cao2020Red Yang2022Effects">(<a href="#ref-Cao2020Red" role="doc-biblioref">Cao, Meng, and Kang 2020</a>; <a href="#ref-Yang2022Effects" role="doc-biblioref">Yang, Cao, and Meng 2022</a>)</span> proposed the Red Soundscape Index (<span class="math inline">\(RSI\)</span>), defined as the ratio of the perceived extent of human sounds to the perceived extent of either natural sounds (<span class="math inline">\(RSI_n\)</span>) or traffic sounds (<span class="math inline">\(RSI_t\)</span>), arguing that the GSI alone was not suitable for all urban soundscape design applications.</p>
+<p>The Green Soundscape Index (GSI) <span class="citation" data-cites="Kogan2018Green">(<a href="#ref-Kogan2018Green" role="doc-biblioref">Kogan et al. 2018</a>)</span> incorporates factors such as the presence and levels of natural sounds and human-made sounds, and their respective contributions to the overall soundscape perception. The GSI is defined as the ratio of the perceived extent of natural sounds (PNS) to the perceived extent of traffic noise (PTN), ranging between 1/5 and 5. Subsequently, Cao and colleagues <span class="citation" data-cites="Cao2020Red Yang2022Effects">(<a href="#ref-Cao2020Red" role="doc-biblioref">Cao, Meng, and Kang 2020</a>; <a href="#ref-Yang2022Effects" role="doc-biblioref">Yang, Cao, and Meng 2022</a>)</span> proposed the Red Soundscape Index (<span class="math inline">RSI</span>), defined as the ratio of the perceived extent of human sounds to the perceived extent of either natural sounds (<span class="math inline">RSI_n</span>) or traffic sounds (<span class="math inline">RSI_t</span>), arguing that the GSI alone was not suitable for all urban soundscape design applications.</p>
 <p>Building on ecological diversity concepts, <span class="citation" data-cites="Liu2014Effects">Liu et al. (<a href="#ref-Liu2014Effects" role="doc-biblioref">2014</a>)</span> introduced the Soundscape Diversity Index (SDI), which quantifies the probability of two randomly selected sounds in a soundscape belonging to different categories, providing a measure of soundscape complexity. Expanding on this approach, <span class="citation" data-cites="Xiang2023Soundscape">Xiang et al. (<a href="#ref-Xiang2023Soundscape" role="doc-biblioref">2023</a>)</span> defined an expanded set of soundscape diversity indices, including the SDI, the Soundscape Richness Index (SRI), the Soundscape Dominance Index (SDO), and the Soundscape Evenness Index (SEI). These indices, adapted from species diversity measures in ecology, offer a more nuanced approach to quantifying aspects of soundscape perception. <span class="citation" data-cites="Xiang2023Soundscape">Xiang et al. (<a href="#ref-Xiang2023Soundscape" role="doc-biblioref">2023</a>)</span> demonstrated that these indices could be partially explained by existing acoustic indicators and were more suitable for evaluating urban green spaces than traditional acoustic indices.</p>
 <p><span class="citation" data-cites="Guo2023Harmonious">Guo et al. (<a href="#ref-Guo2023Harmonious" role="doc-biblioref">2023</a>)</span> proposed the Harmonious Degree of Sound Sources (SHD) index, which combines perceived loudness, occurrence, and preference for sound sources. The SHD assess how well the dominance of a sound aligns with visitors’ preferences, aiming to reflect the harmonious status of sounds in a soundscape.</p>
-<p>In 2019, <span class="citation" data-cites="Kang2019Towards">Kang et al. (<a href="#ref-Kang2019Towards" role="doc-biblioref">2019</a>)</span> proposed the development of a set of soundscape indices (SSID) which might take the form <span class="math inline">\(SSID = f(\text{physical factors}) + f(\text{contextual factors}) + \ldots\)</span> where the functions and weights of each aspect influencing soundscape perception (i.e.&nbsp;physical/acoustic parameters, contextual and visual factors, personal factors, etc.) could be derived statistically from a large dataset of soundscape surveys. The work presented here represents a development of this thinking which has grown out of the SSID project, where the analysis and indexing of perception data and the connection between soundscape indicators and perception have been separated <span class="citation" data-cites="Mitchell2023conceptual">(<a href="#ref-Mitchell2023conceptual" role="doc-biblioref">Mitchell et al. 2023</a>)</span>. This modularization of perception prediction based on objective factors and soundscape index creation should enable more sophisticated and thoughtful index creation and more advanced and updateable prediction models.</p>
+<p>In 2019, <span class="citation" data-cites="Kang2019Towards">Kang et al. (<a href="#ref-Kang2019Towards" role="doc-biblioref">2019</a>)</span> proposed the development of a set of soundscape indices (SSID) which might take the form <span class="math inline">SSID = f(\text{physical factors}) + f(\text{contextual factors}) + \ldots</span> where the functions and weights of each aspect influencing soundscape perception (i.e.&nbsp;physical/acoustic parameters, contextual and visual factors, personal factors, etc.) could be derived statistically from a large dataset of soundscape surveys. The work presented here represents a development of this thinking which has grown out of the SSID project, where the analysis and indexing of perception data and the connection between soundscape indicators and perception have been separated <span class="citation" data-cites="Mitchell2023conceptual">(<a href="#ref-Mitchell2023conceptual" role="doc-biblioref">Mitchell et al. 2023</a>)</span>. This modularization of perception prediction based on objective factors and soundscape index creation should enable more sophisticated and thoughtful index creation and more advanced and updateable prediction models.</p>
 <p>While these indices offer valuable insights into specific aspects of soundscape perception, they are limited in their ability to capture the full multidimensionality of soundscape experienve across diverse contexts. The Soundscape Perception Index (SPI) framework presented in this paper builds upon these efforts by providing a flexible, context-sensitive approach to soundscape assessment. Unlike many previous indices, the SPI is not an analysis of an acoustic signal but rather is an index of perception based on soundscape descriptors. Furthermore, it does not represent a single target in a particular context, but is a generalisable, extensible, and adaptable framework for scoring soundscapes against any goal defined by the user.</p>
 <p>The remainder of the paper will introduce and demonstrate this framework, providing a case study of defining an appropriate target.</p>
 </section>
@@ -1110,8 +1128,8 @@ window.Quarto = {
 <ol type="1">
 <li>Define and parameterise the target circumplex distribution;</li>
 <li>Sample the target distribution and prepare the test distribution;</li>
-<li>Compare test and target distributions using the distance metric (two-dimensional Kolmogorov-Smirnov distance <span class="math inline">\(D_{BKS}\)</span>);</li>
-<li>Calculate <span class="math inline">\(SPI = 100 * (1 - D_{BKS})\)</span>.</li>
+<li>Compare test and target distributions using the distance metric (two-dimensional Kolmogorov-Smirnov distance <span class="math inline">D_{BKS}</span>);</li>
+<li>Calculate <span class="math inline">SPI = 100 * (1 - D_{BKS})</span>.</li>
 </ol>
 <div id="fig-bespoke-spi" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-env="figure*">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1127,32 +1145,32 @@ Figure&nbsp;1: Steps for calculating the SPI.
 </section>
 <section id="sec-circumplex-distribution" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="sec-circumplex-distribution"><span class="header-section-number">3.2</span> Define and Parameterise a Soundscape Circumplex Distribution</h2>
-<p>To move the eight-item PAQ responses into the two-dimensional circumplex space, we use the projection method first presented in ISO/TS 12913-3:2018 <span class="citation" data-cites="ISO12913Part3">(<a href="#ref-ISO12913Part3" role="doc-biblioref">ISO/TS 12913-3:2019 2019</a>)</span>. This projection method and its associated formulae were recently updated further in <span class="citation" data-cites="Aletta2024Soundscape">Aletta et al. (<a href="#ref-Aletta2024Soundscape" role="doc-biblioref">2024</a>)</span> to include a correction for the language in which the survey was conducted. <span class="citation" data-cites="Aletta2024Soundscape">Aletta et al. (<a href="#ref-Aletta2024Soundscape" role="doc-biblioref">2024</a>)</span> also provides adjusted angles for translations of the circumplex attributes to be used in calculating the <span class="math inline">\(P_{ISO}\)</span> and <span class="math inline">\(E_{ISO}\)</span> coordinates. Once the individual perceptual responses are projected into the circumplex space, the resulting data for each location is treated as a circumplex distribution. There are several advancements in considering circumplex distributions compared to the discussions originally given in <span class="citation" data-cites="Mitchell2022How">Mitchell, Aletta, and Kang (<a href="#ref-Mitchell2022How" role="doc-biblioref">2022</a>)</span> which are necessary for SPI. Before exploring the SPI method and target setting more specifically, we will first address these developments.</p>
-<p>The circumplex is defined by two axes: <span class="math inline">\(P_{ISO}\)</span> and <span class="math inline">\(E_{ISO}\)</span>, which are limited to the range <span class="math inline">\([-1, +1]\)</span>. Typically, data in the soundscape circumplex is treated as a combination of two independent normal distributions, one for each axis <span class="citation" data-cites="Mitchell2022How Ooi2022Probably">(<a href="#ref-Mitchell2022How" role="doc-biblioref">Mitchell, Aletta, and Kang 2022</a>; <a href="#ref-Ooi2022Probably" role="doc-biblioref">Ooi et al. 2022</a>)</span>. In some applications this approach is sufficient for capturing the distribution of soundscape perception, however defining a target distribution for SPI requires a more precise approach. The independent normal distribution approach relies on three key assumptions:</p>
+<p>To move the eight-item PAQ responses into the two-dimensional circumplex space, we use the projection method first presented in ISO/TS 12913-3:2018 <span class="citation" data-cites="ISO12913Part3">(<a href="#ref-ISO12913Part3" role="doc-biblioref">ISO/TS 12913-3:2019 2019</a>)</span>. This projection method and its associated formulae were recently updated further in <span class="citation" data-cites="Aletta2024Soundscape">Aletta et al. (<a href="#ref-Aletta2024Soundscape" role="doc-biblioref">2024</a>)</span> to include a correction for the language in which the survey was conducted. <span class="citation" data-cites="Aletta2024Soundscape">Aletta et al. (<a href="#ref-Aletta2024Soundscape" role="doc-biblioref">2024</a>)</span> also provides adjusted angles for translations of the circumplex attributes to be used in calculating the <span class="math inline">P_{ISO}</span> and <span class="math inline">E_{ISO}</span> coordinates. Once the individual perceptual responses are projected into the circumplex space, the resulting data for each location is treated as a circumplex distribution. There are several advancements in considering circumplex distributions compared to the discussions originally given in <span class="citation" data-cites="Mitchell2022How">Mitchell, Aletta, and Kang (<a href="#ref-Mitchell2022How" role="doc-biblioref">2022</a>)</span> which are necessary for SPI. Before exploring the SPI method and target setting more specifically, we will first address these developments.</p>
+<p>The circumplex is defined by two axes: <span class="math inline">P_{ISO}</span> and <span class="math inline">E_{ISO}</span>, which are limited to the range <span class="math inline">[-1, +1]</span>. Typically, data in the soundscape circumplex is treated as a combination of two independent normal distributions, one for each axis <span class="citation" data-cites="Mitchell2022How Ooi2022Probably">(<a href="#ref-Mitchell2022How" role="doc-biblioref">Mitchell, Aletta, and Kang 2022</a>; <a href="#ref-Ooi2022Probably" role="doc-biblioref">Ooi et al. 2022</a>)</span>. In some applications this approach is sufficient for capturing the distribution of soundscape perception, however defining a target distribution for SPI requires a more precise approach. The independent normal distribution approach relies on three key assumptions:</p>
 <ol type="1">
 <li>The two axes are normally distributed.</li>
 <li>The two axes are symmetrically distributed.</li>
 <li>The two axes are independent of each other.</li>
 </ol>
 <p>While the first assumption is generally valid, the second and third assumptions are not always met in practice. In particular, the distribution of soundscape perception responses in the circumplex is often characterised by a high degree of skewness, which can lead to inaccuracies in the calculation of the SPI. Soundscape circumplex distributions are most appropriately described as a bivariate skew-normal distribution <span class="citation" data-cites="Azzalini2005Skew">(<a href="#ref-Azzalini2005Skew" role="doc-biblioref">Adelchi Azzalini 2005</a>)</span> which accurately reflects the relationship between the two dimensions of the circumplex and the fact that real-world perceptual distributions have been consistently observed to not be strictly symmetric.</p>
-<p>The skew-normal distribution is defined by three parameters: location (<span class="math inline">\(\mu\)</span>), scale (<span class="math inline">\(\sigma\)</span>), and shape (<span class="math inline">\(\alpha\)</span>). The location parameter defines the centre of the distribution, the scale parameter defines the spread of the distribution and the shape parameter defines the skew of the distribution. The one-dimensional skew-normal distribution is defined as <span class="citation" data-cites="Azzalini1996Multivariate">(<a href="#ref-Azzalini1996Multivariate" role="doc-biblioref">A. Azzalini and Valle 1996</a>)</span>:</p>
-<p><span class="math display">\[
+<p>The skew-normal distribution is defined by three parameters: location (<span class="math inline">\mu</span>), scale (<span class="math inline">\sigma</span>), and shape (<span class="math inline">\alpha</span>). The location parameter defines the centre of the distribution, the scale parameter defines the spread of the distribution and the shape parameter defines the skew of the distribution. The one-dimensional skew-normal distribution is defined as <span class="citation" data-cites="Azzalini1996Multivariate">(<a href="#ref-Azzalini1996Multivariate" role="doc-biblioref">A. Azzalini and Valle 1996</a>)</span>:</p>
+<p><span class="math display">
 \phi(z; \alpha) = 2 \phi(z) \Phi(\alpha z) \quad \text{for} \quad z \in \mathbb{R}
-\]</span></p>
-<p>where <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\Phi\)</span> are the standard normal probability density function and distribution function, respectively, and <span class="math inline">\(\alpha\)</span> is a shape variable which regulates the skewness. The distribution reduces to a standard normal density when <span class="math inline">\(\alpha = 0\)</span>. The bivariate skew-normal distribution extends this concept to two dimensions, allowing for the modelling of asymmetric and skewed distributions in a two-dimensional space such as the soundscape circumplex. The multivariate skew-normal (MSN) distribution including scale and location parameters is given by combining the normal density and distribution functions <span class="citation" data-cites="Azzalini1999Statistical">(<a href="#ref-Azzalini1999Statistical" role="doc-biblioref">A. Azzalini and Capitanio 1999</a>)</span>:</p>
-<p><span class="math display">\[
+</span></p>
+<p>where <span class="math inline">\phi</span> and <span class="math inline">\Phi</span> are the standard normal probability density function and distribution function, respectively, and <span class="math inline">\alpha</span> is a shape variable which regulates the skewness. The distribution reduces to a standard normal density when <span class="math inline">\alpha = 0</span>. The bivariate skew-normal distribution extends this concept to two dimensions, allowing for the modelling of asymmetric and skewed distributions in a two-dimensional space such as the soundscape circumplex. The multivariate skew-normal (MSN) distribution including scale and location parameters is given by combining the normal density and distribution functions <span class="citation" data-cites="Azzalini1999Statistical">(<a href="#ref-Azzalini1999Statistical" role="doc-biblioref">A. Azzalini and Capitanio 1999</a>)</span>:</p>
+<p><span class="math display">
 Y = 2 \phi_k (y-\xi; \Omega) \Phi\{\alpha^T\omega^{-1}(y-\xi)\}
-\]</span></p>
-<p>where <span class="math inline">\(\phi_k\)</span> is the <em>k</em>-dimensional normal density with location <span class="math inline">\(\xi\)</span>, shape <span class="math inline">\(\alpha\)</span>, and covariance matrix <span class="math inline">\(\Omega\)</span>. <span class="math inline">\(\Phi \{ \dot \}\)</span> is the normal distribution function and <span class="math inline">\(\alpha\)</span> is a <em>k</em>-dimensional shape vector. When <span class="math inline">\(\alpha = 0\)</span>, <span class="math inline">\(Y\)</span> reduces to the standard multivariate normal <span class="math inline">\(N_k(\xi, \Omega)\)</span> density. A circumplex distribution can therefore be parameterised<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> with a 2x2 covariance matrix <span class="math inline">\(\Omega\)</span>, a 2x1 location vector <span class="math inline">\(\xi\)</span>, and a 2x1 shape vector <span class="math inline">\(\alpha\)</span>, written as:</p>
-<p><span class="math display">\[
+</span></p>
+<p>where <span class="math inline">\phi_k</span> is the <em>k</em>-dimensional normal density with location <span class="math inline">\xi</span>, shape <span class="math inline">\alpha</span>, and covariance matrix <span class="math inline">\Omega</span>. <span class="math inline">\Phi \{ \dot \}</span> is the normal distribution function and <span class="math inline">\alpha</span> is a <em>k</em>-dimensional shape vector. When <span class="math inline">\alpha = 0</span>, <span class="math inline">Y</span> reduces to the standard multivariate normal <span class="math inline">N_k(\xi, \Omega)</span> density. A circumplex distribution can therefore be parameterised<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> with a 2x2 covariance matrix <span class="math inline">\Omega</span>, a 2x1 location vector <span class="math inline">\xi</span>, and a 2x1 shape vector <span class="math inline">\alpha</span>, written as:</p>
+<p><span class="math display">
 Y \sim MSN (\xi, \Omega, \alpha)
-\]</span></p>
+</span></p>
 <p>By fitting an MSN distribution to empirical soundscape perception responses, it becomes possible to accurately capture the asymmetry and skewness of the distribution. A bivariate skew-normal distribution can be summarised as a set of these three parameters. Once parameterised, the distribution can then be sampled from to generate a synthetic distribution of soundscape perception responses.</p>
 <p>Soundscape targets can thus be set by defining the desired MSN distribution. To demonstrate this, we will construct three arbitrary targets which will be used later to score three SPIs. The parameters chosen for the example targets are given in <a href="#tbl-target-params" class="quarto-xref">Table&nbsp;1</a>.</p>
 <div id="tbl-target-params" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-target-params-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: The MSN direct parameterizations for three arbitrary example target distributions. <span class="math inline">\(\text{tgt}_1\)</span> is located in the pleasant half, with a wide variance, and a positive skew along the pleasantness axis. <span class="math inline">\(\text{tgt}_2\)</span> is located in the calm quadrant, with a typical variance, and a negative skew along the pleasantness axis and a positive skew along the eventful axis. <span class="math inline">\(\text{tgt}_3\)</span> is located in the vibrant quadrant, with a moderate variance, and a negative skew along the eventfulness axis.
+Table&nbsp;1: The MSN direct parameterizations for three arbitrary example target distributions. <span class="math inline">\text{tgt}_1</span> is located in the pleasant half, with a wide variance, and a positive skew along the pleasantness axis. <span class="math inline">\text{tgt}_2</span> is located in the calm quadrant, with a typical variance, and a negative skew along the pleasantness axis and a positive skew along the eventful axis. <span class="math inline">\text{tgt}_3</span> is located in the vibrant quadrant, with a moderate variance, and a negative skew along the eventfulness axis.
 </figcaption>
 <div aria-describedby="tbl-target-params-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1165,29 +1183,29 @@ Table&nbsp;1: The MSN direct parameterizations for three arbitrary example targe
 <thead>
 <tr class="header">
 <th style="text-align: center;">Target</th>
-<th style="text-align: center;">Location <span class="math inline">\(\xi\)</span></th>
-<th style="text-align: center;">Covariance Matrix <span class="math inline">\(\Omega\)</span></th>
-<th style="text-align: center;">Shape <span class="math inline">\(\alpha\)</span></th>
+<th style="text-align: center;">Location <span class="math inline">\xi</span></th>
+<th style="text-align: center;">Covariance Matrix <span class="math inline">\Omega</span></th>
+<th style="text-align: center;">Shape <span class="math inline">\alpha</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(\text{tgt}_1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\([0.5, 0.0]\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\begin{bmatrix} 0.2 &amp; 0.0 \\ 0.0 &amp; 0.2 \end{bmatrix}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\([1, 0]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\text{tgt}_1</span></td>
+<td style="text-align: center;"><span class="math inline">[0.5, 0.0]</span></td>
+<td style="text-align: center;"><span class="math inline">\begin{bmatrix} 0.2 &amp; 0.0 \\ 0.0 &amp; 0.2 \end{bmatrix}</span></td>
+<td style="text-align: center;"><span class="math inline">[1, 0]</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><span class="math inline">\(\text{tgt}_2\)</span></td>
-<td style="text-align: center;"><span class="math inline">\([1.0, -0.4]\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\begin{bmatrix} 0.18 &amp; -0.04 \\ -0.04 &amp; 0.09 \end{bmatrix}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\([-8, 1]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\text{tgt}_2</span></td>
+<td style="text-align: center;"><span class="math inline">[1.0, -0.4]</span></td>
+<td style="text-align: center;"><span class="math inline">\begin{bmatrix} 0.18 &amp; -0.04 \\ -0.04 &amp; 0.09 \end{bmatrix}</span></td>
+<td style="text-align: center;"><span class="math inline">[-8, 1]</span></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(\text{tgt}_3\)</span></td>
-<td style="text-align: center;"><span class="math inline">\([0.5, 0.7]\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\begin{bmatrix} 0.1 &amp; 0.05 \\ 0.05 &amp; 0.1 \end{bmatrix}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\([0, -5]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\text{tgt}_3</span></td>
+<td style="text-align: center;"><span class="math inline">[0.5, 0.7]</span></td>
+<td style="text-align: center;"><span class="math inline">\begin{bmatrix} 0.1 &amp; 0.05 \\ 0.05 &amp; 0.1 \end{bmatrix}</span></td>
+<td style="text-align: center;"><span class="math inline">[0, -5]</span></td>
 </tr>
 </tbody>
 </table>
@@ -1197,7 +1215,7 @@ Table&nbsp;1: The MSN direct parameterizations for three arbitrary example targe
 </section>
 <section id="sec-sample-a-target-distribution" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="sec-sample-a-target-distribution"><span class="header-section-number">3.3</span> Sample a Target Distribution</h2>
-<p>Once the parameters for an MSN are defined (i.e., the target), the MSN is then sampled using the <code>sn</code> package <span class="citation" data-cites="Azzalini2021R">(<a href="#ref-Azzalini2021R" role="doc-biblioref">A. Azzalini 2021</a>)</span> in <code>R</code> <span class="citation" data-cites="RCT2018R">(<a href="#ref-RCT2018R" role="doc-biblioref">R Core Team 2018</a>)</span>. This is to prepare the target distribution to be compared with the empirical test distribution. Several restrictions to the possible parameter values apply, most importantly the covariance matrix <span class="math inline">\(\Omega\)</span> must be a positive-definite matrix. In depth discussions of how these parameterizations should be defined and their restrictions can be found in <span class="citation" data-cites="Azzalini2016How">Adelchi Azzalini (<a href="#ref-Azzalini2016How" role="doc-biblioref">2016</a>)</span>. <a href="#fig-tgts" class="quarto-xref">Figure&nbsp;2</a> shows the result of sampling (n=1000) the three example distributions given in <a href="#tbl-target-params" class="quarto-xref">Table&nbsp;1</a> and plotting them as soundscape distributions.</p>
+<p>Once the parameters for an MSN are defined (i.e., the target), the MSN is then sampled using the <code>sn</code> package <span class="citation" data-cites="Azzalini2021R">(<a href="#ref-Azzalini2021R" role="doc-biblioref">A. Azzalini 2021</a>)</span> in <code>R</code> <span class="citation" data-cites="RCT2018R">(<a href="#ref-RCT2018R" role="doc-biblioref">R Core Team 2018</a>)</span>. This is to prepare the target distribution to be compared with the empirical test distribution. Several restrictions to the possible parameter values apply, most importantly the covariance matrix <span class="math inline">\Omega</span> must be a positive-definite matrix. In depth discussions of how these parameterizations should be defined and their restrictions can be found in <span class="citation" data-cites="Azzalini2016How">Adelchi Azzalini (<a href="#ref-Azzalini2016How" role="doc-biblioref">2016</a>)</span>. <a href="#fig-tgts" class="quarto-xref">Figure&nbsp;2</a> shows the result of sampling (n=1000) the three example distributions given in <a href="#tbl-target-params" class="quarto-xref">Table&nbsp;1</a> and plotting them as soundscape distributions.</p>
 <div class="quarto-embed-nb-cell">
 <div id="cell-fig-tgts" class="cell">
 <div class="cell-output cell-output-display">
@@ -1217,9 +1235,9 @@ Figure&nbsp;2: Example of defining and sampling from three arbitrary bespoke tar
 </section>
 <section id="compare-the-target-and-test-soundscape-assessment-distributions" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="compare-the-target-and-test-soundscape-assessment-distributions"><span class="header-section-number">3.4</span> Compare the target and test soundscape assessment distributions</h2>
-<p>Central to the SPI framework is the concept of a distance metric, which quantifies the deviation of a given soundscape from a desired target soundscape. This distance metric serves as the basis for calculating the SPI value, with smaller distances indicating a closer alignment between the perceived soundscape and the target soundscape perception. The distance between the test and target soundscape distributions is calculated using a two-dimensional Kolmogorov-Smirnov distance <span class="math inline">\(D_{BKS}\)</span> <span class="citation" data-cites="Fasano1987multidimensional">(<a href="#ref-Fasano1987multidimensional" role="doc-biblioref">Fasano and Franceschini 1987</a>)</span>. The KS distance is a non-parametric metric of the equality of continuous distributions which is sensitive to both the location and shape of the distributions <span class="citation" data-cites="Chakravati1967Handbook">(<a href="#ref-Chakravati1967Handbook" role="doc-biblioref">Chakravati, Laha, and Roy 1967</a>)</span>.</p>
-<p>Essentially, we approach this as a problem of (dis)similarity between soundscapes. The <span class="math inline">\(D_{BKS}\)</span> distance metric is then proposed to assess how similar any two given soundscapes distributions are within the circumplex. Taken to the extreme, two perfectly matching distributions in the soundscape circumplex would return a 100% SPI value, while two completely dissimilar distributions would return a 0% SPI value. In practical terms, for the former, this will never be achieved in real world scenarios; for the latter, it is also difficult to estimate how low the SPI value could actually go, and it should be considered that the distance may happen in different directions within the circumplex space. For instance, if a distribution for a vibrant soundscape was taken as a reference, a compared soundscape distribution may exhibit low SPI values for being located in the calm, OR monotonous, OR chaotic regions of the model.</p>
-<p>Using the data from one location in the ISD (Piazza San Marco) as the test distribution, the <span class="math inline">\(D_{BKS}\)</span> statistic is calculated for each of the target distributions defined above, shown in <a href="#tbl-ks-test" class="quarto-xref">Table&nbsp;2</a> and <span class="citation" data-cites="fig">(<a href="#ref-fig" role="doc-biblioref"><strong>fig?</strong></a>)</span>–targets.</p>
+<p>Central to the SPI framework is the concept of a distance metric, which quantifies the deviation of a given soundscape from a desired target soundscape. This distance metric serves as the basis for calculating the SPI value, with smaller distances indicating a closer alignment between the perceived soundscape and the target soundscape perception. The distance between the test and target soundscape distributions is calculated using a two-dimensional Kolmogorov-Smirnov distance <span class="math inline">D_{BKS}</span> <span class="citation" data-cites="Fasano1987multidimensional">(<a href="#ref-Fasano1987multidimensional" role="doc-biblioref">Fasano and Franceschini 1987</a>)</span>. The KS distance is a non-parametric metric of the equality of continuous distributions which is sensitive to both the location and shape of the distributions <span class="citation" data-cites="Chakravati1967Handbook">(<a href="#ref-Chakravati1967Handbook" role="doc-biblioref">Chakravati, Laha, and Roy 1967</a>)</span>.</p>
+<p>Essentially, we approach this as a problem of (dis)similarity between soundscapes. The <span class="math inline">D_{BKS}</span> distance metric is then proposed to assess how similar any two given soundscapes distributions are within the circumplex. Taken to the extreme, two perfectly matching distributions in the soundscape circumplex would return a 100% SPI value, while two completely dissimilar distributions would return a 0% SPI value. In practical terms, for the former, this will never be achieved in real world scenarios; for the latter, it is also difficult to estimate how low the SPI value could actually go, and it should be considered that the distance may happen in different directions within the circumplex space. For instance, if a distribution for a vibrant soundscape was taken as a reference, a compared soundscape distribution may exhibit low SPI values for being located in the calm, OR monotonous, OR chaotic regions of the model.</p>
+<p>Using the data from one location in the ISD (Piazza San Marco) as the test distribution, the <span class="math inline">D_{BKS}</span> statistic is calculated for each of the target distributions defined above, shown in <a href="#tbl-ks-test" class="quarto-xref">Table&nbsp;2</a> and <span class="citation" data-cites="fig">(<a href="#ref-fig" role="doc-biblioref"><strong>fig?</strong></a>)</span>–targets.</p>
 <div class="quarto-embed-nb-cell">
 <div class="cell">
 <div id="tbl-ks-test" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1269,10 +1287,10 @@ Table&nbsp;2: Kolmogorov-Smirnov test comparing the empirical test distribution 
 </section>
 <section id="calculate-the-spi-score" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="calculate-the-spi-score"><span class="header-section-number">3.5</span> Calculate the SPI score</h2>
-<p>The final step is to convert <span class="math inline">\(D_{BKS}\)</span> into a more interpretable form to use as a comparison across soundscapes. Since the KS distance is a measure of dissimilarity, we first subtract it from one to give a measure of similarity between the test distribution and the target distribution. This is then scaled to produce a score which ranges from 0 to 100, giving the final SPI formula:</p>
-<p><span class="math display">\[
+<p>The final step is to convert <span class="math inline">D_{BKS}</span> into a more interpretable form to use as a comparison across soundscapes. Since the KS distance is a measure of dissimilarity, we first subtract it from one to give a measure of similarity between the test distribution and the target distribution. This is then scaled to produce a score which ranges from 0 to 100, giving the final SPI formula:</p>
+<p><span class="math display">
 \text{SPI} = 100 * (1 - D_{BKS}\{\text{MSN}_{test}, \text{MSN}_{tgt}\})
-\]</span></p>
+</span></p>
 <p>To show the usefulness of the test-target paradigm, we calculated the SPIs for each of the three target distributions for all the locations included in the ISD, as shown in <a href="#tbl-ex-spis" class="quarto-xref">Table&nbsp;3</a>. Since each location is now assigned an SPI, this makes it possible to effectively produce three separate rankings of soundscape quality for these locations, depending on which target is considered the goal.</p>
 <div class="quarto-embed-nb-cell">
 <div class="cell">
@@ -1293,9 +1311,9 @@ Table&nbsp;3: SPI scores and rankings for the soundscapes of locations included 
 <thead>
 <tr class="header">
 <th style="text-align: right;">Ranking</th>
-<th style="text-align: left;"><span class="math inline">\(SPI_1\)</span> (pleasant)</th>
-<th style="text-align: left;"><span class="math inline">\(SPI_2\)</span> (calm)</th>
-<th style="text-align: left;"><span class="math inline">\(SPI_3\)</span> (vibrant)</th>
+<th style="text-align: left;"><span class="math inline">SPI_1</span> (pleasant)</th>
+<th style="text-align: left;"><span class="math inline">SPI_2</span> (calm)</th>
+<th style="text-align: left;"><span class="math inline">SPI_3</span> (vibrant)</th>
 </tr>
 </thead>
 <tbody>
@@ -1492,29 +1510,29 @@ Table&nbsp;4: A pre-defined ranking of soundscape quality of the park locations 
 </div>
 <p>Effectively, this is an optimisation task to determine the MSN parameters which best achieve the above goals. Parameter optimisation refers to the process of adjusting the parameters of a system, model, or algorithm to achieve the best possible performance according to one or more objectives. To set up the optimisation task, we first need to express the parameter space and any constraints. Since our goal is to identify an optimised soundscape target distribution, the parameters we will search over are:</p>
 <ul>
-<li><span class="math inline">\(\xi = (\xi_x, \xi_y)\)</span>, <span class="math inline">\(-1 \leq \xi \leq 1\)</span></li>
-<li><span class="math inline">\(\Omega = \begin{pmatrix} var(x) &amp; cov(x, y) \\ cov(y, x) &amp; var(y) \end{pmatrix}\)</span>
+<li><span class="math inline">\xi = (\xi_x, \xi_y)</span>, <span class="math inline">-1 \leq \xi \leq 1</span></li>
+<li><span class="math inline">\Omega = \begin{pmatrix} var(x) &amp; cov(x, y) \\ cov(y, x) &amp; var(y) \end{pmatrix}</span>
 <ul>
-<li><span class="math inline">\(0 \leq var() \leq 1\)</span></li>
-<li><span class="math inline">\(-1 \leq cov() \leq 1\)</span></li>
-<li><span class="math inline">\(\Omega\)</span> must be symmetric and positive definite</li>
+<li><span class="math inline">0 \leq var() \leq 1</span></li>
+<li><span class="math inline">-1 \leq cov() \leq 1</span></li>
+<li><span class="math inline">\Omega</span> must be symmetric and positive definite</li>
 </ul></li>
-<li><span class="math inline">\(\alpha = (\alpha_x, \alpha_y)\)</span>, <span class="math inline">\(-5 \leq \alpha \leq 5\)</span></li>
+<li><span class="math inline">\alpha = (\alpha_x, \alpha_y)</span>, <span class="math inline">-5 \leq \alpha \leq 5</span></li>
 </ul>
 <p>We then define the objective functions based on the two goals given above. For each step in the algorithm with a given trial set of parameters, a target distribution will be produced, the SPI for each test location assessed according to the protocol described in <a href="#sec-method" class="quarto-xref">Section&nbsp;3</a>, and the resulting set of SPI scores and ranking will be scored using the objective functions. Goal (1) is assessed by calculating the Spearman rank correlation between the <em>a priori</em> ranking and the SPI ranking:</p>
-<p><span class="math display">\[
+<p><span class="math display">
 f_1 = r_{s}(R(\text{prior}), R(\text{target}))
-\]</span></p>
+</span></p>
 <p>Goal (2) is scored by calculating a weighted sum of the produced SPIs. To prioritise a target which provides high SPI scores for highly ranked soundscapes, we weight according to the ranking position:</p>
-<p><span class="math display">\[
+<p><span class="math display">
 f_2 = \sum_{i=1}^m \frac{1}{\text{rank}_i} \cdot SPI_i
-\]</span></p>
-<p>where <span class="math inline">\(m\)</span> is the number of included locations, <span class="math inline">\(SPI_i\)</span> is the calculated SPI score for the <span class="math inline">\(i\)</span>-th location assessed against a trial target, and <span class="math inline">\(\text{rank}_i\)</span> is the calculated rank value of the <span class="math inline">\(i\)</span>-th location.</p>
+</span></p>
+<p>where <span class="math inline">m</span> is the number of included locations, <span class="math inline">SPI_i</span> is the calculated SPI score for the <span class="math inline">i</span>-th location assessed against a trial target, and <span class="math inline">\text{rank}_i</span> is the calculated rank value of the <span class="math inline">i</span>-th location.</p>
 <p>Through our testing, optimising only on the rank correlation regularly produced targets which, while they did result in the desired ranking, were in no way representative of the soundscapes in question. We therefore aim to optimise for both a consistent soundscape ranking and for a high SPI score for the top-ranked soundscapes. Optimising these parameters with respect to multiple objectives ensures a more holistic approach to system improvement, acknowledging the trade-offs and interactions between different goals.</p>
 <p>We apply the nondominated sorting genetic algorithm (NSGA-II) <span class="citation" data-cites="Deb2002fast">(<a href="#ref-Deb2002fast" role="doc-biblioref">Deb et al. 2002</a>)</span> to optimise our target distribution parameters. NSGA-II is a popular and efficient multi-objective evolutionary algorithm that is well-suited for problems with multiple, potentially conflicting objectives.</p>
 <p>The algorithm works as follows<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
 <ol type="1">
-<li>Initialize a population of candidate solutions, each representing a set of target distribution parameters <span class="math inline">\((\xi, \Omega, \alpha)\)</span>.</li>
+<li>Initialize a population of candidate solutions, each representing a set of target distribution parameters <span class="math inline">(\xi, \Omega, \alpha)</span>.</li>
 <li>Evaluate each candidate solution using the two objective functions defined above.</li>
 <li>Perform non-dominated sorting to rank the solutions based on Pareto dominance.</li>
 <li>Calculate crowding distance for each solution to maintain diversity in the population.</li>
@@ -1523,7 +1541,7 @@ f_2 = \sum_{i=1}^m \frac{1}{\text{rank}_i} \cdot SPI_i
 <li>Combine parent and offspring populations and select the best solutions to form the next generation.</li>
 <li>Repeat steps 2-7 for a specified number of generations or until a termination criterion is met.</li>
 </ol>
-<p>The NSGA-II algorithm is implemented using the Python library <code>pymoo v0.6.1.3</code> <span class="citation" data-cites="pymoo">(<a href="#ref-pymoo" role="doc-biblioref">Blank and Deb 2020</a>)</span>. The population size is set to 150, and the algorithm runs for 100 generations. In <code>pymoo</code>, each objective function is supposed to be minimised, so when implementing the algorithm and in the results, <span class="math inline">\(-f_1\)</span> and <span class="math inline">\(-f_2\)</span> are used. After running the NSGA-II algorithm, we obtain a set of non-dominated solutions representing the Pareto front, shown in <a href="#fig-pymoo-parks" class="quarto-xref">Figure&nbsp;3</a> (a). Each solution on the Pareto front represents a trade-off between the two objectives: maximising the rank correlation (<span class="math inline">\(f_1\)</span>) and maximising the weighted sum of SPI scores (<span class="math inline">\(f_2\)</span>). The Pareto front allows us to visualise and analyse the range of possible solutions, from those that prioritise ranking consistency to those that emphasise high-SPI scores for top-ranked soundscapes.</p>
+<p>The NSGA-II algorithm is implemented using the Python library <code>pymoo v0.6.1.3</code> <span class="citation" data-cites="pymoo">(<a href="#ref-pymoo" role="doc-biblioref">Blank and Deb 2020</a>)</span>. The population size is set to 150, and the algorithm runs for 100 generations. In <code>pymoo</code>, each objective function is supposed to be minimised, so when implementing the algorithm and in the results, <span class="math inline">-f_1</span> and <span class="math inline">-f_2</span> are used. After running the NSGA-II algorithm, we obtain a set of non-dominated solutions representing the Pareto front, shown in <a href="#fig-pymoo-parks" class="quarto-xref">Figure&nbsp;3</a> (a). Each solution on the Pareto front represents a trade-off between the two objectives: maximising the rank correlation (<span class="math inline">f_1</span>) and maximising the weighted sum of SPI scores (<span class="math inline">f_2</span>). The Pareto front allows us to visualise and analyse the range of possible solutions, from those that prioritise ranking consistency to those that emphasise high-SPI scores for top-ranked soundscapes.</p>
 <div class="quarto-embed-nb-cell">
 <div id="fig-pymoo-parks" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1562,7 +1580,7 @@ Figure&nbsp;3: NSGA-II optimization to learn the MSN parameters which produce th
 </div>
 </div>
 <p>For this demonstration, we opt for the second method, selecting the solution closest to the ideal point in the normalised objective space. This approach provides a balance between ranking consistency and high SPI scores for top-ranked soundscapes. Once the optimal solution is selected, we can sample from the MSN distribution and plot the derived target distribution, shown in <a href="#fig-pymoo-parks" class="quarto-xref">Figure&nbsp;3</a>.</p>
-<p><span class="math display">\[
+<p><span class="math display">
 \textup{tgt}_{\textup{park}} \sim  \left\{\begin{matrix}
     \xi&amp;=&amp;[0.694, 0.406] \\
     \Omega&amp;=&amp;\begin{bmatrix}
@@ -1571,8 +1589,8 @@ Figure&nbsp;3: NSGA-II optimization to learn the MSN parameters which produce th
     \end{bmatrix} \\
     \alpha&amp;=&amp;[5.054, -37.671]
 \end{matrix}\right.
-\]</span></p>
-<p>The resulting <span class="math inline">\(\text{tgt}_{\text{park}}\)</span>, with the MSN parameters given above, exhibits some expected characteristics: it is almost entirely pleasant, with a long uneventful tail into the calm quadrant, but somewhat unexpectedly the mode is slightly vibrant. What should be made clear about this demonstration is that we are not presenting this as a reference target to be used in the future - this section is meant as a demonstration of a method which can be used to derive a target from an <em>a priori</em> ranking. In this case, the <em>a priori</em> ranking was created by the authors from their experience of the locations in the ISD. To truly be called an empirical reference target, the ranking would need to be arrived at empirically, via some other metric (e.g.&nbsp;health or productivity ratings of the areas) or through an experiment such as paired-choice comparisons.</p>
+</span></p>
+<p>The resulting <span class="math inline">\text{tgt}_{\text{park}}</span>, with the MSN parameters given above, exhibits some expected characteristics: it is almost entirely pleasant, with a long uneventful tail into the calm quadrant, but somewhat unexpectedly the mode is slightly vibrant. What should be made clear about this demonstration is that we are not presenting this as a reference target to be used in the future - this section is meant as a demonstration of a method which can be used to derive a target from an <em>a priori</em> ranking. In this case, the <em>a priori</em> ranking was created by the authors from their experience of the locations in the ISD. To truly be called an empirical reference target, the ranking would need to be arrived at empirically, via some other metric (e.g.&nbsp;health or productivity ratings of the areas) or through an experiment such as paired-choice comparisons.</p>
 <p>It is these reference targets with an empirical backing which would ideally form agreed upon standards and benchmarks in the field against which new soundscapes would be compared. The best methods for empirically determining the ideal soundscape distribution for a given context will no doubt remain a topic of debate and development in the coming years.</p>
 </section>
 </section>
@@ -1602,9 +1620,9 @@ Figure&nbsp;3: NSGA-II optimization to learn the MSN parameters which produce th
 </section>
 <section id="limitations" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="limitations"><span class="header-section-number">5.4</span> Considerations and future work</h2>
-<p>Several considerations should be noted when defining an SPI target. First, the target distribution should be representative of the desired soundscape perception for the given application. This requires a clear understanding of the context, objectives, and constraints of the project, as well as the preferences and expectations of stakeholders and end-users. Second, the temporal and spatial scales of the target distribution should align with the soundscape assessment being conducted. What constitutes the actual spatial bounds of ‘a soundscape’, or indeed of ‘a place’, is a complex question which will depend on the context of the assessment. For example, a park soundscape may be defined by the boundaries of the park itself, or it may extend to include the surrounding urban environment or be restricted to a certain distance from a feature of interest in the park<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. The temporal scale of the assessment is also important, as soundscape quality can vary throughout the day and across different seasons. Increasing the spatial bounds of what is considered the soundscape under examination (e.g.&nbsp;a single position vs a 25<span class="math inline">\(m^2\)</span> area vs an entire park) or extending the temporal scale will almost certainly result in a distribution with a larger variance. What scales are appropriate for a given assessment will depend on the context and objectives of the project, but they should be considered when defining the target distribution. Applying a target distribution that is too broad or too narrow for the context of the assessment may result in inaccurate or misleading SPI scores. As the circumplex distribution first described in <span class="citation" data-cites="Mitchell2022How">Mitchell, Aletta, and Kang (<a href="#ref-Mitchell2022How" role="doc-biblioref">2022</a>)</span> and further formalised here develops, we are hopeful that a better understanding of the relationship between temporal and spatial scales and the parameters of the distribution will emerge and will contribute to an increased understanding of what constitutes `the soundscape of a place’ and how this should be reflected in its ideal perception distribution.</p>
+<p>Several considerations should be noted when defining an SPI target. First, the target distribution should be representative of the desired soundscape perception for the given application. This requires a clear understanding of the context, objectives, and constraints of the project, as well as the preferences and expectations of stakeholders and end-users. Second, the temporal and spatial scales of the target distribution should align with the soundscape assessment being conducted. What constitutes the actual spatial bounds of ‘a soundscape’, or indeed of ‘a place’, is a complex question which will depend on the context of the assessment. For example, a park soundscape may be defined by the boundaries of the park itself, or it may extend to include the surrounding urban environment or be restricted to a certain distance from a feature of interest in the park<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. The temporal scale of the assessment is also important, as soundscape quality can vary throughout the day and across different seasons. Increasing the spatial bounds of what is considered the soundscape under examination (e.g.&nbsp;a single position vs a 25<span class="math inline">m^2</span> area vs an entire park) or extending the temporal scale will almost certainly result in a distribution with a larger variance. What scales are appropriate for a given assessment will depend on the context and objectives of the project, but they should be considered when defining the target distribution. Applying a target distribution that is too broad or too narrow for the context of the assessment may result in inaccurate or misleading SPI scores. As the circumplex distribution first described in <span class="citation" data-cites="Mitchell2022How">Mitchell, Aletta, and Kang (<a href="#ref-Mitchell2022How" role="doc-biblioref">2022</a>)</span> and further formalised here develops, we are hopeful that a better understanding of the relationship between temporal and spatial scales and the parameters of the distribution will emerge and will contribute to an increased understanding of what constitutes `the soundscape of a place’ and how this should be reflected in its ideal perception distribution.</p>
 <p>Various other distance metrics were considered when developing the SPI method. The simplest method is to define a single point target, rather than a target distribution, and calculate a normalized mean Euclidean distance between points in the test distribution and the target point. While this is conceptually simple and requires defining only a single coordinate point as a target, rather than the MSN parameters described in <a href="#sec-circumplex-distribution" class="quarto-xref">Section&nbsp;3.2</a>, the shape and spread of a soundscape distribution is itself an important factor in describing the collective perception of a soundscape and would not be captured by this method <span class="citation" data-cites="Mitchell2022How">(<a href="#ref-Mitchell2022How" role="doc-biblioref">Mitchell, Aletta, and Kang 2022</a>)</span>.</p>
-<p>An additional method which was considered, was to consider a target as an ellipse (or, indeed any other shape) drawn in the circumplex space (similar to the simplified median decile curves proposed in <span class="citation" data-cites="Mitchell2022How">Mitchell, Aletta, and Kang (<a href="#ref-Mitchell2022How" role="doc-biblioref">2022</a>)</span>). An SPI score would then be calculated based on the percentage of responses which fall within the space defined by the ellipse. Again, this is conceptually quite simple and defining the ellipse targets is straightforward. However, this method has an important flaw - it is easy to artificially inflate or deflate the scores merely by changing the area of the ellipse. The larger the ellipse, the higher all SPI scores will be, regardless of whether the sample distribution is wide or narrow. This would also limit cross-comparability between targets. As can be seen in <a href="#tbl-ex-spis" class="quarto-xref">Table&nbsp;3</a>, defining a target distribution with a larger spread (i.e.&nbsp;<span class="math inline">\(\text{tgt}_1\)</span>) does not automatically result in higher SPI scores across the board as it would with the ellipse target method. By defining the SPI as a true target-test distribution comparison we ensure that the SPI always accurately reflects the similarity between the perception of a soundscape and its target, both in terms of its location in the circumplex and the shape of the data.</p>
+<p>An additional method which was considered, was to consider a target as an ellipse (or, indeed any other shape) drawn in the circumplex space (similar to the simplified median decile curves proposed in <span class="citation" data-cites="Mitchell2022How">Mitchell, Aletta, and Kang (<a href="#ref-Mitchell2022How" role="doc-biblioref">2022</a>)</span>). An SPI score would then be calculated based on the percentage of responses which fall within the space defined by the ellipse. Again, this is conceptually quite simple and defining the ellipse targets is straightforward. However, this method has an important flaw - it is easy to artificially inflate or deflate the scores merely by changing the area of the ellipse. The larger the ellipse, the higher all SPI scores will be, regardless of whether the sample distribution is wide or narrow. This would also limit cross-comparability between targets. As can be seen in <a href="#tbl-ex-spis" class="quarto-xref">Table&nbsp;3</a>, defining a target distribution with a larger spread (i.e.&nbsp;<span class="math inline">\text{tgt}_1</span>) does not automatically result in higher SPI scores across the board as it would with the ellipse target method. By defining the SPI as a true target-test distribution comparison we ensure that the SPI always accurately reflects the similarity between the perception of a soundscape and its target, both in terms of its location in the circumplex and the shape of the data.</p>
 <p>As noted in <a href="#sec-targets" class="quarto-xref">Section&nbsp;4.2.1</a>, although a methodology for deriving targets is presented, the <em>a priori</em> ranking we use for the demonstration was not itself arrived at empirically. Hence the park target cannot be considered a true reference target. A key piece of future work is to use experimental methods such as paired-choice comparisons to arrive at a well-defined ranking which can then produce a true reference target.</p>
 </section>
 </section>
@@ -1613,7 +1631,7 @@ Figure&nbsp;3: NSGA-II optimization to learn the MSN parameters which produce th
 <p>The ERC-funded Soundscape Indices (SSID) project was started mostly with the ambition to derive soundscape indices that could serve as numerical/quantifiable tools <span class="citation" data-cites="Kang2019Towards">(<a href="#ref-Kang2019Towards" role="doc-biblioref">Kang et al. 2019</a>)</span>, to better inform urban sound planning and design decisions. Any soundscape researcher having ever made an attempt at defining “the” soundscape quality index will know what a challenging, even impossible, task this is. Some may even argue that trying to reduce soundscape quality to a single-value quantity, and deriving any soundscape index, could be what philosophers would call a <em>contradictio in adjecto</em>, as the soundscape approach intrinsically advocates for a multi-dimensional characterization of the acoustic environments that we experience in our lives. For these reasons, we felt that it was necessary to take a step back and create instead a framework tailored for the field specifically that could easily be adapted to different contexts and capture the multi-faceted aspects of the soundscape of a place.</p>
 <p>The proposed framework addresses the existing gap in quantifying multi-dimensional soundscape perception, facilitating a broader application of the soundscape approach in areas such as urban planning, environmental management, acoustic design, and policy development. Through the creation of bespoke indices tailored to specific design goals and the utilization of reference targets for benchmarking, this framework empowers stakeholders and decision-makers to make informed choices and prioritize soundscape improvements aligned with their unique objectives and constraints.</p>
 <p>Furthermore, the grounding of the SPI framework in the soundscape circumplex model ensures a robust theoretical foundation, capturing the multi-dimensional nature of soundscape perception. The use of a distance metric enables quantitative assessments and comparisons, fostering a common language and understanding of soundscape quality across different domains. This shared understanding facilitates knowledge exchange, collaborative efforts, and the development of best practices within the field. As the SPI framework continues to be explored and refined, future research should focus on validating and expanding the range of reference targets, as well as investigating the potential for incorporating additional dimensions and factors that influence soundscape perception. The integration of emerging technologies (such as virtual, mixed, and augmented reality) may also provide new avenues for immersive soundscape evaluation and index development. Additionally, the application of the framework in diverse real-world scenarios, ranging from urban planning and environmental management to acoustic design and policy development, will provide valuable insights and contribute to the ongoing refinement and adaptation of the SPI framework.</p>
-<p>In many ways, the proposed SPI framework is not so conceptually different from the whole idea of decibel-based set of indicators that the Soundscape Indices (SSID) project itself is trying to “overcome”. There is no such thing as a single noise indicator (<em>L</em>) to univocally describe sound levels in all circumstances; rather, different noise indicators are defined for different scenarios and temporal or spectral requirements (e.g., <span class="math inline">\(L_{den}\)</span>, <span class="math inline">\(L_{Aeq, T}\)</span>, etc.), based on testing needs. The decibel (dB) is the unit for all of them, but A-weighted equivalent sound levels for a one-hour interval cannot be directly compared with whole-day indicators with penalties. We are trying to achieve the same with the SPI to provide a way of defining different indices for different contexts, while maintaining a consistent framework.</p>
+<p>In many ways, the proposed SPI framework is not so conceptually different from the whole idea of decibel-based set of indicators that the Soundscape Indices (SSID) project itself is trying to “overcome”. There is no such thing as a single noise indicator (<em>L</em>) to univocally describe sound levels in all circumstances; rather, different noise indicators are defined for different scenarios and temporal or spectral requirements (e.g., <span class="math inline">L_{den}</span>, <span class="math inline">L_{Aeq, T}</span>, etc.), based on testing needs. The decibel (dB) is the unit for all of them, but A-weighted equivalent sound levels for a one-hour interval cannot be directly compared with whole-day indicators with penalties. We are trying to achieve the same with the SPI to provide a way of defining different indices for different contexts, while maintaining a consistent framework.</p>
 <p>Ultimately, for the SPI approach to succeed, collaboration with stakeholders, end-users, and experts from various domains will be crucial in ensuring the framework’s relevance and applicability across a wide range of contexts.</p>
 </section>
 <section id="acknowledgements" class="level1 unnumbered">
@@ -1806,7 +1824,7 @@ Zwicker, Eberhard, and Hugo Fastl. 2007. <em><span class="nocase">Psychoacoustic
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>It is important to note that the parameters which appear in the density expression (<span class="math inline">\(\xi, \Omega, \alpha\)</span>) are what are called ‘direct parameters’ (DP). They directly parameterise an MSN density and are typically only estimated by fitting an MSN to a sample. The more familiar and interpretable components (mean, standard deviation, and skewness) are termed the centred parameters (CP). It is possible to move from one parameterization to another, however “while any choice of the DP components is admissible, the same is not true for CP”; i.e.&nbsp;we can always move DP <span class="math inline">\(\rightarrow\)</span> CP but not always CP <span class="math inline">\(\rightarrow\)</span> DP. In this context, it is most important for readers not to confuse the location parameter <span class="math inline">\(\xi\)</span> with the sample mean <span class="math inline">\(\mu\)</span>. A more complete explanation of these parameterizations can be found in <span class="citation" data-cites="Azzalini2016How">Adelchi Azzalini (<a href="#ref-Azzalini2016How" role="doc-biblioref">2016</a>)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>It is important to note that the parameters which appear in the density expression (<span class="math inline">\xi, \Omega, \alpha</span>) are what are called ‘direct parameters’ (DP). They directly parameterise an MSN density and are typically only estimated by fitting an MSN to a sample. The more familiar and interpretable components (mean, standard deviation, and skewness) are termed the centred parameters (CP). It is possible to move from one parameterization to another, however “while any choice of the DP components is admissible, the same is not true for CP”; i.e.&nbsp;we can always move DP <span class="math inline">\rightarrow</span> CP but not always CP <span class="math inline">\rightarrow</span> DP. In this context, it is most important for readers not to confuse the location parameter <span class="math inline">\xi</span> with the sample mean <span class="math inline">\mu</span>. A more complete explanation of these parameterizations can be found in <span class="citation" data-cites="Azzalini2016How">Adelchi Azzalini (<a href="#ref-Azzalini2016How" role="doc-biblioref">2016</a>)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Further technical details of the multi-objective optimisation procedure and the relevant code can be found in the Supplementary Material.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>For instance, the SSID Protocol, which produced the data used in this paper, attempted to address this by considering its spatial bounds for what constitutes one location to be “an ‘environmental unit’ wherein the environmental factors are consistent and is typically perceived to constitute a single distinct area”, noting that “the exact dimensions and delineation of the environmental unit will vary depending on the characteristics of the space” <span class="citation" data-cites="Mitchell2020Soundscape">(<a href="#ref-Mitchell2020Soundscape" role="doc-biblioref">Mitchell et al. 2020</a>)</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>See <a href="https://cordis.europa.eu/project/id/740696/factsheet" class="uri">https://cordis.europa.eu/project/id/740696/factsheet</a> (Last viewed 2024-05-28).<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -1875,6 +1893,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -2312,4 +2474,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
