@@ -11,6 +11,7 @@ manuscript:
     - ./notebooks/TargetOptimization.ipynb
 
 notebook-subarticles: true
+notebook-links: true
 
 bibliography: FellowshipRefs2.bib
 
@@ -26,11 +27,7 @@ format:
     theme: 
       light: flatly
       dark: superhero
-    toc-title: "Contents"
-    html-math-method: katex
-    include-in-header:
-      - includes.html
-    highlight-style: tango
+    html-math-method: mathjax
     smooth-scroll: true
   docx: default
   jats: default
@@ -39,7 +36,6 @@ format:
     keep-tex: false
     hyperrefoptions: 
       - "citecolor=black"
-    echo: false
     journal:
       name: Journal of the Acoustical Society of America
       model: 3p
