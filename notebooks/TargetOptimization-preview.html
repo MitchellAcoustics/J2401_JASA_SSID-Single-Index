@@ -156,12 +156,12 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b747b6386764b2b0c9ec970b3b05049a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b747b6386764b2b0c9ec970b3b05049a.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07ba0ad10f5680c660e360ac31d2f3b6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8b864f0777c60eecff11d75b6b2e1175.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-63c68012ddc2ab4c0a38192f321feba9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-af65e4d8a1d2435f7ffc691be2155461.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c974ccab98ea179fb01c2213b83da4cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-8c014a65187172b81dce40f708475025.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -170,24 +170,9 @@
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+</script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-<script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-</script>
-<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"> 
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script> 
       </head>
 
   <body class="quarto-notebook">
@@ -260,7 +245,7 @@
 </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
 <div id="quarto-sidebar-toc-left" class="sidebar toc-left">
   <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Contents</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
   <li><a href="#example-using-park-soundscapes-from-the-isd" id="toc-example-using-park-soundscapes-from-the-isd" class="nav-link active" data-scroll-target="#example-using-park-soundscapes-from-the-isd">Example using park soundscapes from the ISD</a></li>
@@ -459,25 +444,25 @@
 <section id="sec-targets" class="level2">
 <h2 class="anchored" data-anchor-id="sec-targets">SPI Targets</h2>
 <p>To set up the optimisation task, we first need to express the parameter space and any constraints. The SPI target is a set of parameters that define the distribution of soundscape perception in a given soundscape. The target is defined as a multivariate skew-normal (MSN) distribution with the following parameters:</p>
-<p><span id="eq-target"><span class="math display">
+<p><span id="eq-target"><span class="math display">\[
 Y \sim MSN(\xi, \Omega, \alpha)
-\tag{1}</span></span></p>
+\tag{1}\]</span></span></p>
 <p>where:</p>
-<p><span id="eq-target-xi"><span class="math display">
+<p><span id="eq-target-xi"><span class="math display">\[
 \xi = (\xi_x, \xi_y), -1 \leq \xi \leq 1
-\tag{2}</span></span></p>
-<p>is the location parameter, which defines the mean of the distribution in the x and y dimensions. The location parameter is constrained to lie within the range <span class="math inline">-1 \leq \xi \leq 1</span> to ensure that the target distribution is within the range of possible soundscape perceptions (i.e.&nbsp;within the circumplex).</p>
-<p><span id="eq-target-omega"><span class="math display">
+\tag{2}\]</span></span></p>
+<p>is the location parameter, which defines the mean of the distribution in the x and y dimensions. The location parameter is constrained to lie within the range <span class="math inline">\(-1 \leq \xi \leq 1\)</span> to ensure that the target distribution is within the range of possible soundscape perceptions (i.e.&nbsp;within the circumplex).</p>
+<p><span id="eq-target-omega"><span class="math display">\[
 \Omega = \begin{pmatrix} var(x) &amp; cov(x, y) \\ cov(y, x) &amp; var(y) \end{pmatrix}
-\tag{3}</span></span></p>
+\tag{3}\]</span></span></p>
 <p>and</p>
-<p><span id="eq-target-omega-constraints"><span class="math display">
+<p><span id="eq-target-omega-constraints"><span class="math display">\[
 0 \leq var() \leq 1; -1 \leq cov() \leq 1
-\tag{4}</span></span></p>
-<p>is the covariance matrix, which defines the shape of the distribution. The covariance matrix must be symmetric <span class="math inline">(cov(x,y) = cov(y,x))</span> and positive definite to ensure that the distribution is well-defined. These requirements arise from the mathematical properties needed for a valid probability distribution. The variance and covariance parameters are constrained within realistic ranges based on observed soundscape distributions in the ISD.</p>
-<p><span id="eq-target-alpha"><span class="math display">
+\tag{4}\]</span></span></p>
+<p>is the covariance matrix, which defines the shape of the distribution. The covariance matrix must be symmetric <span class="math inline">\((cov(x,y) = cov(y,x))\)</span> and positive definite to ensure that the distribution is well-defined. These requirements arise from the mathematical properties needed for a valid probability distribution. The variance and covariance parameters are constrained within realistic ranges based on observed soundscape distributions in the ISD.</p>
+<p><span id="eq-target-alpha"><span class="math display">\[
 \alpha = (\alpha_x, \alpha_y), -5 \leq \alpha \leq 5
-\tag{5}</span></span></p>
+\tag{5}\]</span></span></p>
 <p>is the skewness parameter, which defines the skewness of the distribution in the x and y dimensions. The skewness parameter range is chosen to allow for meaningful asymmetry while preventing extreme or unrealistic distributions.</p>
 </section>
 </section>
@@ -488,18 +473,18 @@ Y \sim MSN(\xi, \Omega, \alpha)
 <p>Our optimization problem requires carefully chosen objective functions that can effectively translate an ordinal ranking of soundscape quality into meaningful MSN parameters. Two competing objectives are defined to ensure the resulting target distribution is both valid and useful:</p>
 <ol type="1">
 <li><p>Rank Correlation Objective:</p>
-<p><span class="math display">
+<p><span class="math display">\[
 f_1 = r(ranks_{quality}, ranks_{target})
-</span></p>
-<p>where <span class="math inline">r</span> is the Spearman rank correlation coefficient. This objective ensures the derived target preserves the original quality ordering of the soundscapes. A high rank correlation indicates that when the target is used to calculate SPI scores for each location, those scores produce a similar ranking to our <em>a priori</em> assessment.</p></li>
+\]</span></p>
+<p>where <span class="math inline">\(r\)</span> is the Spearman rank correlation coefficient. This objective ensures the derived target preserves the original quality ordering of the soundscapes. A high rank correlation indicates that when the target is used to calculate SPI scores for each location, those scores produce a similar ranking to our <em>a priori</em> assessment.</p></li>
 <li><p>Weighted SPI Objective:</p>
-<p><span class="math display">
+<p><span class="math display">\[
 f_2 = \sum_{i=1}^{m} \frac{1}{rank_i} \cdot SPI_i
-</span></p>
-<p>where <span class="math inline">m</span> is the number of locations and <span class="math inline">rank_i</span> is the <em>a priori</em> rank of location <span class="math inline">i</span>. This objective addresses several important aspects:</p>
+\]</span></p>
+<p>where <span class="math inline">\(m\)</span> is the number of locations and <span class="math inline">\(rank_i\)</span> is the <em>a priori</em> rank of location <span class="math inline">\(i\)</span>. This objective addresses several important aspects:</p>
 <ul>
 <li>It ensures the target produces meaningfully scaled scores, not just correct rankings</li>
-<li>The weighting (<span class="math inline">\frac{1}{rank_i}</span>) prioritizes high SPI scores for locations ranked as high quality</li>
+<li>The weighting (<span class="math inline">\(\frac{1}{rank_i}\)</span>) prioritizes high SPI scores for locations ranked as high quality</li>
 <li>It prevents solutions that achieve the correct ranking but with compressed or arbitrary score ranges</li>
 <li>It helps anchor the target distribution in regions of the circumplex space associated with positive soundscape experiences for this context.</li>
 </ul></li>
@@ -837,7 +822,7 @@ None</code></pre>
 </div>
 </div></div>
 <div id="cell-22" class="cell markdown">
-<p>These parameters define a target distribution that achieves a rank correlation of 0.714 with the a priori ranking while maintaining meaningfully scaled SPI scores. The location parameters (<span class="math inline">\xi</span>) place the distribution’s center in the vibrant quadrant of the circumplex, while the covariance matrix (<span class="math inline">\Omega</span>) describes a moderately spread distribution with positive correlation between pleasantness and eventfulness. The skewness parameters (<span class="math inline">\alpha</span>) indicate strong negative skew, particularly in the eventfulness dimension, suggesting the target favors soundscapes that avoid high eventfulness while maintaining moderate to high pleasantness.</p>
+<p>These parameters define a target distribution that achieves a rank correlation of 0.714 with the a priori ranking while maintaining meaningfully scaled SPI scores. The location parameters (<span class="math inline">\(\xi\)</span>) place the distribution’s center in the vibrant quadrant of the circumplex, while the covariance matrix (<span class="math inline">\(\Omega\)</span>) describes a moderately spread distribution with positive correlation between pleasantness and eventfulness. The skewness parameters (<span class="math inline">\(\alpha\)</span>) indicate strong negative skew, particularly in the eventfulness dimension, suggesting the target favors soundscapes that avoid high eventfulness while maintaining moderate to high pleasantness.</p>
 </div>
 <div id="cell-23" class="cell markdown">
 <section id="resulting-target-distribution" class="level2">

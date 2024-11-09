@@ -175,12 +175,12 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b747b6386764b2b0c9ec970b3b05049a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b747b6386764b2b0c9ec970b3b05049a.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07ba0ad10f5680c660e360ac31d2f3b6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8b864f0777c60eecff11d75b6b2e1175.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-63c68012ddc2ab4c0a38192f321feba9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-af65e4d8a1d2435f7ffc691be2155461.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c974ccab98ea179fb01c2213b83da4cb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-8c014a65187172b81dce40f708475025.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -189,24 +189,9 @@
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+</script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-<script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-</script>
-<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"> 
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script> 
       </head>
 
   <body class="quarto-notebook">
@@ -271,7 +256,7 @@
 </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
 <div id="quarto-sidebar-toc-left" class="sidebar toc-left">
   <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Contents</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
   <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a>
@@ -647,12 +632,12 @@
 </div>
 <div id="cell-6" class="cell markdown">
 <p>To move the 8-item PAQ responses into the 2-dimensional circumplex space, we use the projection method first presented in ISO 12913-3:2018. This projection method and its associated formulae were recently updated further in <span class="citation" data-cites="Aletta2024Soundscape">Aletta et al. (<a href="#ref-Aletta2024Soundscape" role="doc-biblioref">2024</a>)</span> to include a correction for the language in which the survey was conducted. The formulae are as follows:</p>
-<p><span class="math display">
+<p><span class="math display">\[
 % \begin{align*}
 P_{ISO} = \frac{1}{\lambda_{pl}} \sum_{i=1}^{8} \cos \theta_i \cdot \sigma_i \\
 E_{ISO} = \frac{1}{\lambda_{pl}} \sum_{i=1}^{8} \sin \theta_i \cdot \sigma_i
 % \end{align*}
-</span></p>
+\]</span></p>
 <p>where $_i$ is the response to the (i)th item of the PAQ. The resulting (x) and (y) values are then used to calculate the polar angle () and the radial distance (r) as follows:</p>
 </div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [40]:</pre></div><div id="cell-7" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-02-02T22:36:21.661999Z&quot;,&quot;start_time&quot;:&quot;2024-02-02T22:36:21.653412Z&quot;}" data-execution_count="40">
@@ -921,14 +906,14 @@ Table&nbsp;1: Language-specific angles for projection into the ISO 12913-3:2018 
 <p>The SPI works by assessing the assessed (or calculated) distribution of soundscape responses against a target distribution. This target distribution represents the goal for the soundscape design. Since we consider a location’s soundscape perception to be the collective perception of its users, it is crucial that the target includes both the central tendency and the distribution.</p>
 <section id="note-distributions-in-the-circumplex" class="level3">
 <h3 class="anchored" data-anchor-id="note-distributions-in-the-circumplex">Note: Distributions in the circumplex</h3>
-<p>We should begin by discussing how soundscape circumplex distributions are defined. The circumplex is defined by two axes: <span class="math inline">P_{ISO}</span> and <span class="math inline">E_{ISO}</span> which are limited to the range <span class="math inline">[-1,1]</span>. Typically the distribution of collective perception of a soundscape is also not symmetrical, therefore making it a skewed distribution. A soundscape distribution is thus a two-dimensional truncated skew-normal distribution.</p>
+<p>We should begin by discussing how soundscape circumplex distributions are defined. The circumplex is defined by two axes: <span class="math inline">\(P_{ISO}\)</span> and <span class="math inline">\(E_{ISO}\)</span> which are limited to the range <span class="math inline">\([-1,1]\)</span>. Typically the distribution of collective perception of a soundscape is also not symmetrical, therefore making it a skewed distribution. A soundscape distribution is thus a two-dimensional truncated skew-normal distribution.</p>
 <p>The skew-normal distribution is defined by three parameters: location, scale and shape. The location parameter defines the centre of the distribution, the scale parameter defines the spread of the distribution, and the shape parameter defines the skew of the distribution. The skew-normal distribution is defined as:</p>
-<p><span class="math display">
+<p><span class="math display">\[
 f(x; a, \omega, \alpha) = \frac{2}{\omega} \phi \left( \frac{x-a}{\omega} \right) \Phi \left( \alpha \frac{x-a}{\omega} \right)
-</span></p>
-<p>where <span class="math inline">\phi</span> and <span class="math inline">\Phi</span> are the standard normal probability density function and cumulative distribution function respectively. The skew-normal distribution is thus a generalisation of the normal distribution, with the shape parameter <span class="math inline">\alpha</span> defining the skew. A positive shape parameter results in a right-skewed distribution, and a negative shape parameter results in a left-skewed distribution.</p>
+\]</span></p>
+<p>where <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\Phi\)</span> are the standard normal probability density function and cumulative distribution function respectively. The skew-normal distribution is thus a generalisation of the normal distribution, with the shape parameter <span class="math inline">\(\alpha\)</span> defining the skew. A positive shape parameter results in a right-skewed distribution, and a negative shape parameter results in a left-skewed distribution.</p>
 <p>Truncated skew-normal distribution: https://www-tandfonline-com.libproxy.ucl.ac.uk/doi/epdf/10.1080/03610910902936109?needAccess=true</p>
-<p>To generate the truncated skew-normal distribution, we use rejection sampling. This is a method of generating a distribution by sampling from a simpler distribution and rejecting samples that do not fit the target distribution. In this case, we sample from a skew-normal distribution (<code>scipy.stats.skewnorm</code>) and reject samples that are outside of the range <span class="math inline">[-1,1]</span>.</p>
+<p>To generate the truncated skew-normal distribution, we use rejection sampling. This is a method of generating a distribution by sampling from a simpler distribution and rejecting samples that do not fit the target distribution. In this case, we sample from a skew-normal distribution (<code>scipy.stats.skewnorm</code>) and reject samples that are outside of the range <span class="math inline">\([-1,1]\)</span>.</p>
 <section id="example---calculating-the-moments-of-locations-distribution-and-generating-the-equivalent-distribution-using-rejection-sampling" class="level4">
 <h4 class="anchored" data-anchor-id="example---calculating-the-moments-of-locations-distribution-and-generating-the-equivalent-distribution-using-rejection-sampling">Example - Calculating the moments of location’s distribution and generating the equivalent distribution using rejection sampling</h4>
 </section>
@@ -1247,9 +1232,9 @@ Table&nbsp;3: SPI scores and rankings for the soundscapes of locations included 
 <thead>
 <tr class="header">
 <th style="text-align: right;">Ranking</th>
-<th style="text-align: left;"><span class="math inline">SPI_1</span> (pleasant)</th>
-<th style="text-align: left;"><span class="math inline">SPI_2</span> (calm)</th>
-<th style="text-align: left;"><span class="math inline">SPI_3</span> (vibrant)</th>
+<th style="text-align: left;"><span class="math inline">\(SPI_1\)</span> (pleasant)</th>
+<th style="text-align: left;"><span class="math inline">\(SPI_2\)</span> (calm)</th>
+<th style="text-align: left;"><span class="math inline">\(SPI_3\)</span> (vibrant)</th>
 </tr>
 </thead>
 <tbody>
@@ -1509,7 +1494,7 @@ Name: tgt_1, dtype: int64</code></pre>
 </div></div>
 <div id="cell-32" class="cell markdown">
 <p>SPI scores assessed against a target should not inherently be considered a measure of the quality of the soundscape - instead it reflects the degree to which the soundscape matches the target. A high SPI score does not necessarily mean that the soundscape is of high quality, but rather that the soundscape is of high quality <em>according to the target</em>.</p>
-<p>The <span class="math inline">SPI_{bespoke}</span> thus provides a method for scoring and ranking the success of a soundscape design against the designer’s goals. Sticking with our defined target, we can assess all of the locations in the ISD and see which locations best match our target.</p>
+<p>The <span class="math inline">\(SPI_{bespoke}\)</span> thus provides a method for scoring and ranking the success of a soundscape design against the designer’s goals. Sticking with our defined target, we can assess all of the locations in the ISD and see which locations best match our target.</p>
 </div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [61]:</pre></div><div id="cell-33" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-02-02T22:54:26.767584Z&quot;,&quot;start_time&quot;:&quot;2024-02-02T22:54:26.096777Z&quot;}" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>loc_bespoke <span class="op">=</span> {}</span>
