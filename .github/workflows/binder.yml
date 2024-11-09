@@ -1,8 +1,8 @@
 name: Build Notebook Container
-on: # You may want to trigger this Action on other things than a push.
-  push:
-    tags:
-      - '*'
+on: 
+  - workflow_dispatch
+  - page_build # You may want to trigger this Action on other things than a push.
+
 jobs:
   build:
     runs-on: ubuntu-latest
