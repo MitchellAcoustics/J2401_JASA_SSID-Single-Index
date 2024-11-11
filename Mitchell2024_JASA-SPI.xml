@@ -5517,8 +5517,11 @@ plt.show()</code>
 <back>
 <fn-group>
   <fn id="fn1-nb-2">
-    <label>1</label><p>Disclosure: The LLM ‘Claude Sonnet’ was used to
-    assist in writing the explanation and code in this section.</p>
+    <label>1</label><p>Acknowledgement: I acknowledge the use of Claude
+    3.5 Sonnet
+    <ext-link ext-link-type="uri" xlink:href="https://claude.ai">claude.ai</ext-link>
+    from Anthropic for clarifying the explanation of the optimization
+    methodology.</p>
   </fn>
 </fn-group>
 </back>
