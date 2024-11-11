@@ -9,7 +9,7 @@ jobs:
     steps:
 
     - name: checkout files in repo
-      uses: actions/checkout@main
+      uses: actions/checkout@v4
 
     - name: setup image name
       run: |

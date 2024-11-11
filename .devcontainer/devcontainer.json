@@ -15,7 +15,8 @@
         "ms-azuretools.vscode-docker",
         "GitHub.copilot",
         "ms-vscode-remote.remote-containers",
-        "quarto.quarto"
+        "quarto.quarto",
+        "mutantdino.resourcemonitor"
       ],
       "settings": {
         "editor.formatOnSave": true,
